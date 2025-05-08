@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Hero from "@/components/hero";
-import AboutEvent from "@/components/about-event";
+// import Hero from "@/components/hero";
+// import AboutEvent from "@/components/about-event";
 import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 
 const FAQS = [
@@ -43,13 +43,14 @@ export function Faq() {
     <section className="py-8 px-8 lg:py-20">
       <div className="container mx-auto">
         <div className="text-center">
-          <Typography variant="h1" color="blue-gray" className="mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h1" color="blue-gray" className="mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}  {...({} as any)}>
             Frequently Asked Questions (FAQs)
           </Typography>
           <Typography
             variant="lead"
             className="mx-auto mb-24 lg:w-3/5 !text-gray-500"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
+            {...({} as any)}
           >
             Welcome to the FYIC 2025 FAQ section. We&apos;re here to
             address your most common queries and provide you with the
@@ -64,8 +65,9 @@ export function Faq() {
               open={open === key + 1}
               onClick={() => handleOpen(key + 1)}
               style={{ fontFamily: 'Montserrat, sans-serif' }}
+              {...({} as any)}
             >
-              <AccordionHeader className="text-left text-gray-900">
+              <AccordionHeader className="text-left text-gray-900" {...({} as any)}>
                 {title}
               </AccordionHeader>
               <AccordionBody>
@@ -74,11 +76,44 @@ export function Faq() {
                   className="font-Montserrat text-gray-500"
                   dangerouslySetInnerHTML={{ __html: desc }}
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  {...({} as any)}
                 />
 
               </AccordionBody>
             </Accordion>
           ))}
+          
+          
+          {/* {FAQS.map(({ title, desc }, index) => (
+            <Accordion key={index} open={open === index} {...({} as any)}>
+              {
+                <AccordionHeader
+                  onClick={() => handleOpen(index)}
+                  className="text-left text-gray-900"
+                  {...({} as any)}
+                >
+                  {title}
+                </AccordionHeader>
+              }
+              <AccordionBody>
+                <Typography
+                  color="blue-gray"
+                  className="font-Montserrat text-gray-500"
+                  dangerouslySetInnerHTML={{ __html: desc }}
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  {...({} as any)} // Apply type override here
+
+                />
+              </AccordionBody>
+            </Accordion>
+          ))} */}
+
+
+
+
+
+
+
         </div>
       </div>
     </section>

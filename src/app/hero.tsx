@@ -76,10 +76,10 @@ function Hero() {
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
       <div className="grid min-h-screen px-8">
         <div className="container relative z-20 my-auto mx-auto grid place-items-center text-center">
-          <Typography variant="h3" color="white" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h3" color="white" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
             29-31 November @ Kingston
           </Typography>
-          <Typography variant="h1" color="white" className="lg:max-w-3xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h1" color="white" className="lg:max-w-3xl" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
             FYIC 2025: Empowering the Next Generation of Engineers
           </Typography>
           <Typography
@@ -87,6 +87,8 @@ function Hero() {
             color="white"
             className="mt-1 mb-12 w-full md:max-w-full lg:max-w-2xl"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
+            {...({} as any)} // Apply type override here
+
           >
             Join us for Ontario’s premier leadership and integration conference designed
             exclusively for first-year engineering students.
@@ -106,6 +108,7 @@ function Hero() {
               <IconButton
                 className="rounded-full bg-white p-6 z-10 relative"
                 onClick={triggerEffect}
+                {...({} as any)}  // Apply type override here
               >
                 <PlayIcon className="h-4 w-4 text-gray-900" />
               </IconButton>

@@ -39,6 +39,7 @@ function NavItem({ children, href }: NavItemProps) {
         variant="paragraph"
         className="flex items-center gap-2 font-medium"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
+        {...({} as any)}
       >
         {children}
       </Typography>
@@ -113,12 +114,14 @@ export function Navbar() {
       color={isScrolling ? "white" : "transparent"}
       className="fixed top-0 z-50 border-0"
       style={{ fontFamily: 'Montserrat, sans-serif' }}
+      {...({} as any)}
     >
       <div className="container mx-auto flex items-center justify-between">
         <Typography
           color={isScrolling ? "blue-gray" : "white"}
           className="text-lg font-bold"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
+          {...({} as any)}
         >
           FYIC 2025
         </Typography>
@@ -150,6 +153,7 @@ export function Navbar() {
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
+          {...({} as any)}
         >
           {open ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />

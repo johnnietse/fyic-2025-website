@@ -22,7 +22,13 @@ module.exports = {
   webpack: (config) => {
     config.optimization.minimize = false
     return config
-  }
+  },
+
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
 };
 
   

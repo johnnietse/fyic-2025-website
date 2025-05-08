@@ -4,6 +4,8 @@ import { Typography, Button } from "@material-tailwind/react";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import AboutCard from "@/components/about-card";
 import "./globals.css";
+import { TypographyProps } from "@material-tailwind/react";
+
 
 
 // const EVENT_INFO = [
@@ -40,7 +42,7 @@ export function AboutEvent() {
           </br>
           <br>
           </br>
-          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white">
+          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white" {...({} as any)}>
             About Us
           </Typography>
 
@@ -51,7 +53,9 @@ export function AboutEvent() {
 
           <Typography
             variant="lead"
-            className="mt-2 lg:max-w-8xl mb-8 w-full text-left font-Montserrat text-white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mt-2 lg:max-w-8xl mb-8 w-full text-left font-Montserrat text-white"      
+            {...({} as any)}
+            >
             The First Year Integration Conference (FYIC) is a unique, province-wide initiative that brings together first-year engineering students from over 15 universities across Ontario. Our goal is to ease the transition into university life by providing a welcoming and inspiring space where students can build connections, develop leadership skills, and gain valuable insight into the world of engineering.
             <br>
             </br>
@@ -120,7 +124,7 @@ export function AboutEvent() {
           <br>
           </br>
 
-          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white"  {...({} as any)}>
             Our Vision
           </Typography>
 
@@ -132,7 +136,8 @@ export function AboutEvent() {
           
           <Typography
             variant="lead"
-            className="mt-2 lg:max-w-10xl mb-8 w-full text-left font-Montserrat text-white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mt-2 lg:max-w-10xl mb-8 w-full text-left font-Montserrat text-white"
+            {...({} as any)}>
             <p className="mb-4">
               At FYIC, we envision a thriving community of future engineers equipped with the tools, confidence, and network to succeed in both their academic and professional pursuits.
             </p>
@@ -179,7 +184,7 @@ export function AboutEvent() {
           </br>
           <br>
           </br>
-          <Typography variant="h1" className="text-center font-Montserrat" color="white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Typography variant="h1" className="text-center font-Montserrat" color="white" {...({} as any)}>
             Our Sponsors
           </Typography>
 
@@ -191,7 +196,8 @@ export function AboutEvent() {
 
           <Typography
             variant="lead"
-            className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-Montserrat text-white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-Montserrat text-white"
+            {...({} as any)}>
             <p className="mb-4">
               Sponsor FYIC 2025!
             </p>
@@ -199,7 +205,7 @@ export function AboutEvent() {
           </Typography>
 
           <a href="/sponsors" target="_self">
-            <Button color="white" variant="filled" className="bg-gray-200 text-black hover:bg-gray-400 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <Button color="white" variant="filled" className="bg-gray-200 text-black hover:bg-gray-400 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8" {...({} as any)}>
 
               Sponsorship Page
             </Button>
@@ -239,7 +245,7 @@ export function AboutEvent() {
           <br>
           </br>
 
-          <Typography variant="h1" className="text-center font-Montserrat" color="white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Typography variant="h1" className="text-center font-Montserrat" color="white" {...({} as any)}>
             Our Team
           </Typography>
 
@@ -250,7 +256,8 @@ export function AboutEvent() {
 
           <Typography
             variant="lead"
-            className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-Montserrat text-white" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
+            className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-Montserrat text-white"
+            {...({} as any)}>
             <p className="mb-4">
               FYIC 2025 is fully run and organized by students. 
             </p>
@@ -267,8 +274,7 @@ export function AboutEvent() {
 
 
           <a href="/team" target="_self">
-            <Button color="white" variant="filled" className="bg-gray-200 text-black hover:bg-gray-400 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8" children={undefined} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-
+            <Button color="white" variant="filled" className="bg-gray-200 text-black hover:bg-gray-400 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8" {...({} as any)}>
               Our Team
             </Button>
           </a>

@@ -171,7 +171,9 @@ const EVENTS_BY_DAY = {
 };
 
 export function EventContent() {
-  const [activeDay, setActiveDay] = useState("Day 1");
+  // const [activeDay, setActiveDay] = useState("Day 1");
+  const [activeDay, setActiveDay] = useState<keyof typeof EVENTS_BY_DAY>("Day 1");
+
 
   return (
     <section className="py-12 px-6 md:px-12">
@@ -193,7 +195,21 @@ export function EventContent() {
       </div> */}
 
       <div className="flex justify-center mb-8 gap-2 bg-gray-100 rounded-full p-1 max-w-fit mx-auto">
-        {Object.keys(EVENTS_BY_DAY).map((day) => (
+        {/* {Object.keys(EVENTS_BY_DAY).map((day) => (
+          <button
+            key={day}
+            onClick={() => setActiveDay(day)}
+            className={`px-4 py-2 rounded-full transition font-medium ${
+              activeDay === day
+                ? "bg-white text-black shadow"
+                : "text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            {day}
+          </button>
+        ))} */}
+
+        {(Object.keys(EVENTS_BY_DAY) as (keyof typeof EVENTS_BY_DAY)[]).map((day) => (
           <button
             key={day}
             onClick={() => setActiveDay(day)}
@@ -206,6 +222,7 @@ export function EventContent() {
             {day}
           </button>
         ))}
+
       </div>
 
 

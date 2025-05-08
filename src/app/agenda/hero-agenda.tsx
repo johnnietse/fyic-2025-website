@@ -25,7 +25,7 @@ export function AboutAgenda() {
           <br>
           </br>
 
-          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white" style={{ fontFamily: 'Montserrat, sans-serif' }}  {...({} as any)}>
             Itinerary
           </Typography>
 

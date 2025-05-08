@@ -49,6 +49,7 @@ export function Footer() {
             variant="h6"
             className="text-gray-900"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
+            {...({} as any)}
           >
             FYIC 2025
           </Typography>
@@ -61,6 +62,7 @@ export function Footer() {
                   variant="small"
                   color="white"
                   className="font-Montserrat !text-gray-700 hover:!text-gray-900 transition-colors"
+                  {...({} as any)}
                 >
                   {link.name}
                 </Typography>
@@ -89,7 +91,7 @@ export function Footer() {
                 aria-label={`Open ${social.icon.split('-')[2]} in new tab`}
 
               >
-                <IconButton size="sm" color="gray" variant="text">
+                <IconButton size="sm" color="gray" variant="text" {...({} as any)}>
                   <i className={`${social.icon} text-lg`} />
                 </IconButton>
               </a>
@@ -117,6 +119,7 @@ export function Footer() {
         <Typography
           color="blue-gray"
           className="text-center mt-12 font-Montserrat !text-gray-700"
+          {...({} as any)}
         >
           Copyright © {CURRENT_YEAR} FYIC: First Year Integration Conference
         </Typography>

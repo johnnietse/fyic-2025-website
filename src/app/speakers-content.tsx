@@ -59,10 +59,10 @@ export function SpeakersContent() {
         </br>
         
         <div className="mt-12 text-center">
-          <Typography variant="h3" color="blue-gray" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h3" color="blue-gray" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
             Contacting Us
           </Typography>
-          <Typography variant="paragraph" color="gray" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="paragraph" color="gray" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)}>
             If you would like to learn more or are interested in speaking at the conference, please contact us at{" "}
             <a href="mailto:cirque@engsoc.queensu.ca" className="text-blue-600 underline">
               fyic@engsoc.queensu.ca
