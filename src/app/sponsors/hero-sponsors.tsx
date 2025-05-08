@@ -25,7 +25,7 @@ export function AboutSponsors() {
           <br>
           </br>
 
-          <Typography variant="h1" className="text-center" color="white" className="lg:max-w-3xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <Typography variant="h1" className="text-center lg:max-w-3xl" color="white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Sponsorship
           </Typography>
 
