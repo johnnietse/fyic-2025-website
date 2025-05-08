@@ -5,6 +5,8 @@ import {
   Button,
 } from "@material-tailwind/react";
 
+
+
 interface AboutCardProp {
   title: string;
   subTitle: string;
@@ -23,7 +25,7 @@ export function AboutCard({ title, description, subTitle }: AboutCardProp) {
         </Typography>
         <Typography
           color="white"
-          className="mt-2 mb-10 text-base w-full lg:w-8/12 text-center font-normal"
+          className="mt-2 mb-10 text-base w-full lg:w-8/12 text-center font-Montserrat"
         >
           {description}
         </Typography>

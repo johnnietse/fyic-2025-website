@@ -1,13 +1,29 @@
 import { Typography, Button, IconButton } from "@material-tailwind/react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Link from 'next/link';
+
 
 const CURRENT_YEAR = new Date().getFullYear();
-const LINKS = ["Company", "About Us", "Team", "Products", "Blog"];
+const INTERNAL_LINKS = [{ name: "Home", path: "/"},
+              {name: "Speakers", path: "/speakers"},
+              {name: "Sponsorship", path: "/sponsors"},
+              {name: "Agenda", path: "/agenda"},
+              {name: "Our Team", path: "/team"}];
+
+
+const SOCIAL_LINKS = [
+  {icon: "fa-brands fa-instagram", url: "https://www.instagram.com/fyic2025/"},
+  {icon: "fa-brands fa-linkedin", url: "https://linkedin.com/" },
+  {icon: "fa-brands fa-facebook", url: "https://facebook.com/" }
+
+];
+
 
 export function Footer() {
   return (
     <footer className="pb-5 p-10 md:pt-10">
       <div className="container flex flex-col mx-auto">
-        <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5 ">
+        {/* <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5 ">
           <Typography
             className="text-2xl md:text-3xl text-center font-bold "
             color="white"
@@ -25,48 +41,64 @@ export function Footer() {
               buy ticket
             </Button>
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col md:flex-row items-center !justify-between">
           <Typography
-            as="a"
-            href="https://www.material-tailwind.com"
-            target="_blank"
+            as={Link}
+            href="/"
             variant="h6"
             className="text-gray-900"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Material Tailwind
+            FYIC 2025
           </Typography>
           <ul className="flex justify-center my-4 md:my-0 w-max mx-auto items-center gap-4">
-            {LINKS.map((link, index) => (
+            {INTERNAL_LINKS.map((link, index) => (
               <li key={index}>
                 <Typography
-                  as="a"
-                  href="#"
+                  as={Link}
+                  href={link.path}
                   variant="small"
                   color="white"
-                  className="font-normal !text-gray-700 hover:!text-gray-900 transition-colors"
+                  className="font-Montserrat !text-gray-700 hover:!text-gray-900 transition-colors"
                 >
-                  {link}
+                  {link.name}
                 </Typography>
               </li>
             ))}
           </ul>
-          <div className="flex w-fit justify-center gap-2">
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-twitter text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-youtube text-lg" />
-            </IconButton>
+
+          {/* <div className="flex w-fit justify-center gap-2">
             <IconButton size="sm" color="gray" variant="text">
               <i className="fa-brands fa-instagram text-lg" />
             </IconButton>
             <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-github text-lg" />
+              <i className="fa-brands fa-linkedin text-lg" />
             </IconButton>
+            <IconButton size="sm" color="gray" variant="text">
+              <i className="fa-brands fa-facebook text-lg" />
+            </IconButton>
+          </div> */}
+
+        <div className="flex w-fit justify-center gap-2">
+            {SOCIAL_LINKS.map((social, index) => (
+              <a 
+                key={index} 
+                href={social.url} 
+                rel="noopener noreferrer"
+                aria-label={`Open ${social.icon.split('-')[2]} in new tab`}
+
+              >
+                <IconButton size="sm" color="gray" variant="text">
+                  <i className={`${social.icon} text-lg`} />
+                </IconButton>
+              </a>
+            ))}
           </div>
         </div>
-        <Typography
+
+
+        {/* <Typography
           color="blue-gray"
           className="text-center mt-12 font-normal !text-gray-700"
         >
@@ -79,7 +111,17 @@ export function Footer() {
             Creative Tim
           </a>
           .
+        </Typography> */}
+
+
+        <Typography
+          color="blue-gray"
+          className="text-center mt-12 font-Montserrat !text-gray-700"
+        >
+          Copyright © {CURRENT_YEAR} FYIC: First Year Integration Conference
         </Typography>
+
+
       </div>
     </footer>
   );

@@ -1,30 +1,39 @@
 "use client";
 
 import React from "react";
+import Hero from "@/components/hero";
+import AboutEvent from "@/components/about-event";
 import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 
 const FAQS = [
   {
-    title: "1. How do I register for the AI Conference 2023?",
-    desc: "You can register for the AI Conference 2023 by visiting our registration page. Follow the simple steps to complete your registration and secure your spot at the conference.",
+    title: "1. What types of sessions will be held at the conference?",
+    desc: "The conference will offer a dynamic mix of sessions, including keynote talks, panel discussions, and interactive workshops. These sessions will explore themes such as building technical expertise, strengthening leadership abilities, and navigating the challenges of undergraduate life. You’ll gain valuable perspectives from industry professionals, upper-year students, and subject-matter experts dedicated to supporting your academic and personal growth throughout your engineering journey. To cap it all off, you'll have the chance to put your skills to the test in an exciting case competition on the final day of the conference.",
   },
   {
-    title: "2. What are the registration fees, and what is included?",
-    desc: "It really matters and then like it really doesn't matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn't matter. Because it's about motivating the doers. Because I'm here to follow my dreams and inspire other people to follow their dreams, too. We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment. A lot of people don't appreciate the moment until it's passed.",
+    title: "2. What is the dress code for the conference?",
+    desc: "Attire varies throughout the conference. Casual wear is suitable for the opening ceremony and social. Business casual is expected during sessions on Days 2 and 3. For the gala, formal attire is encouraged to complement the event’s elegant ambiance.",
   },
   {
-    title: "3. Can I get a refund if I need to cancel my registration?",
-    desc: "The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now to be okay to be the greatest you. Would you believe in what you believe in, if you were the only one who believed it? If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.",
+    title: "3. Will food and snacks be provided during the conference?",
+    desc: "All meals will be provided, and light snacks will be available throughout the sessions.",
   },
   {
-    title: "4. Will there be on-site registration available?",
-    desc: "I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything. If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.",
+    title: "4. How can I prepare for the conference?",
+    desc: "Before the conference, review the schedule and get to know the sessions in advance. Bring a device like a laptop or tablet for the case competition on Day 3, and be prepared to take notes during sessions. Arriving with thoughtful questions for speakers and panelists will help you make the most of your learning and networking experience.",
   },
   {
-    title: "5. What is the dress code for the conference?",
-    desc: "There's nothing I really wanted to do in life that I wasn't able to get good at. That's my skill. I'm not really specifically talented at anything except for the ability to learn. That's what I do. That's what I'm here for. Don't be afraid to be wrong because you can't learn anything from a compliment. I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything.",
+    title: "5. What should I do if I have additional questions?",
+    desc: `Feel free to reach out by emailing us at 
+      <a href="mailto:fyic@engsoc.queensu.ca" class="text-blue-500 underline">fyic@engsoc.queensu.ca</a> 
+      with the subject line: “FYIC Inquiry – [Your Name]”, or send us a direct message on 
+      Instagram at <a href="https://www.instagram.com/fyic2025/" target="_blank" rel="noopener noreferrer" class="text-blue-500 underline">@fyic2025</a>.`,
   },
+  
 ];
+
+
+
 
 export function Faq() {
   const [open, setOpen] = React.useState(0);
@@ -34,14 +43,15 @@ export function Faq() {
     <section className="py-8 px-8 lg:py-20">
       <div className="container mx-auto">
         <div className="text-center">
-          <Typography variant="h1" color="blue-gray" className="mb-4">
-            Frequently asked questions
+          <Typography variant="h1" color="blue-gray" className="mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Frequently Asked Questions (FAQs)
           </Typography>
           <Typography
             variant="lead"
             className="mx-auto mb-24 lg:w-3/5 !text-gray-500"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            Welcome to the AI Conference 2023 FAQ section. We&apos;re here to
+            Welcome to the FYIC 2025 FAQ section. We&apos;re here to
             address your most common queries and provide you with the
             information you need to make the most of your conference experience.
           </Typography>
@@ -53,6 +63,7 @@ export function Faq() {
               key={key}
               open={open === key + 1}
               onClick={() => handleOpen(key + 1)}
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               <AccordionHeader className="text-left text-gray-900">
                 {title}
@@ -60,10 +71,11 @@ export function Faq() {
               <AccordionBody>
                 <Typography
                   color="blue-gray"
-                  className="font-normal text-gray-500"
-                >
-                  {desc}
-                </Typography>
+                  className="font-Montserrat text-gray-500"
+                  dangerouslySetInnerHTML={{ __html: desc }}
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                />
+
               </AccordionBody>
             </Accordion>
           ))}

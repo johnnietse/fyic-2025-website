@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+  
+
+/* Ripple animation */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Shooting Star animation */
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(0, 0, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.5) translate3d(800px, 800px, 0);
+  }
+}
+
+/* Styling for the shooting stars */
+.shooting-star {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(white, rgba(255, 255, 255, 0.1));
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  z-index: 50;
+  animation: shoot 1.8s ease-in forwards;
+  pointer-events: none;
+}
+
+/* Ripple effect on the button */
+.animate-ripple {
+  animation: ripple 1s ease-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Fullscreen overlay when effect is running */
+.fixed.inset-0.bg-black {
+  background-color: rgba(0, 0, 0, 1); /* Fully opaque black */
+  z-index: 40;
+  transition-opacity: 500ms ease-in;
+}
+
+/* Center message styling */
+.fixed.inset-0.flex.items-center.justify-center.z-50 {
+  color: white;
+  z-index: 60;
+}
+
+/* General styling for the rest of the page content */
+.bg-gray-900/60 {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Custom grid and typography styles */
+.grid.min-h-screen {
+  display: grid;
+  place-items: center;
+}
+
+.container.relative.z-20.my-auto.mx-auto.grid.place-items-center.text-center {
+  text-align: center;
+}
+
+h1.text-5xl.md\:text-6xl.font-bold.text-white.animate-pulse {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+.typography {
+  color: white;
+  font-weight: 700;
+}
