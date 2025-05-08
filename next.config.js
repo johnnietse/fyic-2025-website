@@ -12,10 +12,18 @@ const nextConfig = {
   
 };
 
-module.exports = nextConfig, { 
-  experimental: {
-    optimizeCss: false
-  },
+// module.exports = nextConfig, { 
+//   experimental: {
+//     optimizeCss: false
+//   },
+
+  // next.config.js
+module.exports = {
+  webpack: (config) => {
+    config.optimization.minimize = false
+    return config
+  }
+};
 
   
   // webpack: (config) => {
@@ -23,4 +31,4 @@ module.exports = nextConfig, {
   //   return config
   // }
   
-};
+// };
