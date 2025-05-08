@@ -1,94 +1,77 @@
-# [NextJS Tailwind Event Landing Page](http://demos.creative-tim.com/nextjs-tailwind-event-landing-page?ref=readme-ntpp) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/nextjs-tailwind-event-landing-page&text=Check%20Material%20Tailwind%202%20Template%20made%20by%20@CreativeTim%20#webdesign%20#template%20#materialdesign%20#react%20https://www.creative-tim.com/product/nextjs-tailwind-event-landing-page)
+# FYIC 2025 Website
 
-![version](https://img.shields.io/badge/version-1.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/nextjs-tailwind-event-landing-page.svg)](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/nextjs-tailwind-event-landing-page.svg)](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page/issues?q=is%3Aissue+is%3Aclosed)
+This website was developed using a forked template from the [NextJS Tailwind Event Landing Page](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page), which serves as a foundation for the landing page of FYIC 2025. The template is built with Tailwind CSS and Material Tailwind, offering flexibility and customization to suit the event's unique needs.
 
-![Image](https://s3.amazonaws.com/creativetim_bucket/products/740/original/material-tailwind-react-events-details-template-thumbnail.jpg?1697625313)
+## About FYIC 2025
 
-Introducing Tailwind Event Landing Page, a dynamic and visually appealing landing page template designed using Tailwind CSS and Material Tailwind.
+The **First Year Integration Conference (FYIC) 2025** brings together first-year engineering students from over 15 universities across Ontario. The event offers opportunities for networking with industry professionals, participating in interactive workshops, and learning more about career development, academic success, and diverse engineering pathways.
 
-Are you in need of a professionally crafted and highly customizable event landing page template, perfect for promoting and hosting events of all types? Your search ends here! We are excited to introduce our Free Event Landing Page Template, thoughtfully designed to cater to the needs of event organizers like your clients.
+### My Role: Webmaster for FYIC 2025
 
-This template, built with Tailwind CSS and Material Tailwind, offers seamless customization to align with your event's unique branding. The free event landing page template comes equipped with essential features such as hero, logo, stats, and testimonial sections.
+As the **Webmaster for FYIC 2025**, I am responsible for creating, maintaining, and optimizing the website. The goal is to ensure a seamless and user-friendly experience for participants, offering them easy access to event information, schedules, and other important resources.
 
-**Documentation built by Developers**
+### Key Responsibilities:
+- Develop and maintain the event website.
+- Ensure the website remains secure and up-to-date.
+- Optimize functionality and accessibility for all users.
+- Troubleshoot and resolve any technical issues.
+- Monitor performance and implement improvements post-launch.
 
-Each element is well presented in very complex documentation.
+## Features
 
-You can read more about the [documentation here](https://www.material-tailwind.com/docs/react/installation).
+- **Responsive Layout:** Fully responsive design to ensure a smooth experience on both desktop and mobile devices.
+- **Event Information:** Easily accessible event details, schedules, and registration information.
+- **Modern Design:** Clean and minimalistic design with Material Tailwind and Tailwind CSS, ensuring fast loading and a great user experience.
 
-**HELPFUL LINKS**
+## Demo
 
-- View [Github Repository](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page)
-- Check [FAQ Page](https://www.creative-tim.com/faq)
+You can view the live version of the website [here](https://2025-fyic.vercel.app/).
 
-## [Demo](https://creative-tim.com/product/nextjs-tailwind-event-landing-page)
+## Installation
 
-## Quick start
+To get started with this project locally, follow these steps:
 
-Quick start options:
+1. Clone this repository to your local machine:
 
-- Download from [Creative Tim](https://www.creative-tim.com/product/nextjs-tailwind-event-landing-page?ref=readme-ntpp).
+    ```bash
+    git clone https://github.com/yourusername/fyic-2025-website.git
+    ```
 
-## Terminal Commands
+2. Navigate to the project folder:
 
-1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
-2. Navigate to the root ./ directory of the product and run `npm install` to install our local dependencies.
+    ```bash
+    cd fyic-2025-website
+    ```
 
-## Documentation
+3. Install dependencies:
 
-The documentation for the Material Dashboard is hosted at our [website](https://www.material-tailwind.com/docs/react/installation?ref=readme-ntpp).
+    ```bash
+    npm install
+    ```
 
-## Browser Support
+4. Start the local development server:
 
-At present, we officially aim to support the last two versions of the following browsers:
+    ```bash
+    npm run dev
+    ```
 
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
+5. Visit `http://localhost:3000` in your browser to view the project.
 
-## Resources
+## Technologies Used
 
-- [Live Preview](https://demos.creative-tim.com/nextjs-tailwind-event-landing-page?ref=readme-ntpp)
-- [Download Page](https://www.creative-tim.com/product/nextjs-tailwind-event-landing-page?ref=readme-ntpp)
-- Documentation is [here](https://www.material-tailwind.com/docs/react/installation?ref=readme-ntpp)
-- [License Agreement](https://www.creative-tim.com/license?ref=readme-ntpp)
-- [Support](https://www.creative-tim.com/contact-us?ref=readme-ntpp)
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page/issues)
-- [Nepcha Analytics](https://nepcha.com?ref=readme) - Analytics tool for your website
+- **Next.js:** React-based framework for server-side rendering and static site generation.
+- **Tailwind CSS:** Utility-first CSS framework to style the page.
+- **Material Tailwind:** Material design components for Tailwind CSS.
 
-## Reporting Issues
+## Acknowledgements
 
-We use GitHub Issues as the official bug tracker for the NextJS Tailwind Event Landing Page. Here are some advices for our users that want to report an issue:
+- **Original Template:** This project is based on the [NextJS Tailwind Event Landing Page](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page) template created by [Creative Tim](https://www.creative-tim.com).
+- **Creative Tim:** [Website](https://www.creative-tim.com), [License](https://www.creative-tim.com/license).
 
-1. Make sure that you are using the latest version of the NextJS Tailwind Event Landing Page. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/nextjs-tailwind-event-landing-page?ref=readme-ntpp).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+## Contributing
 
-## Technical Support or Questions
+Contributions are welcome! If you would like to contribute, please fork the repository, make changes, and submit a pull request. Please refer to the original repository’s [contributing guidelines](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page).
 
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-ntpp) instead of opening an issue.
+## License
 
-## Licensing
-
-- Copyright 2023 [Creative Tim](https://www.creative-tim.com?ref=readme-ntpp)
-- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-ntpp)
-
-## Useful Links
-
-- [More products](https://www.creative-tim.com/templates?ref=readme-ntpp) from Creative Tim
-
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-ntpp) from Creative Tim
-
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-ntpp) (earn money)
-
-##### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
