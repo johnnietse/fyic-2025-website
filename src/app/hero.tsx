@@ -127,11 +127,24 @@ function Hero() {
               {ripple && (
                 <span className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 animate-ripple pointer-events-none z-0" />
               )}
+
+              <br>
+              </br>
+              <br>
+              </br>
+              <br>
+              </br>
+              <br>
+              </br>
+            
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+    
   );
 }
 
