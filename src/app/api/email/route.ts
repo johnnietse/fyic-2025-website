@@ -53,3 +53,44 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }
+
+
+
+
+
+
+// import { NextResponse } from 'next/server';
+// import nodemailer from 'nodemailer';
+
+// export async function POST(request: Request) {
+//   const { email, name, message } = await request.json();
+
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: process.env.GMAIL_USER,
+//       pass: process.env.GMAIL_APP_PASSWORD,
+//     },
+//   });
+
+//   try {
+//     await transporter.sendMail({
+//       from: `"FYIC Contact" <${process.env.GMAIL_USER}>`,
+//       to: process.env.GMAIL_USER,
+//       subject: `New message from ${name}`,
+//       text: message,
+//       html: `
+//         <p><strong>From:</strong> ${name} (${email})</p>
+//         <p>${message}</p>
+//       `,
+//     });
+
+//     return NextResponse.json({ success: true });
+//   } catch (error) {
+//     console.error('Email error:', error);
+//     return NextResponse.json(
+//       { error: 'Failed to send message' },
+//       { status: 500 }
+//     );
+//   }
+// }

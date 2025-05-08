@@ -22,3 +22,22 @@ export function sendEmail(data: FormData) {
 }
 
 
+
+// import { FormData } from '@/components/contact';
+
+// export async function sendEmail(data: FormData) {
+//   try {
+//     const response = await fetch('/api/email', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(data),
+//     });
+
+//     if (!response.ok) throw new Error('Failed to send');
+    
+//     alert('Message sent successfully!');
+//   } catch (error) {
+//     alert('Failed to send message. Please try again later.');
+//     console.error('Error:', error);
+//   }
+// }

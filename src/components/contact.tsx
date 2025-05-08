@@ -14,6 +14,8 @@ export type FormData = {
   message: string;
 };
 
+
+
 const Contact: FC = () => {
   const { register, handleSubmit} = useForm<FormData>();
 
