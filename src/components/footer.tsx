@@ -7,7 +7,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 const INTERNAL_LINKS = [{ name: "Home", path: "/"},
               {name: "Speakers", path: "/speakers"},
               {name: "Sponsorship", path: "/sponsors"},
-              {name: "Agenda", path: "/agenda"},
+              {name: "Itinerary", path: "/agenda"},
               {name: "Our Team", path: "/team"}];
 
 

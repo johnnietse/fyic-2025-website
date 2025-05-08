@@ -76,6 +76,17 @@ function Hero() {
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
       <div className="grid min-h-screen px-8">
         <div className="container relative z-20 my-auto mx-auto grid place-items-center text-center">
+          
+          <br>
+          </br>
+          <br>
+          </br>
+          <br>
+          </br>
+          <br>
+          </br>
+          
+          
           <Typography variant="h3" color="white" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
             29-31 November @ Kingston
           </Typography>
