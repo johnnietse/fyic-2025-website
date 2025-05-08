@@ -34,13 +34,13 @@ To get started with this project locally, follow these steps:
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/fyic-2025-website.git
+    git clone https://github.com/johnnietse/2025-fyic.git
     ```
 
 2. Navigate to the project folder:
 
     ```bash
-    cd fyic-2025-website
+    cd 2025-fyic
     ```
 
 3. Install dependencies:
