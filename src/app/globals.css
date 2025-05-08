@@ -71,10 +71,10 @@
   z-index: 60;
 }
 
-/* General styling for the rest of the page content */
+/* General styling for the rest of the page content
 .bg-gray-900/60 {
   background-color: rgba(0, 0, 0, 0.6);
-}
+} */
 
 /* Custom grid and typography styles */
 .grid.min-h-screen {

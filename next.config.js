@@ -8,6 +8,19 @@ const nextConfig = {
       },
     ],
   },
+
+  
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig, { 
+  experimental: {
+    optimizeCss: false
+  },
+
+  
+  // webpack: (config) => {
+  //   config.optimization.minimize = false
+  //   return config
+  // }
+  
+};
