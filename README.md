@@ -38,3 +38,9 @@ You can view the live version of the website [here](https://2025-fyic.vercel.app
 
 - **Original Template:** This project is based on the [NextJS Tailwind Event Landing Page](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page) template created by [Creative Tim](https://www.creative-tim.com).
 - **Creative Tim:** [Website](https://www.creative-tim.com), [License](https://www.creative-tim.com/license).
+
+## Legal Notice
+
+This repository is strictly created for the sole purpose of hosting the associated website on Vercel.
+
+All source code, assets, and related materials within this repository are the intellectual property of Creative Tim and are provided under limited use rights.
