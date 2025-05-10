@@ -28,7 +28,7 @@ As the **Webmaster for FYIC 2025**, I am responsible for creating, maintaining, 
 You can view the live version of the website [here](https://2025-fyic.vercel.app/).
 
 
-## Technologies Used
+## Stack Tech Used
 
 - **Next.js:** React-based framework for server-side rendering and static site generation.
 - **Tailwind CSS:** Utility-first CSS framework to style the page.
@@ -38,11 +38,3 @@ You can view the live version of the website [here](https://2025-fyic.vercel.app
 
 - **Original Template:** This project is based on the [NextJS Tailwind Event Landing Page](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page) template created by [Creative Tim](https://www.creative-tim.com).
 - **Creative Tim:** [Website](https://www.creative-tim.com), [License](https://www.creative-tim.com/license).
-
-## Contributing
-
-Contributions are welcome! If you would like to contribute, please fork the repository, make changes, and submit a pull request. Please refer to the original repository’s [contributing guidelines](https://github.com/creativetimofficial/nextjs-tailwind-event-landing-page).
-
-## License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
