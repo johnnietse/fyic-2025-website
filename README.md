@@ -43,4 +43,4 @@ You can view the live version of the website [here](https://2025-fyic.vercel.app
 
 This repository is strictly created for the sole purpose of hosting the associated website on Vercel.
 
-All source code, assets, and related materials within this repository are the intellectual property of Creative Tim and are provided under limited use rights.
+All source code, assets, and related materials within this repository are the intellectual property of [Creative Tim](https://www.creative-tim.com) and are provided under limited use rights.
