@@ -27,35 +27,6 @@ As the **Webmaster for FYIC 2025**, I am responsible for creating, maintaining, 
 
 You can view the live version of the website [here](https://2025-fyic.vercel.app/).
 
-## Installation
-
-To get started with this project locally, follow these steps:
-
-1. Clone this repository to your local machine:
-
-    ```bash
-    git clone https://github.com/johnnietse/2025-fyic.git
-    ```
-
-2. Navigate to the project folder:
-
-    ```bash
-    cd 2025-fyic
-    ```
-
-3. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-4. Start the local development server:
-
-    ```bash
-    npm run dev
-    ```
-
-5. Visit `http://localhost:3000` in your browser to view the project.
 
 ## Technologies Used
 
