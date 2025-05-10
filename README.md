@@ -41,6 +41,6 @@ You can view the live version of the website [here](https://2025-fyic.vercel.app
 
 ## Legal Notice
 
-This repository is strictly created for the sole purpose of hosting the associated website on Vercel.
+This repository and its code are strictly intended for the sole purpose of hosting the associated website on Vercel. It is not meant for public usage, redistribution, or delivering Creative Tim's source code through open-source projects.
 
 All source code, assets, and related materials within this repository are the intellectual property of [Creative Tim](https://www.creative-tim.com) and are provided under limited use rights.
