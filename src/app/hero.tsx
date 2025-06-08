@@ -717,11 +717,29 @@ function Hero() {
           className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center cursor-pointer"
           onClick={() => setHasInteracted(true)}
         >
-          <div className="text-white text-center p-8">
+          {/* <div className="text-white text-center p-8">
             <Typography variant="h4" className="mb-4">
               Tap anywhere to start
             </Typography>
             <Typography>
+              (Video playback requires user interaction)
+            </Typography>
+          </div> */}
+
+
+          <div className="text-white text-center p-8">
+            <Typography 
+              variant="h4"
+              className="mb-4"
+              placeholder={undefined} // Add this to satisfy the type requirements
+              onPointerEnterCapture={undefined} // Add these to satisfy the type requirements
+              onPointerLeaveCapture={undefined} children={undefined} onResize={undefined} onResizeCapture={undefined}            >
+              Tap anywhere to start
+            </Typography>
+            <Typography
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined} children={undefined} onResize={undefined} onResizeCapture={undefined}            >
               (Video playback requires user interaction)
             </Typography>
           </div>
