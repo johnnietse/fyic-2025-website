@@ -279,7 +279,7 @@ function Hero() {
         className="absolute top-0 left-0 w-full h-full object-cover"
         poster="/image/event.png"
       >
-        <source src="/videos/event.mp4" type="video/mp4" />
+        <source src="/image/event.mp4" type="video/mp4" />
         <img 
           src="/image/event.png" 
           alt="Fallback background" 
