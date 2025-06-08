@@ -163,56 +163,55 @@ function Hero() {
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
       
       {/* ========= MAIN CONTENT ========= */}
-      <div className="grid min-h-screen px-8">
-        <div className="container relative z-20 my-auto mx-auto grid place-items-center text-center">
-          <div className="py-16 space-y-8">
-            <Typography 
-              variant="h3" 
-              color="white" 
-              className="mb-2" 
-              style={{ fontFamily: 'Montserrat, sans-serif' }} 
-              {...({} as any)}
-            >
-              29-31 November @ Kingston
-            </Typography>
-            
-            <Typography 
-              variant="h1" 
-              color="white" 
-              className="lg:max-w-3xl" 
-              style={{ fontFamily: 'Montserrat, sans-serif' }} 
-              {...({} as any)}
-            >
-              FYIC 2025: Empowering the Next Generation of Engineers
-            </Typography>
-            
-            <Typography
-              variant="lead"
-              color="white"
-              className="mt-1 mb-12 w-full md:max-w-full lg:max-w-2xl"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-              {...({} as any)}
-            >
-              Join us for Ontario's premier leadership and integration conference designed
-              exclusively for first-year engineering students.
-            </Typography>
+      <div className="flex flex-col min-h-screen px-8 items-center justify-center text-center">
+        <div className="container relative z-20 mx-auto">
+          <Typography 
+            variant="h3" 
+            color="white" 
+            className="mb-2" 
+            style={{ fontFamily: 'Montserrat, sans-serif' }} 
+            {...({} as any)}
+          >
+            29-31 November @ Kingston
+          </Typography>
+          
+          <Typography 
+            variant="h1" 
+            color="white" 
+            className="lg:max-w-3xl mx-auto" 
+            style={{ fontFamily: 'Montserrat, sans-serif' }} 
+            {...({} as any)}
+          >
+            FYIC 2025: Empowering the Next Generation of Engineers
+          </Typography>
+          
+          <Typography
+            variant="lead"
+            color="white"
+            className="mt-1 mb-12 mx-auto w-full md:max-w-full lg:max-w-2xl"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+            {...({} as any)}
+          >
+            Join us for Ontario's premier leadership and integration conference designed
+            exclusively for first-year engineering students.
+          </Typography>
 
-            <CountdownTimer />
+          <CountdownTimer />
 
-            <div className="flex items-center gap-4 mt-16">
-              <div className="relative">
-                <IconButton
-                  className="rounded-full bg-white p-6 z-10 relative hover:scale-105 transition-transform"
-                  onClick={triggerEffect}
-                  {...({} as any)}
-                >
-                  <PlayIcon className="h-4 w-4 text-gray-900" />
-                </IconButton>
+          {/* Centered Play Button */}
+          <div className="flex justify-center mt-16">
+            <div className="relative">
+              <IconButton
+                className="rounded-full bg-white p-6 z-10 relative hover:scale-105 transition-transform mx-auto"
+                onClick={triggerEffect}
+                {...({} as any)}
+              >
+                <PlayIcon className="h-4 w-4 text-gray-900" />
+              </IconButton>
 
-                {ripple && (
-                  <span className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 animate-ripple pointer-events-none z-0" />
-                )}
-              </div>
+              {ripple && (
+                <span className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 animate-ripple pointer-events-none z-0" />
+              )}
             </div>
           </div>
         </div>
