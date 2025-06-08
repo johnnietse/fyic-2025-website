@@ -89,7 +89,7 @@ function Hero() {
         className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
         style={{ opacity: activeVideo === 1 ? 1 : 0 }}
       >
-        <source src="/videos/event_loop.mp4" type="video/mp4" />
+        <source src="/image/event.mp4" type="video/mp4" />
       </video>
 
       {/* Backup Video for seamless transition */}
