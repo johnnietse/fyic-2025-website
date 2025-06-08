@@ -14,17 +14,17 @@ function Hero() {
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
   const [flash, setFlash] = useState(false);
+  const [isVideoHidden, setIsVideoHidden] = useState(false);
 
   // Video system
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
 
-  // Enhanced video loop handler with flash effect
+  // Enhanced video loop handler with 1-second white flash
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // 1. Force initial play
     const handlePlay = async () => {
       try {
         await video.play();
@@ -41,18 +41,19 @@ function Hero() {
       }
     };
 
-    // 2. Handle smooth looping with flash
     const handleLoop = () => {
       if (video.duration > 0 && video.currentTime > video.duration - 0.5) {
-        // Trigger flash effect
+        // Start transition sequence
         setFlash(true);
-        setTimeout(() => setFlash(false), 5000);
-
-        // Reset video position during flash
+        setIsVideoHidden(true);
+        
+        // 1-second white screen before restarting
         setTimeout(() => {
+          setFlash(false);
           video.currentTime = 0;
+          setIsVideoHidden(false);
           video.play().catch(console.error);
-        }, 200);
+        }, 1000);
       }
     };
 
@@ -96,7 +97,7 @@ function Hero() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* ========= VIDEO BACKGROUND ========= */}
-      {!videoError ? (
+      {!videoError && !isVideoHidden ? (
         <video
           ref={videoRef}
           autoPlay
@@ -105,7 +106,7 @@ function Hero() {
           playsInline
           preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover"
-          poster="/image/event.png"
+          poster="/image/event.jpg"
         >
           <source src="/image/event.mp4" type="video/mp4" />
         </video>
@@ -117,9 +118,9 @@ function Hero() {
         />
       )}
 
-      {/* ========= WHITE FLASH TRANSITION ========= */}
+      {/* ========= 1-SECOND WHITE FLASH ========= */}
       {flash && (
-        <div className="absolute inset-0 bg-white opacity-80 z-30 animate-flash pointer-events-none" />
+        <div className="absolute inset-0 bg-white z-30 animate-long-flash pointer-events-none" />
       )}
 
       {/* ========= EFFECTS OVERLAY ========= */}
