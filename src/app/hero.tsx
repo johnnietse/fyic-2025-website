@@ -54,7 +54,6 @@ function Hero() {
         className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
       >
         <source src="/image/event.mp4" type="video/mp4" />
-        <img src="/image/event.png" alt="Fallback background" className="w-full h-full object-cover" />
       </video>
 
       {/* ==================== EFFECT OVERLAY ==================== */}
