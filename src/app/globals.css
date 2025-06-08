@@ -101,36 +101,3 @@ h1.text-5xl.md\:text-6xl.font-bold.text-white.animate-pulse {
 
 
 
-/* for hero.tsx */
-
-
-/* Shooting stars animation */
-@keyframes shoot {
-  0% { 
-    opacity: 0; 
-    transform: translate(0, 0) rotate(0deg); 
-  }
-  70% { 
-    opacity: 1; 
-  }
-  100% { 
-    opacity: 0; 
-    transform: translate(100px, -100px) rotate(30deg); 
-  }
-}
-
-.animate-shoot {
-  animation: shoot 2s linear forwards;
-}
-
-/* Ripple effect */
-@keyframes ripple {
-  to { 
-    transform: scale(3); 
-    opacity: 0; 
-  }
-}
-
-.animate-ripple {
-  animation: ripple 600ms linear;
-}
