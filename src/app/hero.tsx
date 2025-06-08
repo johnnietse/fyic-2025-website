@@ -4,21 +4,55 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import CountdownTimer from "../components/CountdownTimer";
 import "../app/globals.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Hero() {
+  // Original states
   const [ripple, setRipple] = useState(false);
   const [effectRunning, setEffectRunning] = useState(false);
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
+  
+  // Video states
   const videoRef = useRef<HTMLVideoElement>(null);
+  const backupVideoRef = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState(1);
 
+  // Smooth video loop handler
+  useEffect(() => {
+    const primaryVideo = videoRef.current;
+    const secondaryVideo = backupVideoRef.current;
+    if (!primaryVideo || !secondaryVideo) return;
+
+    const handleLoop = () => {
+      if (primaryVideo.currentTime > primaryVideo.duration - 1.5) {
+        // Start crossfade transition
+        if (activeVideo === 1) {
+          secondaryVideo.currentTime = 0;
+          secondaryVideo.style.opacity = '1';
+          primaryVideo.style.opacity = '0';
+          setActiveVideo(2);
+        } else {
+          primaryVideo.currentTime = 0;
+          primaryVideo.style.opacity = '1';
+          secondaryVideo.style.opacity = '0';
+          setActiveVideo(1);
+        }
+      }
+    };
+
+    primaryVideo.addEventListener('timeupdate', handleLoop);
+    return () => primaryVideo.removeEventListener('timeupdate', handleLoop);
+  }, [activeVideo]);
+
+  // Original ripple effect
   const handleRipple = () => {
     setRipple(true);
     setTimeout(() => setRipple(false), 600);
   };
 
+  // Original star effect
   const triggerEffect = () => {
     handleRipple();
     setEffectRunning(true);
@@ -43,20 +77,37 @@ function Hero() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* ==================== VIDEO BACKGROUND ==================== */}
+      {/* =============== VIDEO BACKGROUND SYSTEM =============== */}
+      {/* Primary Video */}
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
-        disablePictureInPicture
-        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+        preload="auto"
+        className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+        style={{ opacity: activeVideo === 1 ? 1 : 0 }}
       >
-        <source src="/image/event.mp4" type="video/mp4" />
+        <source src="/videos/event_loop.mp4" type="video/mp4" />
       </video>
 
-      {/* ==================== EFFECT OVERLAY ==================== */}
+      {/* Backup Video for seamless transition */}
+      <video
+        ref={backupVideoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+        style={{ opacity: activeVideo === 2 ? 1 : 0 }}
+      >
+        <source src="/videos/event_loop.mp4" type="video/mp4" />
+        <source src="/videos/event_loop.webm" type="video/webm" />
+      </video>
+
+      {/* =============== EFFECT OVERLAY =============== */}
       {effectRunning && (
         <>
           <div className="fixed inset-0 bg-black z-40 transition-opacity duration-500" />
@@ -75,13 +126,13 @@ function Hero() {
         </>
       )}
 
-      {/* ==================== CONTENT OVERLAY ==================== */}
+      {/* =============== CONTENT OVERLAY =============== */}
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
       
-      {/* ==================== MAIN CONTENT ==================== */}
+      {/* =============== MAIN CONTENT =============== */}
       <div className="grid min-h-screen px-8">
         <div className="container relative z-20 my-auto mx-auto grid place-items-center text-center">
-          <div className="py-16"> {/* Replaced <br> tags with proper spacing */}
+          <div className="py-16 space-y-8">
             <Typography 
               variant="h3" 
               color="white" 
@@ -115,7 +166,7 @@ function Hero() {
 
             <CountdownTimer />
 
-            <div className="flex items-center gap-4 mt-16"> {/* Proper spacing class */}
+            <div className="flex items-center gap-4 mt-16">
               <div className="relative">
                 <IconButton
                   className="rounded-full bg-white p-6 z-10 relative hover:scale-105 transition-transform"
