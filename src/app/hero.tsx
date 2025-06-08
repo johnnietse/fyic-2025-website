@@ -13,14 +13,13 @@ function Hero() {
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
-  const [flash, setFlash] = useState(false);
-  const [isVideoHidden, setIsVideoHidden] = useState(false);
+  const [transitionOpacity, setTransitionOpacity] = useState(0);
 
   // Video system
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
 
-  // Enhanced video loop handler with 1-second white flash
+  // Smooth translucent transition handler
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -29,7 +28,6 @@ function Hero() {
       try {
         await video.play();
       } catch (err) {
-        console.log("Autoplay blocked, waiting for interaction");
         const handleInteraction = () => {
           video.play().finally(() => {
             document.removeEventListener('click', handleInteraction);
@@ -42,18 +40,36 @@ function Hero() {
     };
 
     const handleLoop = () => {
-      if (video.duration > 0 && video.currentTime > video.duration - 0.5) {
-        // Start transition sequence
-        setFlash(true);
-        setIsVideoHidden(true);
-        
-        // 1-second white screen before restarting
-        setTimeout(() => {
-          setFlash(false);
-          video.currentTime = 0;
-          setIsVideoHidden(false);
-          video.play().catch(console.error);
-        }, 1000);
+      if (video.duration > 0 && video.currentTime > video.duration - 1.0) {
+        // Fade in transition (500ms)
+        const fadeIn = () => {
+          setTransitionOpacity((prev) => {
+            const newOpacity = Math.min(prev + 0.02, 0.7); // 70% max opacity
+            if (newOpacity < 0.7) {
+              requestAnimationFrame(fadeIn);
+            } else {
+              // Reset video at peak opacity
+              video.currentTime = 0;
+              video.play().catch(console.error);
+              // Start fade out
+              fadeOut();
+            }
+            return newOpacity;
+          });
+        };
+
+        // Fade out transition (500ms)
+        const fadeOut = () => {
+          setTransitionOpacity((prev) => {
+            const newOpacity = Math.max(prev - 0.02, 0);
+            if (newOpacity > 0) {
+              requestAnimationFrame(fadeOut);
+            }
+            return newOpacity;
+          });
+        };
+
+        fadeIn();
       }
     };
 
@@ -97,7 +113,7 @@ function Hero() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* ========= VIDEO BACKGROUND ========= */}
-      {!videoError && !isVideoHidden ? (
+      {!videoError ? (
         <video
           ref={videoRef}
           autoPlay
@@ -106,7 +122,7 @@ function Hero() {
           playsInline
           preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover"
-          poster="/image/event.jpg"
+          poster="/image/event.png"
         >
           <source src="/image/event.mp4" type="video/mp4" />
         </video>
@@ -118,10 +134,11 @@ function Hero() {
         />
       )}
 
-      {/* ========= 1-SECOND WHITE FLASH ========= */}
-      {flash && (
-        <div className="absolute inset-0 bg-white z-30 animate-long-flash pointer-events-none" />
-      )}
+      {/* ========= TRANSLUCENT WHITE TRANSITION ========= */}
+      <div 
+        className="absolute inset-0 bg-white/70 z-30 pointer-events-none transition-opacity duration-500"
+        style={{ opacity: transitionOpacity }}
+      />
 
       {/* ========= EFFECTS OVERLAY ========= */}
       {effectRunning && (
