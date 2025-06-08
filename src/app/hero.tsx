@@ -13,51 +13,56 @@ function Hero() {
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
+  const [flash, setFlash] = useState(false);
 
   // Video system
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
 
-  // 1. Force video to play and loop reliably
+  // Enhanced video loop handler with flash effect
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handlePlay = () => {
-      video.play().catch(e => {
-        console.log("Autoplay blocked:", e);
-        // Mobile fallback - play on first interaction
-        const playOnInteraction = () => {
+    // 1. Force initial play
+    const handlePlay = async () => {
+      try {
+        await video.play();
+      } catch (err) {
+        console.log("Autoplay blocked, waiting for interaction");
+        const handleInteraction = () => {
           video.play().finally(() => {
-            document.removeEventListener('click', playOnInteraction);
-            document.removeEventListener('touchstart', playOnInteraction);
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
           });
         };
-        document.addEventListener('click', playOnInteraction);
-        document.addEventListener('touchstart', playOnInteraction);
-      });
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('touchstart', handleInteraction);
+      }
     };
 
-    // Handle looping manually for maximum reliability
-    const handleTimeUpdate = () => {
-      if (video.currentTime > video.duration - 0.5) {
-        video.currentTime = 0;
-        video.play().catch(console.error);
+    // 2. Handle smooth looping with flash
+    const handleLoop = () => {
+      if (video.duration > 0 && video.currentTime > video.duration - 0.5) {
+        // Trigger flash effect
+        setFlash(true);
+        setTimeout(() => setFlash(false), 300);
+
+        // Reset video position during flash
+        setTimeout(() => {
+          video.currentTime = 0;
+          video.play().catch(console.error);
+        }, 200);
       }
     };
 
     video.addEventListener('loadedmetadata', handlePlay);
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.play().catch(console.error);
-    });
+    video.addEventListener('timeupdate', handleLoop);
     video.addEventListener('error', () => setVideoError(true));
 
     return () => {
       video.removeEventListener('loadedmetadata', handlePlay);
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('ended', () => {});
+      video.removeEventListener('timeupdate', handleLoop);
     };
   }, []);
 
@@ -106,10 +111,15 @@ function Hero() {
         </video>
       ) : (
         <img 
-          src="/image/event-fallback.jpg" 
+          src="/image/event.png" 
           alt="Background" 
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
+      )}
+
+      {/* ========= WHITE FLASH TRANSITION ========= */}
+      {flash && (
+        <div className="absolute inset-0 bg-white opacity-80 z-30 animate-flash pointer-events-none" />
       )}
 
       {/* ========= EFFECTS OVERLAY ========= */}
