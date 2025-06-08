@@ -13,34 +13,16 @@ function Hero() {
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
-  const [transitionActive, setTransitionActive] = useState(false);
+  const [transitionOpacity, setTransitionOpacity] = useState(0);
 
   // Video system
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoError, setVideoError] = useState(false);
 
-  // Smooth transition handler
+  // Smooth translucent transition handler
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    const handleLoop = () => {
-      // Start transition 1 second before video ends
-      if (video.duration > 0 && video.currentTime > video.duration - 1.0) {
-        setTransitionActive(true);
-        
-        // Reset video halfway through the transition (500ms)
-        setTimeout(() => {
-          video.currentTime = 0;
-          video.play().catch(console.error);
-        }, 500);
-        
-        // Complete transition after 1 second
-        setTimeout(() => {
-          setTransitionActive(false);
-        }, 1000);
-      }
-    };
 
     const handlePlay = async () => {
       try {
@@ -54,6 +36,40 @@ function Hero() {
         };
         document.addEventListener('click', handleInteraction);
         document.addEventListener('touchstart', handleInteraction);
+      }
+    };
+
+    const handleLoop = () => {
+      if (video.duration > 0 && video.currentTime > video.duration - 1.0) {
+        // Fade in transition (500ms)
+        const fadeIn = () => {
+          setTransitionOpacity((prev) => {
+            const newOpacity = Math.min(prev + 0.02, 0.7); // 70% max opacity
+            if (newOpacity < 0.7) {
+              requestAnimationFrame(fadeIn);
+            } else {
+              // Reset video at peak opacity
+              video.currentTime = 0;
+              video.play().catch(console.error);
+              // Start fade out
+              fadeOut();
+            }
+            return newOpacity;
+          });
+        };
+
+        // Fade out transition (500ms)
+        const fadeOut = () => {
+          setTransitionOpacity((prev) => {
+            const newOpacity = Math.max(prev - 0.02, 0);
+            if (newOpacity > 0) {
+              requestAnimationFrame(fadeOut);
+            }
+            return newOpacity;
+          });
+        };
+
+        fadeIn();
       }
     };
 
@@ -106,6 +122,7 @@ function Hero() {
           playsInline
           preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover"
+          poster="/image/event.png"
         >
           <source src="/image/event.mp4" type="video/mp4" />
         </video>
@@ -117,12 +134,11 @@ function Hero() {
         />
       )}
 
-      {/* ========= SMOOTH WHITE TRANSITION ========= */}
-      <div className={`
-        absolute inset-0 bg-white/70 z-30 pointer-events-none
-        transition-opacity duration-1000 ease-in-out
-        ${transitionActive ? 'opacity-100' : 'opacity-0'}
-      `} />
+      {/* ========= TRANSLUCENT WHITE TRANSITION ========= */}
+      <div 
+        className="absolute inset-0 bg-white/70 z-30 pointer-events-none transition-opacity duration-500"
+        style={{ opacity: transitionOpacity }}
+      />
 
       {/* ========= EFFECTS OVERLAY ========= */}
       {effectRunning && (
