@@ -4,104 +4,35 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import CountdownTimer from "../components/CountdownTimer";
 import "../app/globals.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 function Hero() {
-  // Animation states
   const [ripple, setRipple] = useState(false);
   const [effectRunning, setEffectRunning] = useState(false);
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
-  const [transitionOpacity, setTransitionOpacity] = useState(0);
-
-  // Video system
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoError, setVideoError] = useState(false);
 
-  // Smooth translucent transition handler
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handlePlay = async () => {
-      try {
-        await video.play();
-      } catch (err) {
-        const handleInteraction = () => {
-          video.play().finally(() => {
-            document.removeEventListener('click', handleInteraction);
-            document.removeEventListener('touchstart', handleInteraction);
-          });
-        };
-        document.addEventListener('click', handleInteraction);
-        document.addEventListener('touchstart', handleInteraction);
-      }
-    };
-
-    const handleLoop = () => {
-      if (video.duration > 0 && video.currentTime > video.duration - 1.0) {
-        // Fade in transition (500ms)
-        const fadeIn = () => {
-          setTransitionOpacity((prev) => {
-            const newOpacity = Math.min(prev + 0.02, 0.7); // 70% max opacity
-            if (newOpacity < 0.7) {
-              requestAnimationFrame(fadeIn);
-            } else {
-              // Reset video at peak opacity
-              video.currentTime = 0;
-              video.play().catch(console.error);
-              // Start fade out
-              fadeOut();
-            }
-            return newOpacity;
-          });
-        };
-
-        // Fade out transition (500ms)
-        const fadeOut = () => {
-          setTransitionOpacity((prev) => {
-            const newOpacity = Math.max(prev - 0.02, 0);
-            if (newOpacity > 0) {
-              requestAnimationFrame(fadeOut);
-            }
-            return newOpacity;
-          });
-        };
-
-        fadeIn();
-      }
-    };
-
-    video.addEventListener('loadedmetadata', handlePlay);
-    video.addEventListener('timeupdate', handleLoop);
-    video.addEventListener('error', () => setVideoError(true));
-
-    return () => {
-      video.removeEventListener('loadedmetadata', handlePlay);
-      video.removeEventListener('timeupdate', handleLoop);
-    };
-  }, []);
-
-  // Original ripple effect
   const handleRipple = () => {
     setRipple(true);
     setTimeout(() => setRipple(false), 600);
   };
 
-  // Star explosion effect
   const triggerEffect = () => {
     handleRipple();
     setEffectRunning(true);
 
-    setStars(Array.from({ length: 20 }, (_, i) => ({
+    const newStars = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
       size: Math.random() * 1.5 + 0.5,
       delay: Math.random() * 0.5,
       rotation: Math.random() * 60 - 30,
-    })));
+    }));
+
+    setStars(newStars);
 
     setTimeout(() => setStars([]), 2500);
     setTimeout(() => {
@@ -112,38 +43,36 @@ function Hero() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* ========= VIDEO BACKGROUND ========= */}
-      {!videoError ? (
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          poster="/image/event.png"
-        >
-          <source src="/image/event.mp4" type="video/mp4" />
-        </video>
-      ) : (
+      {/* Video Background with Fallback */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        poster="/image/event-poster.jpg"
+        onError={() => {
+          const fallback = document.getElementById('fallback-image');
+          if (fallback) fallback.style.display = 'block';
+        }}
+      >
+        <source src="/videos/event.mp4" type="video/mp4" />
+        <source src="/videos/event.webm" type="video/webm" />
         <img 
-          src="/image/event.png" 
-          alt="Background" 
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          id="fallback-image"
+          src="/image/event-fallback.jpg" 
+          className="absolute top-0 left-0 w-full h-full object-cover hidden"
+          alt="Fallback background"
         />
-      )}
+      </video>
 
-      {/* ========= TRANSLUCENT WHITE TRANSITION ========= */}
-      <div 
-        className="absolute inset-0 bg-white/70 z-30 pointer-events-none transition-opacity duration-500"
-        style={{ opacity: transitionOpacity }}
-      />
-
-      {/* ========= EFFECTS OVERLAY ========= */}
+      {/* Effects Overlay */}
       {effectRunning && (
         <>
           <div className="fixed inset-0 bg-black z-40 transition-opacity duration-500" />
+          
+          {/* Shooting Stars Animation */}
           {stars.map((star) => (
             <div
               key={star.id}
@@ -159,10 +88,10 @@ function Hero() {
         </>
       )}
 
-      {/* ========= CONTENT OVERLAY ========= */}
+      {/* Content Overlay */}
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
       
-      {/* ========= MAIN CONTENT ========= */}
+      {/* Main Content */}
       <div className="flex flex-col min-h-screen px-8 items-center justify-center text-center">
         <div className="container relative z-20 mx-auto">
           <Typography 
