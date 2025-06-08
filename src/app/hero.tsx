@@ -1,10 +1,10 @@
 "use client";
 
-import { IconButton, Button, Typography } from "@material-tailwind/react";
+import { IconButton, Typography } from "@material-tailwind/react";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import CountdownTimer from "../components/CountdownTimer";
 import "../app/globals.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function Hero() {
   const [ripple, setRipple] = useState(false);
@@ -12,13 +12,12 @@ function Hero() {
   const [stars, setStars] = useState<
     { id: number; top: string; left: string; size: number; delay: number; rotation: number }[]
   >([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleRipple = () => {
     setRipple(true);
     setTimeout(() => setRipple(false), 600);
   };
-
-  
 
   const triggerEffect = () => {
     handleRipple();
@@ -43,13 +42,25 @@ function Hero() {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-[url('/image/event.png')] bg-cover bg-no-repeat transition-colors duration-500">
-      {/* Fullscreen effect overlay */}
+    <div className="relative min-h-screen w-full overflow-hidden">
+      {/* ==================== VIDEO BACKGROUND ==================== */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        disablePictureInPicture
+        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+      >
+        <source src="/image/event.mp4" type="video/mp4" />
+        <img src="/image/event.png" alt="Fallback background" className="w-full h-full object-cover" />
+      </video>
+
+      {/* ==================== EFFECT OVERLAY ==================== */}
       {effectRunning && (
         <>
           <div className="fixed inset-0 bg-black z-40 transition-opacity duration-500" />
-
-          {/* Shooting stars */}
           {stars.map((star) => (
             <div
               key={star.id}
@@ -62,92 +73,69 @@ function Hero() {
               }}
             />
           ))}
-
-          {/* Center message
-          <div className="fixed inset-0 flex items-center justify-center z-50">
-            <h1 className="text-5xl md:text-6xl font-bold text-white animate-pulse">
-              FYIC 2025 STARTS NOW!
-            </h1>
-          </div> */}
         </>
       )}
 
-      {/* Normal page content */}
+      {/* ==================== CONTENT OVERLAY ==================== */}
       <div className="absolute inset-0 h-full w-full bg-gray-900/60 z-10" />
+      
+      {/* ==================== MAIN CONTENT ==================== */}
       <div className="grid min-h-screen px-8">
         <div className="container relative z-20 my-auto mx-auto grid place-items-center text-center">
-          
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
-          
-          
-          <Typography variant="h3" color="white" className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
-            29-31 November @ Kingston
-          </Typography>
-          <Typography variant="h1" color="white" className="lg:max-w-3xl" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
-            FYIC 2025: Empowering the Next Generation of Engineers
-          </Typography>
-          <Typography
-            variant="lead"
-            color="white"
-            className="mt-1 mb-12 w-full md:max-w-full lg:max-w-2xl"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-            {...({} as any)} // Apply type override here
-
-          >
-            Join us for Ontario’s premier leadership and integration conference designed
-            exclusively for first-year engineering students.
-          </Typography>
-
-          <CountdownTimer />
-
-          <br>
-          </br>
-          <br>
-          </br>
-          
-          <div className="flex items-center gap-4">
-
-
-            <div className="relative">
-              <IconButton
-                className="rounded-full bg-white p-6 z-10 relative"
-                onClick={triggerEffect}
-                {...({} as any)}  // Apply type override here
-              >
-                <PlayIcon className="h-4 w-4 text-gray-900" />
-              </IconButton>
-
-              {ripple && (
-                <span className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 animate-ripple pointer-events-none z-0" />
-              )}
-
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
+          <div className="py-16"> {/* Replaced <br> tags with proper spacing */}
+            <Typography 
+              variant="h3" 
+              color="white" 
+              className="mb-2" 
+              style={{ fontFamily: 'Montserrat, sans-serif' }} 
+              {...({} as any)}
+            >
+              29-31 November @ Kingston
+            </Typography>
             
+            <Typography 
+              variant="h1" 
+              color="white" 
+              className="lg:max-w-3xl" 
+              style={{ fontFamily: 'Montserrat, sans-serif' }} 
+              {...({} as any)}
+            >
+              FYIC 2025: Empowering the Next Generation of Engineers
+            </Typography>
+            
+            <Typography
+              variant="lead"
+              color="white"
+              className="mt-1 mb-12 w-full md:max-w-full lg:max-w-2xl"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+              {...({} as any)}
+            >
+              Join us for Ontario's premier leadership and integration conference designed
+              exclusively for first-year engineering students.
+            </Typography>
+
+            <CountdownTimer />
+
+            <div className="flex items-center gap-4 mt-16"> {/* Proper spacing class */}
+              <div className="relative">
+                <IconButton
+                  className="rounded-full bg-white p-6 z-10 relative hover:scale-105 transition-transform"
+                  onClick={triggerEffect}
+                  {...({} as any)}
+                >
+                  <PlayIcon className="h-4 w-4 text-gray-900" />
+                </IconButton>
+
+                {ripple && (
+                  <span className="absolute top-1/2 left-1/2 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30 animate-ripple pointer-events-none z-0" />
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    
   );
 }
 
 export default Hero;
-
-
