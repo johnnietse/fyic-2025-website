@@ -46,7 +46,7 @@ function Hero() {
       if (video.duration > 0 && video.currentTime > video.duration - 0.5) {
         // Trigger flash effect
         setFlash(true);
-        setTimeout(() => setFlash(false), 300);
+        setTimeout(() => setFlash(false), 5000);
 
         // Reset video position during flash
         setTimeout(() => {
