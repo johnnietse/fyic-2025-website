@@ -26,9 +26,12 @@ export default function RootLayout({
       <head>
         <script
           defer
-          data-site="YOUR_DOMAIN_HERE"
+          data-site="https://2025-fyic.vercel.app/"
           src="https://api.nepcha.com/js/nepcha-analytics.js"
         ></script>
+
+        <script src="https://cdn.userway.org/widget.js" data-account="E86m5SWQ37"></script>
+        
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
       </head>
       <body className={roboto.className}>
