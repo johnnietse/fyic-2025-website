@@ -30,7 +30,8 @@ export default function RootLayout({
           src="https://api.nepcha.com/js/nepcha-analytics.js"
         ></script>
 
-        <script src="https://cdn.userway.org/widget.js" data-account="E86m5SWQ37"></script>
+        <script src="https://cdn.userway.org/widget.js" data-account="7EpVmNijkz"></script>
+
         
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
       </head>
