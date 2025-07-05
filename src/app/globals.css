@@ -99,5 +99,14 @@ h1.text-5xl.md\:text-6xl.font-bold.text-white.animate-pulse {
 }
 
 
+#userwayAccessibilityWidget {
+  bottom: 20px !important;
+  top: auto !important;
+  right: 20px !important;
+  left: auto !important;
+  position: fixed !important;
+}
+
+
 
 
