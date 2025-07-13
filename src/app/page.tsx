@@ -50,7 +50,7 @@ export default function Portfolio() {
       </AnimatedSection>
 
       <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16 bg-white">
-      {/* <Contact /> */}
+        <Contact /> 
       </main>
 
       {/* </Animation> */}
