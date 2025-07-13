@@ -100,18 +100,17 @@ const Contact: FC = () => {
         ></textarea>
       </div>
       
-      <div>
+{/*       <div>
         <button className="bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8 rounded-md py-3 px-8 font-semibold">
           SUBMIT
         </button>
-      </div>
+      </div> */}
 
 
-      // Update button
       <div>
           <button 
             disabled={isSubmitting}
-            className={`bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out mt-8 rounded-md py-3 px-8 font-semibold ${
+            className={`bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8 rounded-md py-3 px-8 font-semibold ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
             }`}
           >
