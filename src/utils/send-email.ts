@@ -1,6 +1,6 @@
 import { FormData } from '@/components/contact';
 
-export function sendEmail(data: FormData) {
+export function sendEmail(data: FormData, callback: () => void) {
   const apiEndpoint = '/api/email';
 
   fetch(apiEndpoint, {
@@ -30,6 +30,9 @@ export function sendEmail(data: FormData) {
   .catch((err) => {
     alert('Network error. Please try again later.');
     console.error('Send email error:', err);
+  });
+  .finally(() => {
+    callback(); // Call the callback function regardless of success/failure
   });
     
 }
