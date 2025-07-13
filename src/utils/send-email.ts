@@ -19,22 +19,22 @@ export function sendEmail(data: FormData, callback: () => void) {
     //   console.error('Send email error:', err);
 
     // });
-  .then(async (res) => {
-    const response = await res.json();
-    if (res.ok) {
-      alert(response.message || 'Message sent successfully!');
-    } else {
-      alert(response.message || response.error || 'Failed to send message');
-    }
-  })
-  .catch((err) => {
-    alert('Network error. Please try again later.');
-    console.error('Send email error:', err);
-  });
-  .finally(() => {
-    callback(); // Call the callback function regardless of success/failure
-  });
-    
+    .then(async (res) => {
+      const response = await res.json();
+      if (res.ok) {
+        alert(response.message || 'Message sent successfully!');
+      } else {
+        alert(response.message || response.error || 'Failed to send message');
+      }
+    })
+    .catch((err) => {
+      alert('Network error. Please try again later.');
+      console.error('Send email error:', err);
+    });
+    .finally(() => {
+      callback(); // Call the callback function regardless of success/failure
+    });
+      
 }
 
 
