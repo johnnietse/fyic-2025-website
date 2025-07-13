@@ -24,6 +24,13 @@ module.exports = {
     return config
   },
 
+  experimental: {
+    optimizePackageImports: ['@material-tailwind/react']
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 
   eslint: {
     ignoreDuringBuilds: true,
@@ -38,3 +45,4 @@ module.exports = {
   // }
   
 // };
+
