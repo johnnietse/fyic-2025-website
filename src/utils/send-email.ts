@@ -10,15 +10,28 @@ export function sendEmail(data: FormData) {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
-    .then((response) => {
-      alert(response.message);
-    })
-    .catch((err) => {
-      alert('Failed to send message. Please try again later.');
-      console.error('Send email error:', err);
+    // .then((res) => res.json())
+    // .then((response) => {
+    //   alert(response.message);
+    // })
+    // .catch((err) => {
+    //   alert('Failed to send message. Please try again later.');
+    //   console.error('Send email error:', err);
 
-    });
+    // });
+  .then(async (res) => {
+    const response = await res.json();
+    if (res.ok) {
+      alert(response.message || 'Message sent successfully!');
+    } else {
+      alert(response.message || response.error || 'Failed to send message');
+    }
+  })
+  .catch((err) => {
+    alert('Network error. Please try again later.');
+    console.error('Send email error:', err);
+  });
+    
 }
 
 
