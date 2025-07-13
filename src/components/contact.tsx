@@ -29,7 +29,7 @@ const Contact: FC = () => {
 
   function onSubmit(data: FormData) {
     setIsSubmitting(true);
-    sendEmail(data, () => setIsSubmitting(false));
+    await sendEmail(data, () => setIsSubmitting(false));
   }
 
  
