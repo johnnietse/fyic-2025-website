@@ -32,15 +32,7 @@ const Contact: FC = () => {
     sendEmail(data, () => setIsSubmitting(false));
   }
 
-  // Update button
-  <button 
-    disabled={isSubmitting}
-    className={`bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out mt-8 rounded-md py-3 px-8 font-semibold ${
-      isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
-    }`}
-  >
-    {isSubmitting ? 'SENDING...' : 'SUBMIT'}
-  </button>
+ 
 
   
 
@@ -59,6 +51,7 @@ const Contact: FC = () => {
 
 
     <form onSubmit={handleSubmit(onSubmit)}>
+      
       <div className='space-y-3'>
         <label
           htmlFor='name'
@@ -73,8 +66,10 @@ const Contact: FC = () => {
           {...register('name', { required: true })}
         />
       </div>
+      
       <br>
       </br>
+      
       <div className='mb-5'>
         <label
           htmlFor='email'
@@ -89,6 +84,7 @@ const Contact: FC = () => {
           {...register('email', { required: true })}
         />
       </div>
+      
       <div className='mb-5'>
         <label
           htmlFor='message'
@@ -103,14 +99,26 @@ const Contact: FC = () => {
           {...register('message', { required: true })}
         ></textarea>
       </div>
+      
       <div>
         <button className="bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8 rounded-md py-3 px-8 font-semibold">
           SUBMIT
         </button>
-
-        
-
       </div>
+
+
+      // Update button
+      <div>
+          <button 
+            disabled={isSubmitting}
+            className={`bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out mt-8 rounded-md py-3 px-8 font-semibold ${
+              isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+            }`}
+          >
+            {isSubmitting ? 'SENDING...' : 'SUBMIT'}
+          </button>
+      </div>
+      
     </form>
 
     <br>
