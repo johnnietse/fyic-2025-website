@@ -3,6 +3,16 @@ import nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
 
 export async function POST(request: NextRequest) {
+
+  // Add environment validation here
+  if (!process.env.MY_EMAIL || !process.env.MY_PASSWORD) {
+    console.error('Missing email credentials');
+    return NextResponse.json(
+      { message: 'Server configuration error' },
+      { status: 500 }
+    );
+  }
+  
   const { email, name, message } = await request.json();
 
   console.log('Incoming request:', { name, email, message });
