@@ -7,6 +7,8 @@ import { Typography, Button } from "@material-tailwind/react";
 import React from "react";
 // import Hero from "@/components/hero";
 // import AboutEvent from "@/components/about-event";
+import { useState } from 'react';
+
 
 export type FormData = {
   name: string;
@@ -17,11 +19,30 @@ export type FormData = {
 
 
 const Contact: FC = () => {
-  const { register, handleSubmit} = useForm<FormData>();
+  // const { register, handleSubmit} = useForm<FormData>();
+
+  // function onSubmit(data: FormData) {
+  //   sendEmail(data);
+  // }
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit } = useForm<FormData>();
 
   function onSubmit(data: FormData) {
-    sendEmail(data);
+    setIsSubmitting(true);
+    sendEmail(data, () => setIsSubmitting(false));
   }
+
+  // Update button
+  <button 
+    disabled={isSubmitting}
+    className={`bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out mt-8 rounded-md py-3 px-8 font-semibold ${
+      isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+    }`}
+  >
+    {isSubmitting ? 'SENDING...' : 'SUBMIT'}
+  </button>
+
+  
 
   return (
     <>
@@ -86,6 +107,8 @@ const Contact: FC = () => {
         <button className="bg-black text-white hover:bg-gray-800 transition-all duration-500 ease-in-out transform hover:scale-105 mt-8 rounded-md py-3 px-8 font-semibold">
           SUBMIT
         </button>
+
+        
 
       </div>
     </form>
