@@ -1,6 +1,6 @@
 import { FormData } from '@/components/contact';
 
-export function sendEmail(data: FormData, callback: () => void) {
+export async function sendEmail(data: FormData, callback: () => void) {
   // const apiEndpoint = '/api/email';
 
   // fetch(apiEndpoint, {
