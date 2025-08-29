@@ -113,7 +113,7 @@ export function Navbar() {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img 
-            src="/fyic-logo.png" 
+            src="/fyic-logo.svg" 
             alt="FYIC Logo" 
             className="h-8 w-8 mr-2"
           />
