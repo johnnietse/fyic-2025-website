@@ -22,9 +22,6 @@ import {
   BriefcaseIcon
 } from "@heroicons/react/24/solid";
 
-// Import your logo (adjust the path as needed)
-import logo from "./fyic-logo.png";
-
 interface NavItemProps {
   children: React.ReactNode;
   href?: string;
@@ -118,7 +115,7 @@ export function Navbar() {
           <img 
             src="/fyic-logo.png" 
             alt="FYIC Logo" 
-            className="h-8 w-8 mr-2" // Adjust size and spacing as needed
+            className="h-8 w-8 mr-2"
           />
           <Typography
             color={isScrolling ? "blue-gray" : "white"}
@@ -174,8 +171,6 @@ export function Navbar() {
 }
 
 export default Navbar;
-
-
 
 
 
