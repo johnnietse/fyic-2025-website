@@ -109,7 +109,7 @@ export function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <div className="h-14 w-14 mr-3 flex items-center justify-center rounded-full overflow-hidden border-2 border-white bg-white p-1">
+          <div className="h-20 w-20 mr-4 flex items-center justify-center rounded-full overflow-hidden border-2 border-white bg-white p-1">
             <img 
               src="/image/fyic-logo.png" 
               alt="FYIC Logo" 
@@ -118,7 +118,7 @@ export function Navbar() {
           </div>
           <Typography
             color={isScrolling ? "blue-gray" : "white"}
-            className="text-lg font-bold"
+            className="text-xl font-bold"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
