@@ -23,7 +23,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 // Import your logo (adjust the path as needed)
-import logo from "../public/image/fyic-logo.png";
+import logo from "./fyic-logo.png";
 
 interface NavItemProps {
   children: React.ReactNode;
@@ -116,7 +116,7 @@ export function Navbar() {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img 
-            src={logo} 
+            src="/fyic-logo.png" 
             alt="FYIC Logo" 
             className="h-8 w-8 mr-2" // Adjust size and spacing as needed
           />
