@@ -28,7 +28,7 @@ function NavItem({ children, href }: NavItemProps) {
         href={href || "#"}
         target={href ? "_blank" : "_self"}
         variant="paragraph"
-        className="flex items-center gap-2 font-medium"
+        className="flex items-center gap-2 font-medium transition-colors hover:text-blue-500"
         style={{ fontFamily: 'Montserrat, sans-serif' }}
         {...({} as any)}
       >
@@ -99,7 +99,7 @@ export function Navbar() {
       fullWidth
       blurred={false}
       color={isScrolling ? "white" : "transparent"}
-      className="fixed top-0 z-50 border-0"
+      className="fixed top-0 z-50 border-0 transition-all duration-300"
       style={{ fontFamily: 'Montserrat, sans-serif' }}
       {...({} as any)}
     >
@@ -107,7 +107,7 @@ export function Navbar() {
         <div className="flex items-center">
           <div className="h-10 w-10 mr-3 flex items-center justify-center">
             <img 
-              src="/fyic-logo.svg" 
+              src="/image/fyic-logo.svg" 
               alt="FYIC Logo" 
               className="h-full w-full object-contain"
             />
