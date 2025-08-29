@@ -105,11 +105,11 @@ export function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <div className="h-10 w-10 mr-3 flex items-center justify-center rounded-full overflow-hidden border-2 border-white">
+          <div className="h-14 w-14 mr-3 flex items-center justify-center rounded-full overflow-hidden border-2 border-white bg-white p-1">
             <img 
               src="/image/fyic-logo.png" 
               alt="FYIC Logo" 
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
           <Typography
@@ -166,6 +166,13 @@ export function Navbar() {
 }
 
 export default Navbar;
+
+
+
+
+
+
+
 
 
 
@@ -281,11 +288,11 @@ export default Navbar;
 //     >
 //       <div className="container mx-auto flex items-center justify-between">
 //         <div className="flex items-center">
-//           <div className="h-10 w-10 mr-3 flex items-center justify-center">
+//           <div className="h-10 w-10 mr-3 flex items-center justify-center rounded-full overflow-hidden border-2 border-white">
 //             <img 
-//               src="/image/fyic-logo.svg" 
+//               src="/image/fyic-logo.png" 
 //               alt="FYIC Logo" 
-//               className="h-full w-full object-contain"
+//               className="h-full w-full object-cover"
 //             />
 //           </div>
 //           <Typography
@@ -342,6 +349,23 @@ export default Navbar;
 // }
 
 // export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
