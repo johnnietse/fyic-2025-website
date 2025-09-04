@@ -154,7 +154,7 @@ export function Navbar() {
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
             <PencilSquareIcon className="h-4 w-4" />
-            Edit Poster
+            Delegate Package
           </Button>
         </div>
 
