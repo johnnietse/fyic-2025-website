@@ -184,7 +184,7 @@ export function Navbar() {
             ))}
             <NavItem href="https://www.canva.com/design/DAGx3UuONwY/yhy2P3xO8mH8WX0L0mirLQ/edit?utm_content=DAGx3UuONwY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
               <PencilSquareIcon className="h-5 w-5" style={{ fontFamily: 'Montserrat, sans-serif' }}/>
-              Edit Poster
+              Delegate Package
             </NavItem>
           </ul>
         </div>
