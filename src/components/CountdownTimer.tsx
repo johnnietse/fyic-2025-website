@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 
 const CountdownTimer = () => {
-  const eventDate = new Date("2025-11-14T00:00:00");
+  const eventDate = new Date("2025-11-07T00:00:00");
 
   const calculateTimeLeft = () => {
     const now = new Date();
