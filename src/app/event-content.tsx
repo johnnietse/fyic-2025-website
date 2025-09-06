@@ -570,12 +570,9 @@
 
 
 
-
-
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Updated event data structure with precise time slots
 const SCHEDULE_BY_DAY = {
@@ -861,19 +858,38 @@ const SCHEDULE_BY_DAY = {
   }
 };
 
-// Generate time slots from 8:00 AM to 10:00 PM in 30-minute intervals
-const TIME_SLOTS = [];
-for (let hour = 8; hour <= 22; hour++) {
-  for (let minute = 0; minute < 60; minute += 30) {
-    const period = hour >= 12 ? "PM" : "AM";
-    const displayHour = hour > 12 ? hour - 12 : hour;
-    TIME_SLOTS.push(`${displayHour}:${minute === 0 ? "00" : minute} ${period}`);
+// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals for better precision
+const generateTimeSlots = () => {
+  const slots = [];
+  for (let hour = 8; hour <= 22; hour++) {
+    for (let minute = 0; minute < 60; minute += 15) {
+      const period = hour >= 12 ? "PM" : "AM";
+      const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+      slots.push(`${displayHour}:${minute === 0 ? "00" : minute} ${period}`);
+    }
   }
-}
+  return slots;
+};
+
+const TIME_SLOTS = generateTimeSlots();
 
 export function EventContent() {
   const [activeDay, setActiveDay] = useState<keyof typeof SCHEDULE_BY_DAY>("Friday");
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
 
   // Function to convert time to minutes for comparison
   const timeToMinutes = (timeStr: string) => {
@@ -897,12 +913,12 @@ export function EventContent() {
   // Function to get event color based on stream
   const getEventColor = (stream: string) => {
     switch (stream) {
-      case "All Streams": return "bg-blue-100 border-blue-500";
-      case "Stream A": return "bg-red-100 border-red-500";
-      case "Stream B": return "bg-green-100 border-green-500";
-      case "Stream C": return "bg-yellow-100 border-yellow-500";
-      case "Stream A & B": return "bg-purple-100 border-purple-500";
-      default: return "bg-gray-100 border-gray-500";
+      case "All Streams": return "bg-blue-100 border-blue-500 text-blue-800";
+      case "Stream A": return "bg-red-100 border-red-500 text-red-800";
+      case "Stream B": return "bg-green-100 border-green-500 text-green-800";
+      case "Stream C": return "bg-yellow-100 border-yellow-500 text-yellow-800";
+      case "Stream A & B": return "bg-purple-100 border-purple-500 text-purple-800";
+      default: return "bg-gray-100 border-gray-500 text-gray-800";
     }
   };
 
@@ -927,13 +943,23 @@ export function EventContent() {
     const startMinutes = timeToMinutes(event.startTime);
     const endMinutes = timeToMinutes(event.endTime);
     const duration = endMinutes - startMinutes;
-    return Math.max(1, Math.ceil(duration / 30)); // Each time slot is 30 minutes
+    return Math.max(1, Math.ceil(duration / 15)); // Each time slot is 15 minutes
+  };
+
+  // Function to check if an event starts at a specific time
+  const doesEventStartAtTime = (event: any, time: string) => {
+    return timeToMinutes(event.startTime) === timeToMinutes(time);
+  };
+
+  // Function to format event time for display
+  const formatEventTime = (event: any) => {
+    return `${event.startTime} - ${event.endTime}`;
   };
 
   return (
-    <section className="py-12 px-6 md:px-12">
+    <section className="py-4 md:py-8 px-2 md:px-6 lg:px-12">
       {/* Day Navigation Tabs */}
-      <div className="flex justify-center mb-8 gap-2 bg-gray-100 rounded-full p-1 max-w-fit mx-auto">
+      <div className="flex justify-center mb-4 md:mb-8 gap-1 md:gap-2 bg-gray-100 rounded-full p-1 max-w-full mx-auto overflow-x-auto">
         {(Object.keys(SCHEDULE_BY_DAY) as (keyof typeof SCHEDULE_BY_DAY)[]).map((day) => (
           <button
             key={day}
@@ -941,7 +967,7 @@ export function EventContent() {
               setActiveDay(day);
               setSelectedEvent(null);
             }}
-            className={`px-6 py-2 rounded-full transition font-medium ${
+            className={`px-3 md:px-6 py-1 md:py-2 rounded-full transition font-medium text-xs md:text-sm whitespace-nowrap ${
               activeDay === day
                 ? "bg-blue-600 text-white shadow"
                 : "text-gray-700 hover:bg-gray-200"
@@ -956,14 +982,14 @@ export function EventContent() {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-0">
           {/* Time Column */}
-          <div className="bg-gray-50 p-4 font-medium border-r border-b border-gray-200 hidden md:block">
+          <div className="bg-gray-50 p-2 md:p-4 font-medium border-r border-b border-gray-200 hidden md:block text-sm md:text-base">
             Time
           </div>
           
           {/* Stream Headers */}
-          <div className="bg-gray-50 p-4 font-medium border-r border-b border-gray-200 md:col-span-5 grid grid-cols-5">
+          <div className="bg-gray-50 p-2 md:p-4 font-medium border-r border-b border-gray-200 md:col-span-5 grid grid-cols-5 text-xs md:text-sm">
             {getStreamsForDay().map((stream) => (
-              <div key={stream} className="text-center">
+              <div key={stream} className="text-center truncate px-1">
                 {stream}
               </div>
             ))}
@@ -971,34 +997,36 @@ export function EventContent() {
 
           {/* Time Slots */}
           {TIME_SLOTS.map((time, index) => (
-            <>
+            <div key={time} className="contents">
               {/* Time label */}
-              <div key={`time-${time}`} className="p-3 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block">
+              <div className="p-1 md:p-2 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block text-xs md:text-sm">
                 {time}
               </div>
               
               {/* Event cells */}
-              <div className="p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-16">
+              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[40px]">
                 {getStreamsForDay().map((stream) => {
                   const events = getEventsForStream(activeDay, stream);
                   const eventStartingAtThisTime = events.find((event: any) => 
-                    timeToMinutes(event.startTime) === timeToMinutes(time)
+                    doesEventStartAtTime(event, time)
                   );
                   
                   return (
-                    <div key={stream} className="border-r border-gray-200 p-1 relative">
+                    <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative">
                       {eventStartingAtThisTime && (
                         <div
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 absolute top-1 left-1 right-1 bottom-1 ${getEventColor(stream)}`}
+                          className={`p-1 md:p-2 rounded text-xs cursor-pointer border-l-4 absolute top-0.5 left-0.5 right-0.5 bottom-0.5 overflow-hidden ${getEventColor(stream)}`}
                           style={{ 
-                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * 4rem - 0.5rem)`,
-                            zIndex: 10
+                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * (var(--row-height) + 0.25rem) - 0.5rem)`,
+                            zIndex: 10,
+                            // @ts-ignore
+                            "--row-height": isMobile ? "20px" : "40px"
                           }}
                           onClick={() => setSelectedEvent(eventStartingAtThisTime)}
                         >
-                          <div className="font-semibold">{eventStartingAtThisTime.title}</div>
-                          <div className="text-gray-600">
-                            {eventStartingAtThisTime.startTime} - {eventStartingAtThisTime.endTime}
+                          <div className="font-semibold truncate">{eventStartingAtThisTime.title}</div>
+                          <div className="text-[10px] md:text-xs opacity-80 truncate">
+                            {formatEventTime(eventStartingAtThisTime)}
                           </div>
                         </div>
                       )}
@@ -1006,7 +1034,7 @@ export function EventContent() {
                   );
                 })}
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
@@ -1014,21 +1042,21 @@ export function EventContent() {
       {/* Event Details Modal */}
       {selectedEvent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-bold mb-2">{selectedEvent.title}</h3>
+          <div className="bg-white rounded-lg p-4 md:p-6 max-w-md w-full mx-4">
+            <h3 className="text-lg md:text-xl font-bold mb-2">{selectedEvent.title}</h3>
             <div className="flex items-center mb-2">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm md:text-base font-medium text-gray-600">
                 {selectedEvent.startTime} - {selectedEvent.endTime}
               </span>
             </div>
             {selectedEvent.location && (
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 text-sm md:text-base">
                 <strong>Location:</strong> {selectedEvent.location}
               </p>
             )}
             <button
               onClick={() => setSelectedEvent(null)}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm md:text-base"
             >
               Close
             </button>
@@ -1037,31 +1065,38 @@ export function EventContent() {
       )}
 
       {/* Legend */}
-      <div className="mt-8 flex justify-center gap-6 flex-wrap">
+      <div className="mt-4 md:mt-8 flex justify-center gap-3 md:gap-6 flex-wrap">
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-blue-100 border-l-4 border-blue-500 mr-2"></div>
-          <span className="text-sm">All Streams</span>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-100 border-l-4 border-blue-500 mr-1 md:mr-2"></div>
+          <span className="text-xs md:text-sm">All Streams</span>
         </div>
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-red-100 border-l-4 border-red-500 mr-2"></div>
-          <span className="text-sm">Stream A</span>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-red-100 border-l-4 border-red-500 mr-1 md:mr-2"></div>
+          <span className="text-xs md:text-sm">Stream A</span>
         </div>
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-green-100 border-l-4 border-green-500 mr-2"></div>
-          <span className="text-sm">Stream B</span>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-green-100 border-l-4 border-green-500 mr-1 md:mr-2"></div>
+          <span className="text-xs md:text-sm">Stream B</span>
         </div>
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-yellow-100 border-l-4 border-yellow-500 mr-2"></div>
-          <span className="text-sm">Stream C</span>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-yellow-100 border-l-4 border-yellow-500 mr-1 md:mr-2"></div>
+          <span className="text-xs md:text-sm">Stream C</span>
         </div>
         <div className="flex items-center">
-          <div className="w-4 h-4 bg-purple-100 border-l-4 border-purple-500 mr-2"></div>
-          <span className="text-sm">Stream A & B</span>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-purple-100 border-l-4 border-purple-500 mr-1 md:mr-2"></div>
+          <span className="text-xs md:text-sm">Stream A & B</span>
         </div>
       </div>
 
+      {/* Instructions for mobile users */}
+      {isMobile && (
+        <div className="mt-4 text-center text-xs text-gray-500">
+          Scroll horizontally to view all time slots
+        </div>
+      )}
+
       {/* Add some spacing at the bottom */}
-      <div className="h-12"></div>
+      <div className="h-6 md:h-12"></div>
     </section>
   );
 }
