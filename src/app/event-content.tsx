@@ -586,25 +586,31 @@ const SCHEDULE_DATA = {
     {
       time: "11:45 AM - 5:30 PM",
       title: "Arrival and Hotel Check In",
-      location: "Holiday Inn Kingston Waterfront",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "5:45 PM - 6:00 PM",
       title: "Travel to Campus",
-      location: "From hotel to campus",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "6:15 PM - 7:00 PM",
       title: "Dinner",
-      location: "Campus Dining Hall",
+      location: "",
       stream: "All Streams"
     },
     {
-      time: "7:15 PM - 9:15 PM",
+      time: "7:15 PM - 8:30 PM",
+      title: "Opening Ceremony",
+      location: "",
+      stream: "All Streams"
+    },
+    {
+      time: "8:45 PM - 9:45 PM",
       title: "Social",
-      location: "Student Commons",
+      location: "",
       stream: "All Streams"
     }
   ],
@@ -612,97 +618,97 @@ const SCHEDULE_DATA = {
     {
       time: "8:00 AM - 8:30 AM",
       title: "Walk/Shuttle to Campus",
-      location: "From hotel to campus",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "9:00 AM - 9:30 AM",
       title: "Breakfast",
-      location: "Campus Dining Hall",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "10:00 AM - 10:30 AM",
       title: "Workshop 1A",
-      location: "Room 301",
+      location: "",
       stream: "Stream A"
     },
     {
       time: "10:00 AM - 10:30 AM",
       title: "Workshop 1B",
-      location: "Room 302",
+      location: "",
       stream: "Stream B"
     },
     {
       time: "10:00 AM - 1:00 PM",
       title: "VPX Stream",
-      location: "Room 303",
+      location: "",
       stream: "Stream C"
     },
     {
       time: "11:00 AM - 11:30 AM",
       title: "Workshop 2A",
-      location: "Room 301",
+      location: "",
       stream: "Stream A"
     },
     {
       time: "11:00 AM - 11:30 AM",
       title: "Workshop 2B",
-      location: "Room 302",
+      location: "",
       stream: "Stream B"
     },
     {
       time: "12:00 PM - 1:00 PM",
       title: "Workshop 3A",
-      location: "Room 301",
+      location: "",
       stream: "Stream A"
     },
     {
       time: "12:00 PM - 1:00 PM",
       title: "Workshop 3B",
-      location: "Room 302",
+      location: "",
       stream: "Stream B"
     },
     {
       time: "1:30 PM - 2:15 PM",
       title: "Lunch and Networking Session",
-      location: "Main Hall",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "2:30 PM - 3:15 PM",
       title: "Panel A",
-      location: "Room 301",
+      location: "",
       stream: "Stream A"
     },
     {
       time: "2:30 PM - 3:15 PM",
       title: "Panel B",
-      location: "Room 302",
+      location: "",
       stream: "Stream B"
     },
     {
       time: "2:30 PM - 4:45 PM",
       title: "VPX Stream",
-      location: "Room 303",
+      location: "",
       stream: "Stream C"
     },
     {
       time: "3:30 PM - 4:45 PM",
       title: "Gold Sponsor Workshop",
-      location: "Room 301",
+      location: "",
       stream: "Stream A"
     },
     {
       time: "3:30 PM - 4:45 PM",
       title: "Gold Sponsor Workshop",
-      location: "Room 302",
+      location: "",
       stream: "Stream B"
     },
     {
       time: "5:00 PM - 5:15 PM",
       title: "Walk/Car Ride to Hotel",
-      location: "From campus to hotel",
+      location: "",
       stream: "All Streams"
     },
     {
@@ -714,13 +720,13 @@ const SCHEDULE_DATA = {
     {
       time: "7:30 PM - 9:45 PM",
       title: "Dinner/Banquet",
-      location: "Main Hall",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "10:00 PM - 10:15 PM",
       title: "Shuttle From Campus to Hotel",
-      location: "From campus to hotel",
+      location: "",
       stream: "All Streams"
     }
   ],
@@ -728,43 +734,55 @@ const SCHEDULE_DATA = {
     {
       time: "8:00 AM - 8:30 AM",
       title: "Walk/Shuttle to Campus",
-      location: "From hotel to campus",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "9:00 AM - 10:00 AM",
       title: "Breakfast",
-      location: "Campus Dining Hall",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "10:30 AM - 11:15 AM",
       title: "Speaker",
-      location: "Main Auditorium",
-      stream: "Stream A & B"
+      location: "",
+      stream: "Stream A"
+    },
+    {
+      time: "10:30 AM - 11:15 AM",
+      title: "Speaker",
+      location: "",
+      stream: "Stream B"
     },
     {
       time: "10:30 AM - 1:45 PM",
       title: "VPX Stream",
-      location: "Room 303",
+      location: "",
       stream: "Stream C"
     },
     {
       time: "11:30 AM - 1:45 PM",
       title: "Case Competition",
-      location: "Room 304",
-      stream: "Stream A & B"
+      location: "",
+      stream: "Stream A"
+    },
+    {
+      time: "11:30 AM - 1:45 PM",
+      title: "Case Competition",
+      location: "",
+      stream: "Stream B"
     },
     {
       time: "2:15 PM - 2:45 PM",
       title: "Closing Ceremony",
-      location: "Main Auditorium",
+      location: "",
       stream: "All Streams"
     },
     {
       time: "3:00 PM - 3:30 PM",
       title: "Lunch",
-      location: "Campus Dining Hall",
+      location: "",
       stream: "All Streams"
     }
   ]
