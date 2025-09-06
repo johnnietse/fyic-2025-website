@@ -998,7 +998,7 @@ function Hero() {
               <span className="text-blue-200 font-semibold flex items-center gap-2">
                   OSPE
                   <img 
-                    src="/logos/ospe-logo.svg" 
+                    src="/logos/ospe-logo.png" 
                     alt="OSPE Logo" 
                     className="h-6 sm:h-8 w-auto filter brightness-0 invert"
                   />
