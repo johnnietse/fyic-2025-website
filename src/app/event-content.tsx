@@ -567,7 +567,6 @@
 
 
 
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -856,7 +855,7 @@ const SCHEDULE_BY_DAY = {
   }
 };
 
-// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals
+// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals for better precision
 const generateTimeSlots = () => {
   const slots = [];
   for (let hour = 8; hour <= 22; hour++) {
@@ -934,11 +933,16 @@ export function EventContent() {
     return Math.max(1, Math.ceil(duration / 15)); // Each time slot is 15 minutes
   };
 
+  // Function to check if an event starts at a specific time
+  const doesEventStartAtTime = (event: any, time: string) => {
+    return timeToMinutes(event.startTime) === timeToMinutes(time);
+  };
+
   // Function to get the starting position of an event
   const getEventStartPosition = (event: any) => {
+    const startMinutes = timeToMinutes(event.startTime);
     const firstSlotMinutes = timeToMinutes("8:00 AM");
-    const eventStartMinutes = timeToMinutes(event.startTime);
-    return ((eventStartMinutes - firstSlotMinutes) / 15) + 1; // +1 for the header row
+    return ((startMinutes - firstSlotMinutes) / 15) + 1; // +1 for the header row
   };
 
   return (
@@ -985,17 +989,45 @@ export function EventContent() {
                 {time}
               </div>
               
-              {/* Empty cells for time slots */}
-              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[24px]">
-                {getStreamsForDay().map((stream) => (
-                  <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative"></div>
-                ))}
+              {/* Event cells */}
+              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[40px]">
+                {getStreamsForDay().map((stream) => {
+                  const events = getEventsForStream(activeDay, stream);
+                  const eventStartingAtThisTime = events.find((event: any) => 
+                    doesEventStartAtTime(event, time)
+                  );
+                  
+                  return (
+                    <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative">
+                      {eventStartingAtThisTime && (
+                        <div
+                          className={`p-1 md:p-2 rounded text-xs border-l-4 ${getEventColor(stream)}`}
+                          style={{ 
+                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * (var(--row-height) + 0.25rem) - 0.5rem)`,
+                            // @ts-ignore
+                            "--row-height": isMobile ? "20px" : "40px"
+                          }}
+                        >
+                          <div className="font-semibold truncate">{eventStartingAtThisTime.title}</div>
+                          <div className="text-[10px] md:text-xs opacity-80 truncate">
+                            {eventStartingAtThisTime.startTime} - {eventStartingAtThisTime.endTime}
+                          </div>
+                          {eventStartingAtThisTime.location && (
+                            <div className="text-[10px] md:text-xs opacity-70 truncate mt-1">
+                              {eventStartingAtThisTime.location}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
 
-          {/* Event overlays - positioned absolutely */}
-          {getStreamsForDay().map((stream, streamIndex) => {
+          {/* Render events that span multiple time slots */}
+          {getStreamsForDay().map((stream) => {
             const events = getEventsForStream(activeDay, stream);
             return events.map((event: any) => {
               const startPosition = getEventStartPosition(event);
@@ -1004,18 +1036,17 @@ export function EventContent() {
               return (
                 <div
                   key={event.id}
-                  className={`p-1 md:p-2 rounded text-xs cursor-pointer border-l-4 absolute ${getEventColor(stream)}`}
+                  className={`p-1 md:p-2 rounded text-xs border-l-4 absolute ${getEventColor(stream)}`}
                   style={{
-                    gridColumn: `${streamIndex + 2}`,
+                    gridColumn: getStreamsForDay().indexOf(stream) + 2,
                     gridRow: `${startPosition} / span ${span}`,
+                    width: "calc(100% - 0.5rem)",
+                    margin: "0.25rem",
                     zIndex: 10,
-                    width: `calc(100% / 5 - 0.5rem)`,
-                    left: `${(streamIndex) * (100 / 5)}%`,
-                    margin: '0.25rem'
                   }}
                 >
-                  <div className="font-semibold truncate leading-tight">{event.title}</div>
-                  <div className="text-[10px] md:text-xs opacity-80 truncate mt-1">
+                  <div className="font-semibold truncate">{event.title}</div>
+                  <div className="text-[10px] md:text-xs opacity-80 truncate">
                     {event.startTime} - {event.endTime}
                   </div>
                   {event.location && (
