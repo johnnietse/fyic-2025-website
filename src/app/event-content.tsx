@@ -564,538 +564,556 @@
 
 
 
-
-
-
-"use client";
-
-import { useState, useEffect } from "react";
-
-// Updated event data structure with precise time slots
-const SCHEDULE_BY_DAY = {
-  "Friday": [
-    {
-      id: 1,
-      title: "Arrival and Hotel Check In",
-      startTime: "11:45 AM",
-      endTime: "5:30 PM",
-      stream: "All Streams",
-      location: "Holiday Inn Kingston Waterfront",
-      duration: 345 // duration in minutes
-    },
-    {
-      id: 2,
-      title: "Travel to Campus",
-      startTime: "5:45 PM",
-      endTime: "6:00 PM",
-      stream: "All Streams",
-      location: "From hotel to campus",
-      duration: 15
-    },
-    {
-      id: 3,
-      title: "Dinner",
-      startTime: "6:15 PM",
-      endTime: "7:00 PM",
-      stream: "All Streams",
-      location: "Campus Dining Hall",
-      duration: 45
-    },
-    {
-      id: 4,
-      title: "Social",
-      startTime: "7:15 PM",
-      endTime: "9:15 PM",
-      stream: "All Streams",
-      location: "Student Commons",
-      duration: 120
-    }
-  ],
-  "Saturday": {
-    "All Streams": [
-      {
-        id: 1,
-        title: "Walk/Shuttle to Campus",
-        startTime: "8:00 AM",
-        endTime: "8:30 AM",
-        location: "From hotel to campus",
-        duration: 30
-      },
-      {
-        id: 2,
-        title: "Breakfast",
-        startTime: "9:00 AM",
-        endTime: "9:30 AM",
-        location: "Campus Dining Hall",
-        duration: 30
-      },
-      {
-        id: 7,
-        title: "Lunch and Networking Session",
-        startTime: "1:30 PM",
-        endTime: "2:15 PM",
-        location: "Main Hall",
-        duration: 45
-      },
-      {
-        id: 15,
-        title: "Down Time",
-        startTime: "5:30 PM",
-        endTime: "6:45 PM",
-        location: "",
-        duration: 75
-      },
-      {
-        id: 16,
-        title: "Dinner/Banquet",
-        startTime: "7:30 PM",
-        endTime: "9:45 PM",
-        location: "Main Hall",
-        duration: 135
-      },
-      {
-        id: 17,
-        title: "Shuttle From Campus to Hotel",
-        startTime: "10:00 PM",
-        endTime: "10:15 PM",
-        location: "From campus to hotel",
-        duration: 15
-      }
-    ],
-    "Stream A": [
-      {
-        id: 3,
-        title: "Workshop 1A",
-        startTime: "10:00 AM",
-        endTime: "10:30 AM",
-        location: "Room 301",
-        duration: 30
-      },
-      {
-        id: 4,
-        title: "Workshop 2A",
-        startTime: "11:00 AM",
-        endTime: "11:30 AM",
-        location: "Room 301",
-        duration: 30
-      },
-      {
-        id: 5,
-        title: "Workshop 3A",
-        startTime: "12:00 PM",
-        endTime: "1:00 PM",
-        location: "Room 301",
-        duration: 60
-      },
-      {
-        id: 8,
-        title: "Panel A",
-        startTime: "2:30 PM",
-        endTime: "3:15 PM",
-        location: "Room 301",
-        duration: 45
-      },
-      {
-        id: 9,
-        title: "Gold Sponsor Workshop",
-        startTime: "3:30 PM",
-        endTime: "4:45 PM",
-        location: "Room 301",
-        duration: 75
-      },
-      {
-        id: 10,
-        title: "Walk/Car Ride to Hotel",
-        startTime: "5:00 PM",
-        endTime: "5:15 PM",
-        location: "From campus to hotel",
-        duration: 15
-      }
-    ],
-    "Stream B": [
-      {
-        id: 11,
-        title: "Workshop 1B",
-        startTime: "10:00 AM",
-        endTime: "10:30 AM",
-        location: "Room 302",
-        duration: 30
-      },
-      {
-        id: 12,
-        title: "Workshop 2B",
-        startTime: "11:00 AM",
-        endTime: "11:30 AM",
-        location: "Room 302",
-        duration: 30
-      },
-      {
-        id: 13,
-        title: "Workshop 3B",
-        startTime: "12:00 PM",
-        endTime: "1:00 PM",
-        location: "Room 302",
-        duration: 60
-      },
-      {
-        id: 14,
-        title: "Panel B",
-        startTime: "2:30 PM",
-        endTime: "3:15 PM",
-        location: "Room 302",
-        duration: 45
-      },
-      {
-        id: 15,
-        title: "Gold Sponsor Workshop",
-        startTime: "3:30 PM",
-        endTime: "4:45 PM",
-        location: "Room 302",
-        duration: 75
-      },
-      {
-        id: 16,
-        title: "Walk/Car Ride to Hotel",
-        startTime: "5:00 PM",
-        endTime: "5:15 PM",
-        location: "From campus to hotel",
-        duration: 15
-      }
-    ],
-    "Stream C": [
-      {
-        id: 17,
-        title: "VPX Stream",
-        startTime: "10:00 AM",
-        endTime: "1:00 PM",
-        location: "Room 303",
-        duration: 180
-      },
-      {
-        id: 18,
-        title: "VPX Stream",
-        startTime: "2:30 PM",
-        endTime: "4:45 PM",
-        location: "Room 303",
-        duration: 135
-      },
-      {
-        id: 19,
-        title: "Walk/Car Ride to Hotel",
-        startTime: "5:00 PM",
-        endTime: "5:15 PM",
-        location: "From campus to hotel",
-        duration: 15
-      }
-    ]
-  },
-  "Sunday": {
-    "All Streams": [
-      {
-        id: 1,
-        title: "Walk/Shuttle to Campus",
-        startTime: "8:00 AM",
-        endTime: "8:30 AM",
-        location: "From hotel to campus",
-        duration: 30
-      },
-      {
-        id: 2,
-        title: "Breakfast",
-        startTime: "9:00 AM",
-        endTime: "10:00 AM",
-        location: "Campus Dining Hall",
-        duration: 60
-      },
-      {
-        id: 7,
-        title: "Closing Ceremony",
-        startTime: "2:15 PM",
-        endTime: "2:45 PM",
-        location: "Main Auditorium",
-        duration: 30
-      },
-      {
-        id: 8,
-        title: "Lunch",
-        startTime: "3:00 PM",
-        endTime: "3:30 PM",
-        location: "Campus Dining Hall",
-        duration: 30
-      }
-    ],
-    "Stream A & B": [
-      {
-        id: 3,
-        title: "Speaker",
-        startTime: "10:30 AM",
-        endTime: "11:15 AM",
-        location: "Main Auditorium",
-        duration: 45
-      },
-      {
-        id: 4,
-        title: "Case Competition",
-        startTime: "11:30 AM",
-        endTime: "1:45 PM",
-        location: "Room 304",
-        duration: 135
-      }
-    ],
-    "Stream C": [
-      {
-        id: 5,
-        title: "VPX Stream",
-        startTime: "10:30 AM",
-        endTime: "1:45 PM",
-        location: "Room 303",
-        duration: 135
-      }
-    ]
-  }
-};
-
-// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals for better precision
-const generateTimeSlots = () => {
-  const slots = [];
-  for (let hour = 8; hour <= 22; hour++) {
-    for (let minute = 0; minute < 60; minute += 15) {
-      const period = hour >= 12 ? "PM" : "AM";
-      const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
-      slots.push(`${displayHour}:${minute === 0 ? "00" : minute} ${period}`);
-    }
-  }
-  return slots;
-};
-
-const TIME_SLOTS = generateTimeSlots();
-
-export function EventContent() {
-  const [activeDay, setActiveDay] = useState<keyof typeof SCHEDULE_BY_DAY>("Friday");
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkIsMobile);
-    };
-  }, []);
-
-  // Function to convert time to minutes for comparison
-  const timeToMinutes = (timeStr: string) => {
-    const [time, period] = timeStr.split(" ");
-    const [hours, minutes] = time.split(":").map(Number);
-    let totalMinutes = hours * 60 + minutes;
-    if (period === "PM" && hours !== 12) totalMinutes += 12 * 60;
-    if (period === "AM" && hours === 12) totalMinutes -= 12 * 60;
-    return totalMinutes;
-  };
-
-  // Function to get event color based on stream
-  const getEventColor = (stream: string) => {
-    switch (stream) {
-      case "All Streams": return "bg-blue-100 border-blue-500 text-blue-800";
-      case "Stream A": return "bg-red-100 border-red-500 text-red-800";
-      case "Stream B": return "bg-green-100 border-green-500 text-green-800";
-      case "Stream C": return "bg-yellow-100 border-yellow-500 text-yellow-800";
-      case "Stream A & B": return "bg-purple-100 border-purple-500 text-purple-800";
-      default: return "bg-gray-100 border-gray-500 text-gray-800";
-    }
-  };
-
-  // Function to get events for a specific stream and day
-  const getEventsForStream = (day: string, stream: string) => {
-    if (day === "Friday") {
-      return SCHEDULE_BY_DAY[day].filter(event => event.stream === stream);
-    } else {
-      return SCHEDULE_BY_DAY[day][stream] || [];
-    }
-  };
-
-  // Get all streams for the active day
-  const getStreamsForDay = () => {
-    if (activeDay === "Friday") return ["All Streams"];
-    if (activeDay === "Saturday") return ["All Streams", "Stream A", "Stream B", "Stream C"];
-    return ["All Streams", "Stream A & B", "Stream C"];
-  };
-
-  // Function to calculate how many time slots an event spans
-  const getEventSpan = (event: any) => {
-    const startMinutes = timeToMinutes(event.startTime);
-    const endMinutes = timeToMinutes(event.endTime);
-    const duration = endMinutes - startMinutes;
-    return Math.max(1, Math.ceil(duration / 15)); // Each time slot is 15 minutes
-  };
-
-  // Function to check if an event starts at a specific time
-  const doesEventStartAtTime = (event: any, time: string) => {
-    return timeToMinutes(event.startTime) === timeToMinutes(time);
-  };
-
-  // Function to get the starting position of an event
-  const getEventStartPosition = (event: any) => {
-    const startMinutes = timeToMinutes(event.startTime);
-    const firstSlotMinutes = timeToMinutes("8:00 AM");
-    return ((startMinutes - firstSlotMinutes) / 15) + 1; // +1 for the header row
-  };
-
-  return (
-    <section className="py-4 md:py-8 px-2 md:px-6 lg:px-12">
-      {/* Day Navigation Tabs */}
-      <div className="flex justify-center mb-4 md:mb-8 gap-1 md:gap-2 bg-gray-100 rounded-full p-1 max-w-full mx-auto overflow-x-auto">
-        {(Object.keys(SCHEDULE_BY_DAY) as (keyof typeof SCHEDULE_BY_DAY)[]).map((day) => (
-          <button
-            key={day}
-            onClick={() => setActiveDay(day)}
-            className={`px-3 md:px-6 py-1 md:py-2 rounded-full transition font-medium text-xs md:text-sm whitespace-nowrap ${
-              activeDay === day
-                ? "bg-blue-600 text-white shadow"
-                : "text-gray-700 hover:bg-gray-200"
-            }`}
-          >
-            {day}
-          </button>
-        ))}
-      </div>
-
-      {/* Calendar View */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-0 relative">
-          {/* Time Column */}
-          <div className="bg-gray-50 p-2 md:p-4 font-medium border-r border-b border-gray-200 hidden md:block text-sm md:text-base">
-            Time
-          </div>
-          
-          {/* Stream Headers */}
-          <div className="bg-gray-50 p-2 md:p-4 font-medium border-r border-b border-gray-200 md:col-span-5 grid grid-cols-5 text-xs md:text-sm">
-            {getStreamsForDay().map((stream) => (
-              <div key={stream} className="text-center truncate px-1">
-                {stream}
-              </div>
-            ))}
-          </div>
-
-          {/* Time Slots */}
-          {TIME_SLOTS.map((time, index) => (
-            <div key={time} className="contents">
-              {/* Time label */}
-              <div className="p-1 md:p-2 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block text-xs md:text-sm">
-                {time}
-              </div>
-              
-              {/* Event cells */}
-              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[40px]">
-                {getStreamsForDay().map((stream) => {
-                  const events = getEventsForStream(activeDay, stream);
-                  const eventStartingAtThisTime = events.find((event: any) => 
-                    doesEventStartAtTime(event, time)
-                  );
-                  
-                  return (
-                    <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative">
-                      {eventStartingAtThisTime && (
-                        <div
-                          className={`p-1 md:p-2 rounded text-xs border-l-4 ${getEventColor(stream)}`}
-                          style={{ 
-                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * (var(--row-height) + 0.25rem) - 0.5rem)`,
-                            // @ts-ignore
-                            "--row-height": isMobile ? "20px" : "40px"
-                          }}
-                        >
-                          <div className="font-semibold truncate">{eventStartingAtThisTime.title}</div>
-                          <div className="text-[10px] md:text-xs opacity-80 truncate">
-                            {eventStartingAtThisTime.startTime} - {eventStartingAtThisTime.endTime}
-                          </div>
-                          {eventStartingAtThisTime.location && (
-                            <div className="text-[10px] md:text-xs opacity-70 truncate mt-1">
-                              {eventStartingAtThisTime.location}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e0f2fe;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background-color: #e2e8f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .tab:hover {
+            background-color: #cbd5e1;
+        }
+        
+        .tab.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        
+        .schedule {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .schedule-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background-color: #1e40af;
+            color: white;
+            font-weight: bold;
+            padding: 16px;
+        }
+        
+        .time-slot {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: center;
+        }
+        
+        .time-slot:last-child {
+            border-bottom: none;
+        }
+        
+        .time {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1.1rem;
+        }
+        
+        .event {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 4px 0;
+        }
+        
+        .all-streams {
+            background-color: #dbeafe;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .stream-a {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .stream-b {
+            background-color: #dcfce7;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .stream-c {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .event-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .event-time {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .event-location {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 4px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .schedule-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .time-slot {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .time {
+                padding-bottom: 8px;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .event {
+                padding: 10px 12px;
+            }
+            
+            .time {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>First Year Integration Conference 2025</h1>
+            <p class="description">Join us for a weekend of workshops, networking, and professional development opportunities designed for first-year students.</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showDay('friday')">Friday</button>
+            <button class="tab" onclick="showDay('saturday')">Saturday</button>
+            <button class="tab" onclick="showDay('sunday')">Sunday</button>
+        </div>
+        
+        <div id="friday" class="schedule">
+            <div class="schedule-header">
+                <div>Time</div>
+                <div>Schedule</div>
             </div>
-          ))}
-
-          {/* Render events that span multiple time slots */}
-          {getStreamsForDay().map((stream) => {
-            const events = getEventsForStream(activeDay, stream);
-            return events.map((event: any) => {
-              const startPosition = getEventStartPosition(event);
-              const span = getEventSpan(event);
-              
-              return (
-                <div
-                  key={event.id}
-                  className={`p-1 md:p-2 rounded text-xs border-l-4 absolute ${getEventColor(stream)}`}
-                  style={{
-                    gridColumn: getStreamsForDay().indexOf(stream) + 2,
-                    gridRow: `${startPosition} / span ${span}`,
-                    width: "calc(100% - 0.5rem)",
-                    margin: "0.25rem",
-                    zIndex: 10,
-                  }}
-                >
-                  <div className="font-semibold truncate">{event.title}</div>
-                  <div className="text-[10px] md:text-xs opacity-80 truncate">
-                    {event.startTime} - {event.endTime}
-                  </div>
-                  {event.location && (
-                    <div className="text-[10px] md:text-xs opacity-70 truncate mt-1">
-                      {event.location}
-                    </div>
-                  )}
+            <div class="time-slot">
+                <div class="time">11:45 AM - 5:30 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Arrival and Hotel Check In</div>
+                    <div class="event-location">Holiday Inn Kingston Waterfront</div>
                 </div>
-              );
+            </div>
+            <div class="time-slot">
+                <div class="time">5:45 PM - 6:00 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Travel to Campus</div>
+                    <div class="event-location">From hotel to campus</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">6:15 PM - 7:00 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Dinner</div>
+                    <div class="event-location">Campus Dining Hall</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">7:15 PM - 9:15 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Social</div>
+                    <div class="event-location">Student Commons</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="saturday" class="schedule" style="display:none">
+            <div class="schedule-header">
+                <div>Time</div>
+                <div>Schedule</div>
+            </div>
+            <div class="time-slot">
+                <div class="time">8:00 AM - 8:30 AM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Walk/Shuttle to Campus</div>
+                    <div class="event-location">From hotel to campus</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">9:00 AM - 9:30 AM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Breakfast</div>
+                    <div class="event-location">Campus Dining Hall</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">10:00 AM - 10:30 AM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Workshop 1A</div>
+                        <div class="event-location">Room 301</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Workshop 1B</div>
+                        <div class="event-location">Room 302</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">11:00 AM - 11:30 AM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Workshop 2A</div>
+                        <div class="event-location">Room 301</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Workshop 2B</div>
+                        <div class="event-location">Room 302</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">12:00 PM - 1:00 PM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Workshop 3A</div>
+                        <div class="event-location">Room 301</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Workshop 3B</div>
+                        <div class="event-location">Room 302</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">1:30 PM - 2:15 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Lunch and Networking Session</div>
+                    <div class="event-location">Main Hall</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">2:30 PM - 3:15 PM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Panel A</div>
+                        <div class="event-location">Room 301</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Panel B</div>
+                        <div class="event-location">Room 302</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">3:30 PM - 4:45 PM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Gold Sponsor Workshop</div>
+                        <div class="event-location">Room 301</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Gold Sponsor Workshop</div>
+                        <div class="event-location">Room 302</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">5:00 PM - 5:15 PM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Walk/Car Ride to Hotel</div>
+                        <div class="event-location">From campus to hotel</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Walk/Car Ride to Hotel</div>
+                        <div class="event-location">From campus to hotel</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">Walk/Car Ride to Hotel</div>
+                        <div class="event-location">From campus to hotel</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">5:30 PM - 6:45 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Down Time</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">7:30 PM - 9:45 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Dinner/Banquet</div>
+                    <div class="event-location">Main Hall</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">10:00 PM - 10:15 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Shuttle From Campus to Hotel</div>
+                    <div class="event-location">From campus to hotel</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="sunday" class="schedule" style="display:none">
+            <div class="schedule-header">
+                <div>Time</div>
+                <div>Schedule</div>
+            </div>
+            <div class="time-slot">
+                <div class="time">8:00 AM - 8:30 AM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Walk/Shuttle to Campus</div>
+                    <div class="event-location">From hotel to campus</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">9:00 AM - 10:00 AM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Breakfast</div>
+                    <div class="event-location">Campus Dining Hall</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">10:30 AM - 11:15 AM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Speaker</div>
+                        <div class="event-location">Main Auditorium</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Speaker</div>
+                        <div class="event-location">Main Auditorium</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">11:30 AM - 1:45 PM</div>
+                <div>
+                    <div class="event stream-a">
+                        <div class="event-title">Case Competition</div>
+                        <div class="event-location">Room 304</div>
+                    </div>
+                    <div class="event stream-b">
+                        <div class="event-title">Case Competition</div>
+                        <div class="event-location">Room 304</div>
+                    </div>
+                    <div class="event stream-c">
+                        <div class="event-title">VPX Stream</div>
+                        <div class="event-location">Room 303</div>
+                    </div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">2:15 PM - 2:45 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Closing Ceremony</div>
+                    <div class="event-location">Main Auditorium</div>
+                </div>
+            </div>
+            <div class="time-slot">
+                <div class="time">3:00 PM - 3:30 PM</div>
+                <div class="event all-streams">
+                    <div class="event-title">Lunch</div>
+                    <div class="event-location">Campus Dining Hall</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #dbeafe; border-left: 4px solid #2563eb;"></div>
+                <span>All Streams</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #fee2e2; border-left: 4px solid #ef4444;"></div>
+                <span>Stream A</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #dcfce7; border-left: 4px solid #22c55e;"></div>
+                <span>Stream B</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #fef3c7; border-left: 4px solid #f59e0b;"></div>
+                <span>Stream C</span>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 First Year Integration Conference. All rights reserved.</p>
+            <p>For more information, please contact: info@fyic-conference.edu</p>
+        </footer>
+    </div>
+
+    <script>
+        function showDay(day) {
+            // Hide all schedules
+            document.querySelectorAll('.schedule').forEach(schedule => {
+                schedule.style.display = 'none';
             });
-          })}
-        </div>
-      </div>
-
-      {/* Legend */}
-      <div className="mt-4 md:mt-8 flex justify-center gap-3 md:gap-6 flex-wrap">
-        <div className="flex items-center">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-100 border-l-4 border-blue-500 mr-1 md:mr-2"></div>
-          <span className="text-xs md:text-sm">All Streams</span>
-        </div>
-        <div className="flex items-center">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-red-100 border-l-4 border-red-500 mr-1 md:mr-2"></div>
-          <span className="text-xs md:text-sm">Stream A</span>
-        </div>
-        <div className="flex items-center">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-green-100 border-l-4 border-green-500 mr-1 md:mr-2"></div>
-          <span className="text-xs md:text-sm">Stream B</span>
-        </div>
-        <div className="flex items-center">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-yellow-100 border-l-4 border-yellow-500 mr-1 md:mr-2"></div>
-          <span className="text-xs md:text-sm">Stream C</span>
-        </div>
-        <div className="flex items-center">
-          <div className="w-3 h-3 md:w-4 md:h-4 bg-purple-100 border-l-4 border-purple-500 mr-1 md:mr-2"></div>
-          <span className="text-xs md:text-sm">Stream A & B</span>
-        </div>
-      </div>
-
-      {/* Instructions for mobile users */}
-      {isMobile && (
-        <div className="mt-4 text-center text-xs text-gray-500">
-          Scroll horizontally to view all time slots
-        </div>
-      )}
-
-      {/* Add some spacing at the bottom */}
-      <div className="h-6 md:h-12"></div>
-    </section>
-  );
-}
-
-export default EventContent;
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected schedule and set tab as active
+            document.getElementById(day).style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
