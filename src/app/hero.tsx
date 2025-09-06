@@ -956,7 +956,7 @@ function Hero() {
               style={{ fontFamily: 'Montserrat, sans-serif' }} 
               {...({} as any)}
             >
-              Presented by <span className="font-semibold text-blue-200">OSPE</span>
+               <span className="font-semibold text-blue-200">Presented by OSPE</span>
             </Typography>
           </div>
           
@@ -1005,7 +1005,7 @@ function Hero() {
           {/* Description */}
           <Typography
             variant="lead"
-            color="blue-50"
+            color="white"
             className="text-lg sm:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto font-light"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
@@ -1020,7 +1020,7 @@ function Hero() {
           <div className="mt-10 sm:mt-14">
             <Typography
               variant="h6"
-              color="blue-100"
+              color="white"
               className="mb-4 font-medium uppercase tracking-wider"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
               {...({} as any)}
