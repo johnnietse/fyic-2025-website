@@ -397,23 +397,15 @@ import { useState } from "react";
 // Updated event data structure to match the calendar view
 const SCHEDULE_BY_DAY = {
   "Friday": {
-    streams: ["All Streams", "Stream A", "Stream B"],
+    streams: ["All Streams"],
     events: [
-      { time: "8:00", allStreams: "Walk/Shuttle to Campus", streamA: "", streamB: "" },
-      { time: "9:00", allStreams: "Breakfast", streamA: "", streamB: "" },
-      { time: "10:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "11:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "12:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "13:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "14:00", allStreams: "Arrival and Hotel Check In", streamA: "", streamB: "" },
-      { time: "15:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "16:00", allStreams: "Walk/Car Ride to Hotel", streamA: "", streamB: "" },
-      { time: "17:00", allStreams: "Travel to Campus", streamA: "", streamB: "" },
-      { time: "18:00", allStreams: "Dinner", streamA: "", streamB: "" },
-      { time: "19:00", allStreams: "Opening Ceremony", streamA: "", streamB: "" },
-      { time: "20:00", allStreams: "Social", streamA: "", streamB: "" },
-      { time: "21:00", allStreams: "", streamA: "", streamB: "" },
-      { time: "22:00", allStreams: "Shuttle From Campus to Hotel", streamA: "", streamB: "" },
+      { time: "8:00", allStreams: ""},
+      { time: "11:45", allStreams: "Arrival and Hotel Check In"},
+      { time: "17:30", allStreams: "Travel to Campus"},
+      { time: "18:00", allStreams: "Dinner"},
+      { time: "19:00", allStreams: "Opening Ceremony"},
+      { time: "20:45", allStreams: "Social"},
+      { time: "22:00", allStreams: ""},
     ]
   },
   "Saturday": {
