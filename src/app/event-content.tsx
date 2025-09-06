@@ -568,8 +568,6 @@
 
 
 
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -858,7 +856,7 @@ const SCHEDULE_BY_DAY = {
   }
 };
 
-// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals for better precision
+// Generate time slots from 8:00 AM to 10:00 PM in 15-minute intervals
 const generateTimeSlots = () => {
   const slots = [];
   for (let hour = 8; hour <= 22; hour++) {
@@ -875,7 +873,6 @@ const TIME_SLOTS = generateTimeSlots();
 
 export function EventContent() {
   const [activeDay, setActiveDay] = useState<keyof typeof SCHEDULE_BY_DAY>("Friday");
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -899,15 +896,6 @@ export function EventContent() {
     if (period === "PM" && hours !== 12) totalMinutes += 12 * 60;
     if (period === "AM" && hours === 12) totalMinutes -= 12 * 60;
     return totalMinutes;
-  };
-
-  // Function to check if an event occurs at a specific time slot
-  const isEventAtTime = (event: any, time: string) => {
-    const slotMinutes = timeToMinutes(time);
-    const eventStart = timeToMinutes(event.startTime);
-    const eventEnd = timeToMinutes(event.endTime);
-    
-    return slotMinutes >= eventStart && slotMinutes < eventEnd;
   };
 
   // Function to get event color based on stream
@@ -946,14 +934,11 @@ export function EventContent() {
     return Math.max(1, Math.ceil(duration / 15)); // Each time slot is 15 minutes
   };
 
-  // Function to check if an event starts at a specific time
-  const doesEventStartAtTime = (event: any, time: string) => {
-    return timeToMinutes(event.startTime) === timeToMinutes(time);
-  };
-
-  // Function to format event time for display
-  const formatEventTime = (event: any) => {
-    return `${event.startTime} - ${event.endTime}`;
+  // Function to get the starting position of an event
+  const getEventStartPosition = (event: any) => {
+    const firstSlotMinutes = timeToMinutes("8:00 AM");
+    const eventStartMinutes = timeToMinutes(event.startTime);
+    return ((eventStartMinutes - firstSlotMinutes) / 15) + 1; // +1 for the header row
   };
 
   return (
@@ -963,10 +948,7 @@ export function EventContent() {
         {(Object.keys(SCHEDULE_BY_DAY) as (keyof typeof SCHEDULE_BY_DAY)[]).map((day) => (
           <button
             key={day}
-            onClick={() => {
-              setActiveDay(day);
-              setSelectedEvent(null);
-            }}
+            onClick={() => setActiveDay(day)}
             className={`px-3 md:px-6 py-1 md:py-2 rounded-full transition font-medium text-xs md:text-sm whitespace-nowrap ${
               activeDay === day
                 ? "bg-blue-600 text-white shadow"
@@ -980,7 +962,7 @@ export function EventContent() {
 
       {/* Calendar View */}
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-0 relative">
           {/* Time Column */}
           <div className="bg-gray-50 p-2 md:p-4 font-medium border-r border-b border-gray-200 hidden md:block text-sm md:text-base">
             Time
@@ -1003,66 +985,50 @@ export function EventContent() {
                 {time}
               </div>
               
-              {/* Event cells */}
-              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[40px]">
-                {getStreamsForDay().map((stream) => {
-                  const events = getEventsForStream(activeDay, stream);
-                  const eventStartingAtThisTime = events.find((event: any) => 
-                    doesEventStartAtTime(event, time)
-                  );
-                  
-                  return (
-                    <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative">
-                      {eventStartingAtThisTime && (
-                        <div
-                          className={`p-1 md:p-2 rounded text-xs cursor-pointer border-l-4 absolute top-0.5 left-0.5 right-0.5 bottom-0.5 overflow-hidden ${getEventColor(stream)}`}
-                          style={{ 
-                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * (var(--row-height) + 0.25rem) - 0.5rem)`,
-                            zIndex: 10,
-                            // @ts-ignore
-                            "--row-height": isMobile ? "20px" : "40px"
-                          }}
-                          onClick={() => setSelectedEvent(eventStartingAtThisTime)}
-                        >
-                          <div className="font-semibold truncate">{eventStartingAtThisTime.title}</div>
-                          <div className="text-[10px] md:text-xs opacity-80 truncate">
-                            {formatEventTime(eventStartingAtThisTime)}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+              {/* Empty cells for time slots */}
+              <div className="p-0.5 md:p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-[20px] md:min-h-[24px]">
+                {getStreamsForDay().map((stream) => (
+                  <div key={`${stream}-${time}`} className="border-r border-gray-200 p-0.5 md:p-1 relative"></div>
+                ))}
               </div>
             </div>
           ))}
+
+          {/* Event overlays - positioned absolutely */}
+          {getStreamsForDay().map((stream, streamIndex) => {
+            const events = getEventsForStream(activeDay, stream);
+            return events.map((event: any) => {
+              const startPosition = getEventStartPosition(event);
+              const span = getEventSpan(event);
+              
+              return (
+                <div
+                  key={event.id}
+                  className={`p-1 md:p-2 rounded text-xs cursor-pointer border-l-4 absolute ${getEventColor(stream)}`}
+                  style={{
+                    gridColumn: `${streamIndex + 2}`,
+                    gridRow: `${startPosition} / span ${span}`,
+                    zIndex: 10,
+                    width: `calc(100% / 5 - 0.5rem)`,
+                    left: `${(streamIndex) * (100 / 5)}%`,
+                    margin: '0.25rem'
+                  }}
+                >
+                  <div className="font-semibold truncate leading-tight">{event.title}</div>
+                  <div className="text-[10px] md:text-xs opacity-80 truncate mt-1">
+                    {event.startTime} - {event.endTime}
+                  </div>
+                  {event.location && (
+                    <div className="text-[10px] md:text-xs opacity-70 truncate mt-1">
+                      {event.location}
+                    </div>
+                  )}
+                </div>
+              );
+            });
+          })}
         </div>
       </div>
-
-      {/* Event Details Modal */}
-      {selectedEvent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-4 md:p-6 max-w-md w-full mx-4">
-            <h3 className="text-lg md:text-xl font-bold mb-2">{selectedEvent.title}</h3>
-            <div className="flex items-center mb-2">
-              <span className="text-sm md:text-base font-medium text-gray-600">
-                {selectedEvent.startTime} - {selectedEvent.endTime}
-              </span>
-            </div>
-            {selectedEvent.location && (
-              <p className="text-gray-600 mb-4 text-sm md:text-base">
-                <strong>Location:</strong> {selectedEvent.location}
-              </p>
-            )}
-            <button
-              onClick={() => setSelectedEvent(null)}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm md:text-base"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Legend */}
       <div className="mt-4 md:mt-8 flex justify-center gap-3 md:gap-6 flex-wrap">
