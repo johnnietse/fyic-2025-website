@@ -793,7 +793,7 @@ const StreamColors = {
   "Stream A": "bg-red-100 border-red-500 text-red-800",
   "Stream B": "bg-green-100 border-green-500 text-green-800",
   "Stream C": "bg-yellow-100 border-yellow-500 text-yellow-800",
-  "Stream A & B": "bg-purple-100 border-purple-500 text-purple-800"
+  // "Stream A & B": "bg-purple-100 border-purple-500 text-purple-800"
 };
 
 export default function ConferenceSchedule() {
