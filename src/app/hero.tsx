@@ -981,11 +981,28 @@ function Hero() {
             <Typography
               variant="h5"
               color="white"
-              className="mb-3 font-medium"
+              className="mb-3 font-medium flex flex-col sm:flex-row items-center justify-center gap-2"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
               {...({} as any)}
             >
-              Hosted by <span className="text-blue-200 font-semibold">Queen's University</span> with <span className="text-blue-200 font-semibold">OSPE</span>
+              Hosted by 
+              <span className="text-blue-200 font-semibold flex items-center gap-2">
+                  Queen's University      
+                  <img 
+                    src="/logos/queens-logo.svg" 
+                    alt="Queen's University Logo" 
+                    className="h-6 sm:h-8 w-auto filter brightness-0 invert"
+                  />
+              </span> 
+              with 
+              <span className="text-blue-200 font-semibold flex items-center gap-2">
+                  OSPE
+                  <img 
+                    src="/logos/ospe-logo.svg" 
+                    alt="OSPE Logo" 
+                    className="h-6 sm:h-8 w-auto filter brightness-0 invert"
+                  />
+              </span>
             </Typography>
             
             {/* Tagline with emphasis */}
