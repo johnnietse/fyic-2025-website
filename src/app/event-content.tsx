@@ -573,8 +573,6 @@
 
 
 
-
-
 "use client";
 
 import { useState } from "react";
@@ -588,7 +586,8 @@ const SCHEDULE_BY_DAY = {
       startTime: "11:45 AM",
       endTime: "5:30 PM",
       stream: "All Streams",
-      location: "Holiday Inn Kingston Waterfront"
+      location: "Holiday Inn Kingston Waterfront",
+      duration: 345 // duration in minutes
     },
     {
       id: 2,
@@ -596,7 +595,8 @@ const SCHEDULE_BY_DAY = {
       startTime: "5:45 PM",
       endTime: "6:00 PM",
       stream: "All Streams",
-      location: "From hotel to campus"
+      location: "From hotel to campus",
+      duration: 15
     },
     {
       id: 3,
@@ -604,7 +604,8 @@ const SCHEDULE_BY_DAY = {
       startTime: "6:15 PM",
       endTime: "7:00 PM",
       stream: "All Streams",
-      location: "Campus Dining Hall"
+      location: "Campus Dining Hall",
+      duration: 45
     },
     {
       id: 4,
@@ -612,7 +613,8 @@ const SCHEDULE_BY_DAY = {
       startTime: "7:15 PM",
       endTime: "9:15 PM",
       stream: "All Streams",
-      location: "Student Commons"
+      location: "Student Commons",
+      duration: 120
     }
   ],
   "Saturday": {
@@ -622,42 +624,48 @@ const SCHEDULE_BY_DAY = {
         title: "Walk/Shuttle to Campus",
         startTime: "8:00 AM",
         endTime: "8:30 AM",
-        location: "From hotel to campus"
+        location: "From hotel to campus",
+        duration: 30
       },
       {
         id: 2,
         title: "Breakfast",
         startTime: "9:00 AM",
         endTime: "9:30 AM",
-        location: "Campus Dining Hall"
+        location: "Campus Dining Hall",
+        duration: 30
       },
       {
         id: 7,
         title: "Lunch and Networking Session",
         startTime: "1:30 PM",
         endTime: "2:15 PM",
-        location: "Main Hall"
+        location: "Main Hall",
+        duration: 45
       },
       {
         id: 15,
         title: "Down Time",
         startTime: "5:30 PM",
         endTime: "6:45 PM",
-        location: ""
+        location: "",
+        duration: 75
       },
       {
         id: 16,
         title: "Dinner/Banquet",
         startTime: "7:30 PM",
         endTime: "9:45 PM",
-        location: "Main Hall"
+        location: "Main Hall",
+        duration: 135
       },
       {
         id: 17,
         title: "Shuttle From Campus to Hotel",
         startTime: "10:00 PM",
         endTime: "10:15 PM",
-        location: "From campus to hotel"
+        location: "From campus to hotel",
+        duration: 15
       }
     ],
     "Stream A": [
@@ -666,42 +674,48 @@ const SCHEDULE_BY_DAY = {
         title: "Workshop 1A",
         startTime: "10:00 AM",
         endTime: "10:30 AM",
-        location: "Room 301"
+        location: "Room 301",
+        duration: 30
       },
       {
         id: 4,
         title: "Workshop 2A",
         startTime: "11:00 AM",
         endTime: "11:30 AM",
-        location: "Room 301"
+        location: "Room 301",
+        duration: 30
       },
       {
         id: 5,
         title: "Workshop 3A",
         startTime: "12:00 PM",
         endTime: "1:00 PM",
-        location: "Room 301"
+        location: "Room 301",
+        duration: 60
       },
       {
         id: 8,
         title: "Panel A",
         startTime: "2:30 PM",
         endTime: "3:15 PM",
-        location: "Room 301"
+        location: "Room 301",
+        duration: 45
       },
       {
         id: 9,
         title: "Gold Sponsor Workshop",
         startTime: "3:30 PM",
         endTime: "4:45 PM",
-        location: "Room 301"
+        location: "Room 301",
+        duration: 75
       },
       {
         id: 10,
         title: "Walk/Car Ride to Hotel",
         startTime: "5:00 PM",
         endTime: "5:15 PM",
-        location: "From campus to hotel"
+        location: "From campus to hotel",
+        duration: 15
       }
     ],
     "Stream B": [
@@ -710,42 +724,48 @@ const SCHEDULE_BY_DAY = {
         title: "Workshop 1B",
         startTime: "10:00 AM",
         endTime: "10:30 AM",
-        location: "Room 302"
+        location: "Room 302",
+        duration: 30
       },
       {
         id: 12,
         title: "Workshop 2B",
         startTime: "11:00 AM",
         endTime: "11:30 AM",
-        location: "Room 302"
+        location: "Room 302",
+        duration: 30
       },
       {
         id: 13,
         title: "Workshop 3B",
         startTime: "12:00 PM",
         endTime: "1:00 PM",
-        location: "Room 302"
+        location: "Room 302",
+        duration: 60
       },
       {
         id: 14,
         title: "Panel B",
         startTime: "2:30 PM",
         endTime: "3:15 PM",
-        location: "Room 302"
+        location: "Room 302",
+        duration: 45
       },
       {
         id: 15,
         title: "Gold Sponsor Workshop",
         startTime: "3:30 PM",
         endTime: "4:45 PM",
-        location: "Room 302"
+        location: "Room 302",
+        duration: 75
       },
       {
         id: 16,
         title: "Walk/Car Ride to Hotel",
         startTime: "5:00 PM",
         endTime: "5:15 PM",
-        location: "From campus to hotel"
+        location: "From campus to hotel",
+        duration: 15
       }
     ],
     "Stream C": [
@@ -754,21 +774,24 @@ const SCHEDULE_BY_DAY = {
         title: "VPX Stream",
         startTime: "10:00 AM",
         endTime: "1:00 PM",
-        location: "Room 303"
+        location: "Room 303",
+        duration: 180
       },
       {
         id: 18,
         title: "VPX Stream",
         startTime: "2:30 PM",
         endTime: "4:45 PM",
-        location: "Room 303"
+        location: "Room 303",
+        duration: 135
       },
       {
         id: 19,
         title: "Walk/Car Ride to Hotel",
         startTime: "5:00 PM",
         endTime: "5:15 PM",
-        location: "From campus to hotel"
+        location: "From campus to hotel",
+        duration: 15
       }
     ]
   },
@@ -779,28 +802,32 @@ const SCHEDULE_BY_DAY = {
         title: "Walk/Shuttle to Campus",
         startTime: "8:00 AM",
         endTime: "8:30 AM",
-        location: "From hotel to campus"
+        location: "From hotel to campus",
+        duration: 30
       },
       {
         id: 2,
         title: "Breakfast",
         startTime: "9:00 AM",
         endTime: "10:00 AM",
-        location: "Campus Dining Hall"
+        location: "Campus Dining Hall",
+        duration: 60
       },
       {
         id: 7,
         title: "Closing Ceremony",
         startTime: "2:15 PM",
         endTime: "2:45 PM",
-        location: "Main Auditorium"
+        location: "Main Auditorium",
+        duration: 30
       },
       {
         id: 8,
         title: "Lunch",
         startTime: "3:00 PM",
         endTime: "3:30 PM",
-        location: "Campus Dining Hall"
+        location: "Campus Dining Hall",
+        duration: 30
       }
     ],
     "Stream A & B": [
@@ -809,14 +836,16 @@ const SCHEDULE_BY_DAY = {
         title: "Speaker",
         startTime: "10:30 AM",
         endTime: "11:15 AM",
-        location: "Main Auditorium"
+        location: "Main Auditorium",
+        duration: 45
       },
       {
         id: 4,
         title: "Case Competition",
         startTime: "11:30 AM",
         endTime: "1:45 PM",
-        location: "Room 304"
+        location: "Room 304",
+        duration: 135
       }
     ],
     "Stream C": [
@@ -825,7 +854,8 @@ const SCHEDULE_BY_DAY = {
         title: "VPX Stream",
         startTime: "10:30 AM",
         endTime: "1:45 PM",
-        location: "Room 303"
+        location: "Room 303",
+        duration: 135
       }
     ]
   }
@@ -892,6 +922,14 @@ export function EventContent() {
     return ["All Streams", "Stream A & B", "Stream C"];
   };
 
+  // Function to calculate how many time slots an event spans
+  const getEventSpan = (event: any) => {
+    const startMinutes = timeToMinutes(event.startTime);
+    const endMinutes = timeToMinutes(event.endTime);
+    const duration = endMinutes - startMinutes;
+    return Math.max(1, Math.ceil(duration / 30)); // Each time slot is 30 minutes
+  };
+
   return (
     <section className="py-12 px-6 md:px-12">
       {/* Day Navigation Tabs */}
@@ -932,7 +970,7 @@ export function EventContent() {
           </div>
 
           {/* Time Slots */}
-          {TIME_SLOTS.map((time) => (
+          {TIME_SLOTS.map((time, index) => (
             <>
               {/* Time label */}
               <div key={`time-${time}`} className="p-3 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block">
@@ -943,18 +981,24 @@ export function EventContent() {
               <div className="p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-16">
                 {getStreamsForDay().map((stream) => {
                   const events = getEventsForStream(activeDay, stream);
-                  const eventAtThisTime = events.find((event: any) => isEventAtTime(event, time));
+                  const eventStartingAtThisTime = events.find((event: any) => 
+                    timeToMinutes(event.startTime) === timeToMinutes(time)
+                  );
                   
                   return (
-                    <div key={stream} className="border-r border-gray-200 p-1">
-                      {eventAtThisTime && eventAtThisTime.startTime === time && (
+                    <div key={stream} className="border-r border-gray-200 p-1 relative">
+                      {eventStartingAtThisTime && (
                         <div
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(stream)}`}
-                          onClick={() => setSelectedEvent(eventAtThisTime)}
+                          className={`p-2 rounded text-xs cursor-pointer border-l-4 absolute top-1 left-1 right-1 bottom-1 ${getEventColor(stream)}`}
+                          style={{ 
+                            height: `calc(${getEventSpan(eventStartingAtThisTime)} * 4rem - 0.5rem)`,
+                            zIndex: 10
+                          }}
+                          onClick={() => setSelectedEvent(eventStartingAtThisTime)}
                         >
-                          <div className="font-semibold">{eventAtThisTime.title}</div>
+                          <div className="font-semibold">{eventStartingAtThisTime.title}</div>
                           <div className="text-gray-600">
-                            {eventAtThisTime.startTime} - {eventAtThisTime.endTime}
+                            {eventStartingAtThisTime.startTime} - {eventStartingAtThisTime.endTime}
                           </div>
                         </div>
                       )}
