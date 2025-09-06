@@ -415,8 +415,8 @@ const SCHEDULE_BY_DAY = {
       { time: "19:00", allStreams: "Opening Ceremony"},
       { time: "20:00", allStreams: ""},
       { time: "20:45", allStreams: "Social"},
-      { time: "21:00", allStreams: ""},
-      { time: "22:00", allStreams: ""},
+      { time: "21:00", allStreams: "Social"},
+      { time: "22:00", allStreams: "Social"},
     ]
   },
   "Saturday": {
