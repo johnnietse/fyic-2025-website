@@ -575,305 +575,293 @@
 
 
 
-
-
-
-
-
 "use client";
 
 import { useState } from "react";
 
-// Event data structure with start and end times
+// Updated event data structure with precise time slots
 const SCHEDULE_BY_DAY = {
   "Friday": [
     {
       id: 1,
-      title: "Walk/Shuttle to Campus",
-      startTime: "8:00",
-      endTime: "9:00",
-      stream: "All Streams",
-      location: "From hotel to campus"
-    },
-    {
-      id: 2,
-      title: "Breakfast",
-      startTime: "9:00",
-      endTime: "10:00",
-      stream: "All Streams",
-      location: "Campus Dining Hall"
-    },
-    {
-      id: 3,
       title: "Arrival and Hotel Check In",
-      startTime: "14:00",
-      endTime: "15:00",
+      startTime: "11:45 AM",
+      endTime: "5:30 PM",
       stream: "All Streams",
       location: "Holiday Inn Kingston Waterfront"
     },
     {
-      id: 4,
-      title: "Walk/Car Ride to Hotel",
-      startTime: "16:00",
-      endTime: "17:00",
-      stream: "All Streams",
-      location: "From campus to hotel"
-    },
-    {
-      id: 5,
+      id: 2,
       title: "Travel to Campus",
-      startTime: "17:00",
-      endTime: "18:00",
+      startTime: "5:45 PM",
+      endTime: "6:00 PM",
       stream: "All Streams",
       location: "From hotel to campus"
     },
     {
-      id: 6,
+      id: 3,
       title: "Dinner",
-      startTime: "18:00",
-      endTime: "19:00",
+      startTime: "6:15 PM",
+      endTime: "7:00 PM",
       stream: "All Streams",
       location: "Campus Dining Hall"
     },
     {
-      id: 7,
-      title: "Opening Ceremony",
-      startTime: "19:00",
-      endTime: "20:00",
-      stream: "All Streams",
-      location: "Main Auditorium"
-    },
-    {
-      id: 8,
+      id: 4,
       title: "Social",
-      startTime: "20:00",
-      endTime: "22:00",
+      startTime: "7:15 PM",
+      endTime: "9:15 PM",
       stream: "All Streams",
       location: "Student Commons"
-    },
-    {
-      id: 9,
-      title: "Shuttle From Campus to Hotel",
-      startTime: "22:00",
-      endTime: "23:00",
-      stream: "All Streams",
-      location: "From campus to hotel"
     }
   ],
-  "Saturday": [
-    {
-      id: 10,
-      title: "Walk/Shuttle to Campus",
-      startTime: "8:00",
-      endTime: "9:00",
-      stream: "All Streams",
-      location: "From hotel to campus"
-    },
-    {
-      id: 11,
-      title: "Breakfast",
-      startTime: "9:00",
-      endTime: "10:00",
-      stream: "All Streams",
-      location: "Campus Dining Hall"
-    },
-    {
-      id: 12,
-      title: "Workshop 1A",
-      startTime: "10:00",
-      endTime: "11:00",
-      stream: "Stream A",
-      location: "Room 301"
-    },
-    {
-      id: 13,
-      title: "Workshop 1B",
-      startTime: "10:00",
-      endTime: "11:00",
-      stream: "Stream B",
-      location: "Room 302"
-    },
-    {
-      id: 14,
-      title: "Workshop 2A",
-      startTime: "11:00",
-      endTime: "12:00",
-      stream: "Stream A",
-      location: "Room 301"
-    },
-    {
-      id: 15,
-      title: "Workshop 2B",
-      startTime: "11:00",
-      endTime: "12:00",
-      stream: "Stream B",
-      location: "Room 302"
-    },
-    {
-      id: 16,
-      title: "VPX Stream",
-      startTime: "11:00",
-      endTime: "13:00",
-      stream: "Stream C",
-      location: "Room 303"
-    },
-    {
-      id: 17,
-      title: "Workshop 3A",
-      startTime: "12:00",
-      endTime: "13:00",
-      stream: "Stream A",
-      location: "Room 301"
-    },
-    {
-      id: 18,
-      title: "Workshop 3B",
-      startTime: "12:00",
-      endTime: "13:00",
-      stream: "Stream B",
-      location: "Room 302"
-    },
-    {
-      id: 19,
-      title: "Lunch & Networking Session",
-      startTime: "13:00",
-      endTime: "14:00",
-      stream: "All Streams",
-      location: "Main Hall"
-    },
-    {
-      id: 20,
-      title: "Panel A",
-      startTime: "14:00",
-      endTime: "15:00",
-      stream: "Stream A",
-      location: "Room 301"
-    },
-    {
-      id: 21,
-      title: "Panel B",
-      startTime: "14:00",
-      endTime: "15:00",
-      stream: "Stream B",
-      location: "Room 302"
-    },
-    {
-      id: 22,
-      title: "Gold Sponsor Workshop",
-      startTime: "15:00",
-      endTime: "16:00",
-      stream: "Stream A",
-      location: "Room 301"
-    },
-    {
-      id: 23,
-      title: "Lunch",
-      startTime: "16:00",
-      endTime: "17:00",
-      stream: "All Streams",
-      location: "Campus Dining Hall"
-    },
-    {
-      id: 24,
-      title: "Down Time",
-      startTime: "17:00",
-      endTime: "19:00",
-      stream: "All Streams",
-      location: ""
-    },
-    {
-      id: 25,
-      title: "Dinner/Banquet",
-      startTime: "19:00",
-      endTime: "21:00",
-      stream: "All Streams",
-      location: "Main Hall"
-    }
-  ],
-  "Sunday": [
-    {
-      id: 26,
-      title: "Breakfast",
-      startTime: "9:00",
-      endTime: "10:00",
-      stream: "All Streams",
-      location: "Campus Dining Hall"
-    },
-    {
-      id: 27,
-      title: "Speaker",
-      startTime: "10:00",
-      endTime: "11:00",
-      stream: "All Streams",
-      location: "Main Auditorium"
-    },
-    {
-      id: 28,
-      title: "VPX Stream",
-      startTime: "11:00",
-      endTime: "12:00",
-      stream: "Stream C",
-      location: "Room 303"
-    },
-    {
-      id: 29,
-      title: "Case Competition",
-      startTime: "12:00",
-      endTime: "13:00",
-      stream: "Stream C",
-      location: "Room 304"
-    },
-    {
-      id: 30,
-      title: "VPX Stream",
-      startTime: "13:00",
-      endTime: "14:00",
-      stream: "Stream C",
-      location: "Room 303"
-    },
-    {
-      id: 31,
-      title: "Closing Ceremony",
-      startTime: "14:00",
-      endTime: "15:00",
-      stream: "All Streams",
-      location: "Main Auditorium"
-    },
-    {
-      id: 32,
-      title: "VPX Stream",
-      startTime: "15:00",
-      endTime: "16:00",
-      stream: "Stream C",
-      location: "Room 303"
-    }
-  ]
+  "Saturday": {
+    "All Streams": [
+      {
+        id: 1,
+        title: "Walk/Shuttle to Campus",
+        startTime: "8:00 AM",
+        endTime: "8:30 AM",
+        location: "From hotel to campus"
+      },
+      {
+        id: 2,
+        title: "Breakfast",
+        startTime: "9:00 AM",
+        endTime: "9:30 AM",
+        location: "Campus Dining Hall"
+      },
+      {
+        id: 7,
+        title: "Lunch and Networking Session",
+        startTime: "1:30 PM",
+        endTime: "2:15 PM",
+        location: "Main Hall"
+      },
+      {
+        id: 15,
+        title: "Down Time",
+        startTime: "5:30 PM",
+        endTime: "6:45 PM",
+        location: ""
+      },
+      {
+        id: 16,
+        title: "Dinner/Banquet",
+        startTime: "7:30 PM",
+        endTime: "9:45 PM",
+        location: "Main Hall"
+      },
+      {
+        id: 17,
+        title: "Shuttle From Campus to Hotel",
+        startTime: "10:00 PM",
+        endTime: "10:15 PM",
+        location: "From campus to hotel"
+      }
+    ],
+    "Stream A": [
+      {
+        id: 3,
+        title: "Workshop 1A",
+        startTime: "10:00 AM",
+        endTime: "10:30 AM",
+        location: "Room 301"
+      },
+      {
+        id: 4,
+        title: "Workshop 2A",
+        startTime: "11:00 AM",
+        endTime: "11:30 AM",
+        location: "Room 301"
+      },
+      {
+        id: 5,
+        title: "Workshop 3A",
+        startTime: "12:00 PM",
+        endTime: "1:00 PM",
+        location: "Room 301"
+      },
+      {
+        id: 8,
+        title: "Panel A",
+        startTime: "2:30 PM",
+        endTime: "3:15 PM",
+        location: "Room 301"
+      },
+      {
+        id: 9,
+        title: "Gold Sponsor Workshop",
+        startTime: "3:30 PM",
+        endTime: "4:45 PM",
+        location: "Room 301"
+      },
+      {
+        id: 10,
+        title: "Walk/Car Ride to Hotel",
+        startTime: "5:00 PM",
+        endTime: "5:15 PM",
+        location: "From campus to hotel"
+      }
+    ],
+    "Stream B": [
+      {
+        id: 11,
+        title: "Workshop 1B",
+        startTime: "10:00 AM",
+        endTime: "10:30 AM",
+        location: "Room 302"
+      },
+      {
+        id: 12,
+        title: "Workshop 2B",
+        startTime: "11:00 AM",
+        endTime: "11:30 AM",
+        location: "Room 302"
+      },
+      {
+        id: 13,
+        title: "Workshop 3B",
+        startTime: "12:00 PM",
+        endTime: "1:00 PM",
+        location: "Room 302"
+      },
+      {
+        id: 14,
+        title: "Panel B",
+        startTime: "2:30 PM",
+        endTime: "3:15 PM",
+        location: "Room 302"
+      },
+      {
+        id: 15,
+        title: "Gold Sponsor Workshop",
+        startTime: "3:30 PM",
+        endTime: "4:45 PM",
+        location: "Room 302"
+      },
+      {
+        id: 16,
+        title: "Walk/Car Ride to Hotel",
+        startTime: "5:00 PM",
+        endTime: "5:15 PM",
+        location: "From campus to hotel"
+      }
+    ],
+    "Stream C": [
+      {
+        id: 17,
+        title: "VPX Stream",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+        location: "Room 303"
+      },
+      {
+        id: 18,
+        title: "VPX Stream",
+        startTime: "2:30 PM",
+        endTime: "4:45 PM",
+        location: "Room 303"
+      },
+      {
+        id: 19,
+        title: "Walk/Car Ride to Hotel",
+        startTime: "5:00 PM",
+        endTime: "5:15 PM",
+        location: "From campus to hotel"
+      }
+    ]
+  },
+  "Sunday": {
+    "All Streams": [
+      {
+        id: 1,
+        title: "Walk/Shuttle to Campus",
+        startTime: "8:00 AM",
+        endTime: "8:30 AM",
+        location: "From hotel to campus"
+      },
+      {
+        id: 2,
+        title: "Breakfast",
+        startTime: "9:00 AM",
+        endTime: "10:00 AM",
+        location: "Campus Dining Hall"
+      },
+      {
+        id: 7,
+        title: "Closing Ceremony",
+        startTime: "2:15 PM",
+        endTime: "2:45 PM",
+        location: "Main Auditorium"
+      },
+      {
+        id: 8,
+        title: "Lunch",
+        startTime: "3:00 PM",
+        endTime: "3:30 PM",
+        location: "Campus Dining Hall"
+      }
+    ],
+    "Stream A & B": [
+      {
+        id: 3,
+        title: "Speaker",
+        startTime: "10:30 AM",
+        endTime: "11:15 AM",
+        location: "Main Auditorium"
+      },
+      {
+        id: 4,
+        title: "Case Competition",
+        startTime: "11:30 AM",
+        endTime: "1:45 PM",
+        location: "Room 304"
+      }
+    ],
+    "Stream C": [
+      {
+        id: 5,
+        title: "VPX Stream",
+        startTime: "10:30 AM",
+        endTime: "1:45 PM",
+        location: "Room 303"
+      }
+    ]
+  }
 };
 
-// Generate time slots from 8:00 to 23:00
+// Generate time slots from 8:00 AM to 10:00 PM in 30-minute intervals
 const TIME_SLOTS = [];
-for (let hour = 8; hour <= 23; hour++) {
-  TIME_SLOTS.push(`${hour}:00`);
+for (let hour = 8; hour <= 22; hour++) {
+  for (let minute = 0; minute < 60; minute += 30) {
+    const period = hour >= 12 ? "PM" : "AM";
+    const displayHour = hour > 12 ? hour - 12 : hour;
+    TIME_SLOTS.push(`${displayHour}:${minute === 0 ? "00" : minute} ${period}`);
+  }
 }
 
 export function EventContent() {
   const [activeDay, setActiveDay] = useState<keyof typeof SCHEDULE_BY_DAY>("Friday");
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
-  // Function to find events at a specific time
-  const getEventsAtTime = (time: string) => {
-    return SCHEDULE_BY_DAY[activeDay].filter(event => 
-      event.startTime === time
-    );
+  // Function to convert time to minutes for comparison
+  const timeToMinutes = (timeStr: string) => {
+    const [time, period] = timeStr.split(" ");
+    const [hours, minutes] = time.split(":").map(Number);
+    let totalMinutes = hours * 60 + minutes;
+    if (period === "PM" && hours !== 12) totalMinutes += 12 * 60;
+    if (period === "AM" && hours === 12) totalMinutes -= 12 * 60;
+    return totalMinutes;
   };
 
-  // Function to check if an event spans multiple time slots
-  const isEventOngoing = (event: any, time: string) => {
-    const timeValue = parseInt(time.split(':')[0]);
-    const startValue = parseInt(event.startTime.split(':')[0]);
-    const endValue = parseInt(event.endTime.split(':')[0]);
+  // Function to check if an event occurs at a specific time slot
+  const isEventAtTime = (event: any, time: string) => {
+    const slotMinutes = timeToMinutes(time);
+    const eventStart = timeToMinutes(event.startTime);
+    const eventEnd = timeToMinutes(event.endTime);
     
-    return timeValue > startValue && timeValue < endValue;
+    return slotMinutes >= eventStart && slotMinutes < eventEnd;
   };
 
   // Function to get event color based on stream
@@ -883,8 +871,25 @@ export function EventContent() {
       case "Stream A": return "bg-red-100 border-red-500";
       case "Stream B": return "bg-green-100 border-green-500";
       case "Stream C": return "bg-yellow-100 border-yellow-500";
+      case "Stream A & B": return "bg-purple-100 border-purple-500";
       default: return "bg-gray-100 border-gray-500";
     }
+  };
+
+  // Function to get events for a specific stream and day
+  const getEventsForStream = (day: string, stream: string) => {
+    if (day === "Friday") {
+      return SCHEDULE_BY_DAY[day].filter(event => event.stream === stream);
+    } else {
+      return SCHEDULE_BY_DAY[day][stream] || [];
+    }
+  };
+
+  // Get all streams for the active day
+  const getStreamsForDay = () => {
+    if (activeDay === "Friday") return ["All Streams"];
+    if (activeDay === "Saturday") return ["All Streams", "Stream A", "Stream B", "Stream C"];
+    return ["All Streams", "Stream A & B", "Stream C"];
   };
 
   return (
@@ -916,98 +921,49 @@ export function EventContent() {
           <div className="bg-gray-50 p-4 font-medium border-r border-b border-gray-200 hidden md:block">
             Time
           </div>
+          
+          {/* Stream Headers */}
           <div className="bg-gray-50 p-4 font-medium border-r border-b border-gray-200 md:col-span-5 grid grid-cols-5">
-            <div className="text-center">All Streams</div>
-            <div className="text-center">Stream A</div>
-            <div className="text-center">Stream B</div>
-            <div className="text-center">Stream C</div>
-            <div className="text-center">Details</div>
+            {getStreamsForDay().map((stream) => (
+              <div key={stream} className="text-center">
+                {stream}
+              </div>
+            ))}
           </div>
 
           {/* Time Slots */}
-          {TIME_SLOTS.map((time) => {
-            const events = getEventsAtTime(time);
-            const ongoingEvents = SCHEDULE_BY_DAY[activeDay].filter(event => 
-              isEventOngoing(event, time)
-            );
-            
-            return (
-              <>
-                {/* Time label */}
-                <div key={`time-${time}`} className="p-3 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block">
-                  {time}
-                </div>
-                
-                {/* Event cells */}
-                <div className="p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-16">
-                  {/* All Streams */}
-                  <div className="border-r border-gray-200 p-1">
-                    {[...events, ...ongoingEvents]
-                      .filter(event => event.stream === "All Streams")
-                      .map(event => (
-                        <div
-                          key={event.id}
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(event.stream)}`}
-                          onClick={() => setSelectedEvent(event)}
-                        >
-                          {event.startTime === time ? event.title : "↳ Ongoing"}
-                        </div>
-                      ))}
-                  </div>
+          {TIME_SLOTS.map((time) => (
+            <>
+              {/* Time label */}
+              <div key={`time-${time}`} className="p-3 bg-gray-50 border-r border-b border-gray-200 font-medium hidden md:block">
+                {time}
+              </div>
+              
+              {/* Event cells */}
+              <div className="p-1 border-b border-gray-200 md:col-span-5 grid grid-cols-5 min-h-16">
+                {getStreamsForDay().map((stream) => {
+                  const events = getEventsForStream(activeDay, stream);
+                  const eventAtThisTime = events.find((event: any) => isEventAtTime(event, time));
                   
-                  {/* Stream A */}
-                  <div className="border-r border-gray-200 p-1">
-                    {[...events, ...ongoingEvents]
-                      .filter(event => event.stream === "Stream A")
-                      .map(event => (
+                  return (
+                    <div key={stream} className="border-r border-gray-200 p-1">
+                      {eventAtThisTime && eventAtThisTime.startTime === time && (
                         <div
-                          key={event.id}
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(event.stream)}`}
-                          onClick={() => setSelectedEvent(event)}
+                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(stream)}`}
+                          onClick={() => setSelectedEvent(eventAtThisTime)}
                         >
-                          {event.startTime === time ? event.title : "↳ Ongoing"}
+                          <div className="font-semibold">{eventAtThisTime.title}</div>
+                          <div className="text-gray-600">
+                            {eventAtThisTime.startTime} - {eventAtThisTime.endTime}
+                          </div>
                         </div>
-                      ))}
-                  </div>
-                  
-                  {/* Stream B */}
-                  <div className="border-r border-gray-200 p-1">
-                    {[...events, ...ongoingEvents]
-                      .filter(event => event.stream === "Stream B")
-                      .map(event => (
-                        <div
-                          key={event.id}
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(event.stream)}`}
-                          onClick={() => setSelectedEvent(event)}
-                        >
-                          {event.startTime === time ? event.title : "↳ Ongoing"}
-                        </div>
-                      ))}
-                  </div>
-                  
-                  {/* Stream C */}
-                  <div className="border-r border-gray-200 p-1">
-                    {[...events, ...ongoingEvents]
-                      .filter(event => event.stream === "Stream C")
-                      .map(event => (
-                        <div
-                          key={event.id}
-                          className={`p-2 rounded text-xs cursor-pointer border-l-4 ${getEventColor(event.stream)}`}
-                          onClick={() => setSelectedEvent(event)}
-                        >
-                          {event.startTime === time ? event.title : "↳ Ongoing"}
-                        </div>
-                      ))}
-                  </div>
-                  
-                  {/* Time label for mobile */}
-                  <div className="p-2 text-xs text-gray-500 md:hidden flex items-center justify-center">
-                    {time}
-                  </div>
-                </div>
-              </>
-            );
-          })}
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ))}
         </div>
       </div>
 
@@ -1017,16 +973,10 @@ export function EventContent() {
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h3 className="text-xl font-bold mb-2">{selectedEvent.title}</h3>
             <div className="flex items-center mb-2">
-              <span className={`inline-block w-3 h-3 rounded-full mr-2 ${
-                selectedEvent.stream === "All Streams" ? "bg-blue-500" :
-                selectedEvent.stream === "Stream A" ? "bg-red-500" :
-                selectedEvent.stream === "Stream B" ? "bg-green-500" : "bg-yellow-500"
-              }`}></span>
-              <span className="text-sm font-medium">{selectedEvent.stream}</span>
+              <span className="text-sm font-medium text-gray-600">
+                {selectedEvent.startTime} - {selectedEvent.endTime}
+              </span>
             </div>
-            <p className="text-gray-600 mb-2">
-              <strong>Time:</strong> {selectedEvent.startTime} - {selectedEvent.endTime}
-            </p>
             {selectedEvent.location && (
               <p className="text-gray-600 mb-4">
                 <strong>Location:</strong> {selectedEvent.location}
@@ -1059,6 +1009,10 @@ export function EventContent() {
         <div className="flex items-center">
           <div className="w-4 h-4 bg-yellow-100 border-l-4 border-yellow-500 mr-2"></div>
           <span className="text-sm">Stream C</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-purple-100 border-l-4 border-purple-500 mr-2"></div>
+          <span className="text-sm">Stream A & B</span>
         </div>
       </div>
 
