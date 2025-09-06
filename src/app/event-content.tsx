@@ -390,242 +390,88 @@
 
 
 
-
-
-
-
 "use client";
 
 import { useState } from "react";
 
-// Updated event data structure to match the schedule
-const EVENTS_BY_DAY = {
-  "Friday": [
-    {
-      time: "8:00 AM",
-      title: "Walk/Shuttle to Campus",
-      location: "From hotel to campus",
-      stream: "All Streams",
-    },
-    {
-      time: "9:00 AM",
-      title: "Breakfast",
-      location: "Campus Dining Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "2:00 PM",
-      title: "Arrival and Hotel Check In",
-      location: "Holiday Inn Kingston Waterfront",
-      stream: "All Streams",
-    },
-    {
-      time: "4:00 PM",
-      title: "Walk/Car Ride to Hotel",
-      location: "From campus to hotel",
-      stream: "All Streams",
-    },
-    {
-      time: "5:00 PM",
-      title: "Travel to Campus",
-      location: "From hotel to campus",
-      stream: "All Streams",
-    },
-    {
-      time: "6:00 PM",
-      title: "Dinner",
-      location: "Campus Dining Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "7:00 PM",
-      title: "Opening Ceremony",
-      location: "Main Auditorium",
-      stream: "All Streams",
-    },
-    {
-      time: "8:00 PM",
-      title: "Social",
-      location: "Student Commons",
-      stream: "All Streams",
-    },
-    {
-      time: "9:00 PM",
-      title: "Shuttle From Campus to Hotel",
-      location: "From campus to hotel",
-      stream: "All Streams",
-    },
-  ],
-  "Saturday": [
-    {
-      time: "8:00 AM",
-      title: "Walk/Shuttle to Campus",
-      location: "From hotel to campus",
-      stream: "All Streams",
-    },
-    {
-      time: "9:00 AM",
-      title: "Breakfast",
-      location: "Campus Dining Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "10:00 AM",
-      title: "Workshop 1A",
-      location: "Room 301",
-      stream: "Stream A",
-    },
-    {
-      time: "10:00 AM",
-      title: "Workshop 1B",
-      location: "Room 302",
-      stream: "Stream B",
-    },
-    {
-      time: "11:00 AM",
-      title: "Workshop 2A",
-      location: "Room 301",
-      stream: "Stream A",
-    },
-    {
-      time: "11:00 AM",
-      title: "Workshop 2B",
-      location: "Room 302",
-      stream: "Stream B",
-    },
-    {
-      time: "11:00 AM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-    {
-      time: "12:00 PM",
-      title: "Workshop 3A",
-      location: "Room 301",
-      stream: "Stream A",
-    },
-    {
-      time: "12:00 PM",
-      title: "Workshop 3B",
-      location: "Room 302",
-      stream: "Stream B",
-    },
-    {
-      time: "1:00 PM",
-      title: "Lunch & Networking Session",
-      location: "Main Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "1:00 PM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-    {
-      time: "2:00 PM",
-      title: "Panel A",
-      location: "Room 301",
-      stream: "Stream A",
-    },
-    {
-      time: "2:00 PM",
-      title: "Panel B",
-      location: "Room 302",
-      stream: "Stream B",
-    },
-    {
-      time: "3:00 PM",
-      title: "Gold Sponsor Workshop",
-      location: "Room 301",
-      stream: "Stream A",
-    },
-    {
-      time: "3:00 PM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-    {
-      time: "4:00 PM",
-      title: "Lunch",
-      location: "Campus Dining Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "5:00 PM",
-      title: "Down Time",
-      location: "",
-      stream: "All Streams",
-    },
-    {
-      time: "7:00 PM",
-      title: "Dinner/Banquet",
-      location: "Main Hall",
-      stream: "All Streams",
-    },
-  ],
-  "Sunday": [
-    {
-      time: "9:00 AM",
-      title: "Breakfast",
-      location: "Campus Dining Hall",
-      stream: "All Streams",
-    },
-    {
-      time: "10:00 AM",
-      title: "Speaker",
-      location: "Main Auditorium",
-      stream: "All Streams",
-    },
-    {
-      time: "11:00 AM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-    {
-      time: "12:00 PM",
-      title: "Case Competition",
-      location: "Room 304",
-      stream: "Stream C",
-    },
-    {
-      time: "1:00 PM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-    {
-      time: "2:00 PM",
-      title: "Closing Ceremony",
-      location: "Main Auditorium",
-      stream: "All Streams",
-    },
-    {
-      time: "3:00 PM",
-      title: "VPX Stream",
-      location: "Room 303",
-      stream: "Stream C",
-    },
-  ],
+// Updated event data structure to match the calendar view
+const SCHEDULE_BY_DAY = {
+  "Friday": {
+    streams: ["All Streams", "Stream A", "Stream B"],
+    events: [
+      { time: "8:00", allStreams: "Walk/Shuttle to Campus", streamA: "", streamB: "" },
+      { time: "9:00", allStreams: "Breakfast", streamA: "", streamB: "" },
+      { time: "10:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "11:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "12:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "13:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "14:00", allStreams: "Arrival and Hotel Check In", streamA: "", streamB: "" },
+      { time: "15:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "16:00", allStreams: "Walk/Car Ride to Hotel", streamA: "", streamB: "" },
+      { time: "17:00", allStreams: "Travel to Campus", streamA: "", streamB: "" },
+      { time: "18:00", allStreams: "Dinner", streamA: "", streamB: "" },
+      { time: "19:00", allStreams: "Opening Ceremony", streamA: "", streamB: "" },
+      { time: "20:00", allStreams: "Social", streamA: "", streamB: "" },
+      { time: "21:00", allStreams: "", streamA: "", streamB: "" },
+      { time: "22:00", allStreams: "Shuttle From Campus to Hotel", streamA: "", streamB: "" },
+    ]
+  },
+  "Saturday": {
+    streams: ["All Streams", "Stream A", "Stream B", "Stream C"],
+    events: [
+      { time: "8:00", allStreams: "Walk/Shuttle to Campus", streamA: "", streamB: "", streamC: "" },
+      { time: "9:00", allStreams: "Breakfast", streamA: "", streamB: "", streamC: "" },
+      { time: "10:00", allStreams: "", streamA: "Workshop 1A", streamB: "Workshop 1B", streamC: "" },
+      { time: "11:00", allStreams: "", streamA: "Workshop 2A", streamB: "Workshop 2B", streamC: "VPX Stream" },
+      { time: "12:00", allStreams: "", streamA: "Workshop 3A", streamB: "Workshop 3B", streamC: "" },
+      { time: "13:00", allStreams: "Lunch & Networking Session", streamA: "", streamB: "", streamC: "VPX Stream" },
+      { time: "14:00", allStreams: "", streamA: "Panel A", streamB: "Panel B", streamC: "" },
+      { time: "15:00", allStreams: "", streamA: "Gold Sponsor Workshop", streamB: "", streamC: "VPX Stream" },
+      { time: "16:00", allStreams: "Lunch", streamA: "", streamB: "", streamC: "" },
+      { time: "17:00", allStreams: "Down Time", streamA: "", streamB: "", streamC: "" },
+      { time: "18:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "19:00", allStreams: "Dinner/Banquet", streamA: "", streamB: "", streamC: "" },
+      { time: "20:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "21:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "22:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+    ]
+  },
+  "Sunday": {
+    streams: ["All Streams", "Stream A", "Stream B", "Stream C"],
+    events: [
+      { time: "8:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "9:00", allStreams: "Breakfast", streamA: "", streamB: "", streamC: "" },
+      { time: "10:00", allStreams: "Speaker", streamA: "", streamB: "", streamC: "" },
+      { time: "11:00", allStreams: "", streamA: "", streamB: "", streamC: "VPX Stream" },
+      { time: "12:00", allStreams: "", streamA: "", streamB: "", streamC: "Case Competition" },
+      { time: "13:00", allStreams: "", streamA: "", streamB: "", streamC: "VPX Stream" },
+      { time: "14:00", allStreams: "Closing Ceremony", streamA: "", streamB: "", streamC: "" },
+      { time: "15:00", allStreams: "", streamA: "", streamB: "", streamC: "VPX Stream" },
+      { time: "16:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "17:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "18:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "19:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "20:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "21:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+      { time: "22:00", allStreams: "", streamA: "", streamB: "", streamC: "" },
+    ]
+  }
 };
 
 export function EventContent() {
-  const [activeDay, setActiveDay] = useState<keyof typeof EVENTS_BY_DAY>("Friday");
+  const [activeDay, setActiveDay] = useState<keyof typeof SCHEDULE_BY_DAY>("Friday");
 
   return (
     <section className="py-12 px-6 md:px-12">
       {/* Day Navigation Tabs */}
       <div className="flex justify-center mb-8 gap-2 bg-gray-100 rounded-full p-1 max-w-fit mx-auto">
-        {(Object.keys(EVENTS_BY_DAY) as (keyof typeof EVENTS_BY_DAY)[]).map((day) => (
+        {(Object.keys(SCHEDULE_BY_DAY) as (keyof typeof SCHEDULE_BY_DAY)[]).map((day) => (
           <button
             key={day}
             onClick={() => setActiveDay(day)}
-            className={`px-4 py-2 rounded-full transition font-medium ${
+            className={`px-6 py-2 rounded-full transition font-medium ${
               activeDay === day
-                ? "bg-white text-black shadow"
+                ? "bg-blue-600 text-white shadow"
                 : "text-gray-700 hover:bg-gray-200"
             }`}
           >
@@ -634,44 +480,73 @@ export function EventContent() {
         ))}
       </div>
 
-      {/* Events */}
-      <div className="space-y-4 max-w-4xl mx-auto">
-        {EVENTS_BY_DAY[activeDay].map((event, idx) => (
-          <div 
-            key={idx} 
-            className="flex gap-6 items-start p-4 rounded-lg border border-gray-200 hover:bg-blue-50 transition-colors"
-          >
-            {/* Time Block */}
-            <div className="text-center w-20 shrink-0">
-              <div className="text-lg font-bold text-blue-900 leading-none">
-                {event.time}
+      {/* Calendar View */}
+      <div className="overflow-x-auto rounded-lg shadow-lg">
+        <div className="min-w-[800px]">
+          {/* Header Row */}
+          <div className="grid grid-cols-5 bg-blue-800 text-white font-bold">
+            <div className="p-3 border-r border-blue-700">Time</div>
+            {SCHEDULE_BY_DAY[activeDay].streams.map((stream) => (
+              <div key={stream} className="p-3 text-center">
+                {stream}
               </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Event Info */}
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  event.stream === "All Streams" 
-                    ? "bg-blue-100 text-blue-800" 
-                    : event.stream === "Stream A"
-                    ? "bg-red-100 text-red-800"
-                    : event.stream === "Stream B"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-yellow-100 text-yellow-800"
-                }`}>
-                  {event.stream}
-                </span>
+          {/* Time Slots */}
+          {SCHEDULE_BY_DAY[activeDay].events.map((timeSlot, idx) => (
+            <div key={idx} className="grid grid-cols-5 even:bg-gray-50 hover:bg-blue-50 transition-colors">
+              {/* Time Column */}
+              <div className="p-3 font-medium border-r border-t border-gray-200">
+                {timeSlot.time}
               </div>
-              <h3 className="text-lg font-bold text-black">{event.title}</h3>
-              {event.location && (
-                <p className="text-sm text-gray-700 mt-1">{event.location}</p>
+              
+              {/* All Streams Column */}
+              <div className={`p-3 border-t border-gray-200 ${timeSlot.allStreams ? "bg-blue-50" : ""}`}>
+                {timeSlot.allStreams}
+              </div>
+              
+              {/* Stream A Column */}
+              <div className={`p-3 border-t border-gray-200 ${timeSlot.streamA ? "bg-red-50" : ""}`}>
+                {timeSlot.streamA}
+              </div>
+              
+              {/* Stream B Column */}
+              <div className={`p-3 border-t border-gray-200 ${timeSlot.streamB ? "bg-green-50" : ""}`}>
+                {timeSlot.streamB}
+              </div>
+              
+              {/* Stream C Column (if applicable) */}
+              {SCHEDULE_BY_DAY[activeDay].streams.includes("Stream C") && (
+                <div className={`p-3 border-t border-gray-200 ${timeSlot.streamC ? "bg-yellow-50" : ""}`}>
+                  {timeSlot.streamC}
+                </div>
               )}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      
+
+      {/* Legend */}
+      <div className="mt-8 flex justify-center gap-6 flex-wrap">
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-blue-100 border-l-4 border-blue-500 mr-2"></div>
+          <span className="text-sm">All Streams</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-red-100 border-l-4 border-red-500 mr-2"></div>
+          <span className="text-sm">Stream A</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-green-100 border-l-4 border-green-500 mr-2"></div>
+          <span className="text-sm">Stream B</span>
+        </div>
+        <div className="flex items-center">
+          <div className="w-4 h-4 bg-yellow-100 border-l-4 border-yellow-500 mr-2"></div>
+          <span className="text-sm">Stream C</span>
+        </div>
+      </div>
+
       {/* Add some spacing at the bottom */}
       <div className="h-12"></div>
     </section>
