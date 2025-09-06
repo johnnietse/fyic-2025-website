@@ -476,7 +476,7 @@ function Hero() {
             style={{ fontFamily: 'Montserrat, sans-serif' }} 
             {...({} as any)}
           >
-            29-31 November @ Kingston
+            7-9 November @ Kingston, ESSCO's FYIC 2025 Presented by OSPE 
           </Typography>
           
           <Typography 
@@ -486,7 +486,7 @@ function Hero() {
             style={{ fontFamily: 'Montserrat, sans-serif' }} 
             {...({} as any)}
           >
-            FYIC 2025: Empowering the Next Generation of Engineers
+            FYIC 2025 Hosted by Queen's University with OSPE: Empowering the Next Generation of Engineers
           </Typography>
           
           <Typography
@@ -498,6 +498,9 @@ function Hero() {
           >
             Join us for Ontario's premier leadership and integration conference designed
             exclusively for first-year engineering students.
+
+            "A Present, for the Future"
+
           </Typography>
 
           <CountdownTimer />
