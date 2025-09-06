@@ -991,7 +991,7 @@ function Hero() {
                   <img 
                     src="/logos/queens-logo.svg" 
                     alt="Queen's University Logo" 
-                    className="h-6 sm:h-8 w-auto filter brightness-0 invert"
+                    className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
                   />
               </span> 
               with 
@@ -1000,7 +1000,7 @@ function Hero() {
                   <img 
                     src="/logos/ospe-logo.png" 
                     alt="OSPE Logo" 
-                    className="h-6 sm:h-8 w-auto filter brightness-0 invert"
+                    className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
                   />
               </span>
             </Typography>
