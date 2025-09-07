@@ -4,15 +4,18 @@ import { Typography } from "@material-tailwind/react";
 
 export function CoChairsSection() {
   return (
-    <div className="relative w-full bg-[url('/image/co-chairs-bg.png')] bg-cover bg-center bg-no-repeat">
-      {/* Overlay for better readability */}
-      <div className="absolute inset-0 h-full w-full bg-gray-900/40" />
+    <div className="relative w-full bg-white">
+      {/* Background image that overlays the white background */}
+      <div 
+        className="absolute inset-0 bg-[url('/image/co-chairs-bg.png')] bg-cover bg-center bg-no-repeat opacity-20"
+        style={{ zIndex: 1 }}
+      />
       
-      <section className="relative z-10 container mx-auto px-4 py-16">
+      <section className="relative z-10 container mx-auto px-4 py-16" style={{ zIndex: 2 }}>
         <div className="text-center mb-12">
           <Typography 
             variant="h1" 
-            className="text-center mb-4 text-white" 
+            className="text-center mb-4 text-gray-900" 
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
@@ -65,7 +68,7 @@ export function CoChairsSection() {
           {/* Combined Headshot and Name Tags */}
           <div className="flex flex-col items-center">
             {/* Combined Headshot */}
-            <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg mb-6">
+            <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg mb-6 bg-white">
               <img 
                 src="/image/co-chairs-headshot.png" 
                 alt="Jaden Belliveau and Flaminia Testa" 
