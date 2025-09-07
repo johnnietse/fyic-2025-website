@@ -253,16 +253,7 @@ export function HotelInfoSection() {
           </div>
         </div>
         
-        {/* Additional Note */}
-        <div className="mt-12 max-w-4xl mx-auto bg-blue-800/40 p-6 rounded-lg backdrop-blur-sm text-center">
-          <Typography
-            color="white"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-            {...({} as any)}
-          >
-            For any questions or special requests regarding accommodations, please contact the FYIC Executive Team at fyic@engsoc.queensu.ca
-          </Typography>
-        </div>
+        
       </section>
     </div>
   );
