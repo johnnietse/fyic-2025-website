@@ -524,48 +524,46 @@
 
 
 
-
-
 "use client";
 
 import { Typography } from "@material-tailwind/react";
 
 export function TransportationSection() {
   return (
-    <div className="relative w-full min-h-screen bg-[url('/image/transportation-bg.png')] bg-cover bg-center bg-no-repeat">
+    <div className="relative w-full bg-[url('/image/transportation-bg.png')] bg-cover bg-center bg-no-repeat">
       {/* More translucent overlay */}
       <div className="absolute inset-0 h-full w-full bg-black/40" />
       
-      <section className="relative z-10 container mx-auto flex flex-col items-center px-4 py-16">
+      <section className="relative z-10 container mx-auto flex flex-col items-center px-4 py-12">
         {/* Section Header */}
         <Typography 
           variant="h1" 
-          className="text-center mb-12 mt-8 text-white" 
+          className="text-center mb-8 text-white" 
           style={{ fontFamily: 'Montserrat, sans-serif' }}
           {...({} as any)}
         >
           Getting to Kingston
         </Typography>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">
           {/* Left Column - Transportation Options */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <Typography
               variant="h3"
               color="white"
-              className="mb-6 text-center lg:text-left border-b border-white/30 pb-3"
+              className="mb-4 text-center lg:text-left border-b border-white/30 pb-2"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
               {...({} as any)}
             >
               Transportation Options
             </Typography>
             
-            <div className="space-y-4">
-              <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+            <div className="space-y-3">
+              <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <Typography
                   variant="h5"
                   color="white"
-                  className="mb-2"
+                  className="mb-1"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -573,6 +571,7 @@ export function TransportationSection() {
                 </Typography>
                 <Typography
                   color="white"
+                  className="text-sm"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -580,11 +579,11 @@ export function TransportationSection() {
                 </Typography>
               </div>
               
-              <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+              <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <Typography
                   variant="h5"
                   color="white"
-                  className="mb-2"
+                  className="mb-1"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -592,6 +591,7 @@ export function TransportationSection() {
                 </Typography>
                 <Typography
                   color="white"
+                  className="text-sm"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -599,11 +599,11 @@ export function TransportationSection() {
                 </Typography>
               </div>
               
-              <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+              <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <Typography
                   variant="h5"
                   color="white"
-                  className="mb-2"
+                  className="mb-1"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -611,6 +611,7 @@ export function TransportationSection() {
                 </Typography>
                 <Typography
                   color="white"
+                  className="text-sm"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   {...({} as any)}
                 >
@@ -619,9 +620,10 @@ export function TransportationSection() {
               </div>
             </div>
             
-            <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm mt-6">
+            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm mt-4">
               <Typography
                 color="white"
+                className="text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -631,12 +633,12 @@ export function TransportationSection() {
           </div>
           
           {/* Right Column - Via Rail Info */}
-          <div className="space-y-6">
-            <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+          <div className="space-y-4">
+            <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
               <Typography
                 variant="h4"
                 color="white"
-                className="mb-4 text-center"
+                className="mb-3 text-center"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -645,7 +647,7 @@ export function TransportationSection() {
               
               <Typography
                 color="white"
-                className="mb-4 text-center"
+                className="mb-3 text-center text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -653,20 +655,20 @@ export function TransportationSection() {
               </Typography>
               
               {/* Flexible image container */}
-              <div className="w-full rounded-lg overflow-hidden mt-4">
+              <div className="w-full rounded-lg overflow-hidden mt-3">
                 <img 
                   src="/image/map.png" 
                   alt="Via Rail Route Map" 
-                  className="w-full h-auto max-h-96 object-contain"
+                  className="w-full h-auto max-h-64 object-contain"
                 />
               </div>
             </div>
             
-            <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+            <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
               <Typography
                 variant="h5"
                 color="white"
-                className="mb-2 text-center"
+                className="mb-1 text-center"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -674,7 +676,7 @@ export function TransportationSection() {
               </Typography>
               <Typography
                 color="white"
-                className="text-center"
+                className="text-center text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -687,23 +689,23 @@ export function TransportationSection() {
         </div>
         
         {/* Additional Transportation Info */}
-        <div className="mt-12 w-full max-w-4xl bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+        <div className="mt-8 w-full max-w-4xl bg-white/10 p-5 rounded-lg backdrop-blur-sm">
           <Typography
             variant="h4"
             color="white"
-            className="mb-6 text-center border-b border-white/30 pb-3"
+            className="mb-4 text-center border-b border-white/30 pb-2"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
             Local Transportation in Kingston
           </Typography>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/15 p-5 rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white/15 p-4 rounded-lg">
               <Typography
                 variant="h5"
                 color="white"
-                className="mb-2"
+                className="mb-1"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -711,6 +713,7 @@ export function TransportationSection() {
               </Typography>
               <Typography
                 color="white"
+                className="text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -718,11 +721,11 @@ export function TransportationSection() {
               </Typography>
             </div>
             
-            <div className="bg-white/15 p-5 rounded-lg">
+            <div className="bg-white/15 p-4 rounded-lg">
               <Typography
                 variant="h5"
                 color="white"
-                className="mb-2"
+                className="mb-1"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -730,6 +733,7 @@ export function TransportationSection() {
               </Typography>
               <Typography
                 color="white"
+                className="text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
