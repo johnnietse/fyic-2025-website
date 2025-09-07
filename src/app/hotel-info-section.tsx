@@ -9,6 +9,10 @@ export function HotelInfoSection() {
       <div className="absolute inset-0 h-full w-full bg-gray-900/60" />
       
       <section className="relative z-10 container mx-auto px-4 py-16">
+        <br>
+        </br>
+        <br>
+        </br>
         <div className="text-center mb-12">
           <Typography 
             variant="h1" 
@@ -255,6 +259,12 @@ export function HotelInfoSection() {
         
         
       </section>
+
+      <br>
+      </br>
+      <br>
+      </br>
+    
     </div>
   );
 }
