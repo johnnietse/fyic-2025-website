@@ -958,7 +958,7 @@ function Hero() {
             >
                <span className="font-semibold text-blue-200">Presented by OSPE</span>
                <img 
-                  src="/logos/ospe-logo.webp" 
+                  src="/logos/ospe-logo.png" 
                   alt="OSPE Logo" 
                   className="h-5 w-auto bg-white/80 p-0.5 rounded"
                 />
@@ -1003,7 +1003,7 @@ function Hero() {
               <span className="text-blue-200 font-semibold flex items-center gap-2">
                   ESSCO
                   <img 
-                    src="/logos/essco-logo.png" 
+                    src="/logos/essco-logo.webp" 
                     alt="ESSCO Logo" 
                     className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
                   />
