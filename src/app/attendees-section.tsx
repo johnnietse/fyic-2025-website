@@ -24,6 +24,10 @@ export function AttendeesSection() {
   return (
     <div className="relative w-full bg-white">
       <section className="container mx-auto px-4 py-16">
+        <br>
+        </br>
+        <br>
+        </br>
         <div className="text-center mb-12">
           <Typography 
             variant="h1" 
@@ -246,6 +250,10 @@ export function AttendeesSection() {
             </div>
           </div>
         </div>
+        <br>
+        </br>
+        <br>
+        </br>
       </section>
     </div>
   );
