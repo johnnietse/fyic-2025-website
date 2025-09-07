@@ -136,9 +136,6 @@
 
 
 
-
-
-
 "use client";
 
 import { Typography } from "@material-tailwind/react";
@@ -180,15 +177,12 @@ export function TimelineSection() {
   ];
 
   return (
-    <div className="relative w-full bg-[url('/image/timeline-bg.jpg')] bg-cover bg-center bg-no-repeat">
-      {/* Darker overlay for better contrast */}
-      <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-gray-900/90 to-black/90" />
-      
-      <section className="relative z-10 container mx-auto px-4 py-16">
+    <div className="relative w-full bg-white">
+      <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <Typography 
             variant="h1" 
-            className="text-center mb-4 text-white" 
+            className="text-center mb-4 text-gray-900" 
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
@@ -196,7 +190,7 @@ export function TimelineSection() {
           </Typography>
           <Typography
             variant="lead"
-            color="white"
+            color="gray-700"
             className="mx-auto max-w-3xl"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
@@ -209,23 +203,23 @@ export function TimelineSection() {
           {/* Timeline */}
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-4 h-full border-l-2 border-dashed border-blue-400/50 ml-4"></div>
+            <div className="absolute left-4 h-full border-l-2 border-dashed border-blue-500 ml-4"></div>
             
             {/* Timeline events */}
             <div className="space-y-12">
               {timelineEvents.map((event, index) => (
                 <div key={index} className="relative flex items-start">
-                  {/* Timeline dot with glow effect */}
-                  <div className="absolute left-0 w-8 h-8 rounded-full bg-blue-600 border-4 border-blue-300 flex items-center justify-center z-10 shadow-lg shadow-blue-500/30">
+                  {/* Timeline dot */}
+                  <div className="absolute left-0 w-8 h-8 rounded-full bg-blue-600 border-4 border-white flex items-center justify-center z-10 shadow-md">
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
                   
-                  {/* Content with darker background */}
-                  <div className="ml-12 bg-gray-800/80 backdrop-blur-md p-6 rounded-lg w-full border border-gray-700/50 shadow-xl">
+                  {/* Content */}
+                  <div className="ml-12 bg-gray-50 p-6 rounded-lg w-full border border-gray-200 shadow-sm">
                     <Typography
                       variant="h3"
-                      color="white"
-                      className="mb-3 border-b border-blue-400/30 pb-2"
+                      color="blue-gray"
+                      className="mb-3 border-b border-gray-300 pb-2"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                       {...({} as any)}
                     >
@@ -235,9 +229,9 @@ export function TimelineSection() {
                     <ul className="space-y-2">
                       {event.events.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start">
-                          <span className="text-blue-300 mr-2 mt-1">•</span>
+                          <span className="text-blue-600 mr-2 mt-1">•</span>
                           <Typography
-                            color="blue-50"
+                            color="gray-800"
                             style={{ fontFamily: 'Montserrat, sans-serif' }}
                             {...({} as any)}
                           >
@@ -253,10 +247,10 @@ export function TimelineSection() {
           </div>
         </div>
 
-        {/* Additional Note with darker background */}
-        <div className="mt-12 max-w-3xl mx-auto bg-gray-800/80 p-6 rounded-lg backdrop-blur-md text-center border border-gray-700/50 shadow-xl">
+        {/* Additional Note */}
+        <div className="mt-12 max-w-3xl mx-auto bg-blue-50 p-6 rounded-lg text-center border border-blue-100">
           <Typography
-            color="blue-50"
+            color="gray-700"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
