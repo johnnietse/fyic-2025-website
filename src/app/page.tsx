@@ -4,6 +4,8 @@ import { Navbar, Footer } from "@/components";
 // import { ReactLenis } from "@studio-freight/lenis/react";
 import { EmergencyContact } from "@/app/emergency-contact";
 import { TransportationSection } from "@/app/transportation-section";
+import { HotelInfoSection } from "@/app/hotel-info-section";
+
 
 
 import AnimatedSection from "@/components/AnimatedSection";
@@ -59,16 +61,21 @@ export default function Portfolio() {
 
       {/* </Animation> */}
 
+      
       <AnimatedSection delay={1.5}>
+        <HotelInfoSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={1.8}>
         <TransportationSection />
       </AnimatedSection>
       
-      <AnimatedSection delay={1.8}>
+      <AnimatedSection delay={2.1}>
         <EmergencyContact />
       </AnimatedSection>
 
 
-      <AnimatedSection delay={2.1}>
+      <AnimatedSection delay={2.4}>
         <Footer />
       </AnimatedSection>
     </>
