@@ -1019,7 +1019,7 @@ function Hero() {
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
-                "A Present, for the Future"
+                "A Present for the Future"
               </Typography>
             </div>
           </div>
