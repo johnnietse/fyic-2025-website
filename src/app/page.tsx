@@ -44,14 +44,23 @@ export default function Portfolio() {
         <AboutEvent />
       </AnimatedSection>
 
+
       <AnimatedSection delay={0.9}>
+        <HotelInfoSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={1.2}>
+        <TransportationSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={1.5}>
         <OurStats />
       </AnimatedSection>
 
       {/* <EventContent /> */}
 
 
-      <AnimatedSection delay={1.2}>
+      <AnimatedSection delay={1.8}>
         <Faq />
       </AnimatedSection>
 
@@ -61,14 +70,6 @@ export default function Portfolio() {
 
       {/* </Animation> */}
 
-      
-      <AnimatedSection delay={1.5}>
-        <HotelInfoSection />
-      </AnimatedSection>
-
-      <AnimatedSection delay={1.8}>
-        <TransportationSection />
-      </AnimatedSection>
       
       <AnimatedSection delay={2.1}>
         <EmergencyContact />
