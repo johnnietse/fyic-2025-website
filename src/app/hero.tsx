@@ -518,7 +518,7 @@
 //             style={{ fontFamily: 'Montserrat, sans-serif' }} 
 //             {...({} as any)}
 //           >
-//             7-9 November @ Kingston, ESSCO's FYIC 2025 Presented by OSPE 
+//             7-9 November @ Kingston, FYIC 2025 Presented by OSPE 
 //           </Typography>
           
 //           <Typography 
@@ -944,7 +944,7 @@ function Hero() {
                 style={{ fontFamily: 'Montserrat, sans-serif' }} 
                 {...({} as any)}
               >
-                ESSCO's FYIC 2025
+                FYIC 2025
               </Typography>
               <div className="h-px w-12 bg-blue-400 opacity-60 hidden sm:block"></div>
             </div>
@@ -952,11 +952,16 @@ function Hero() {
             <Typography 
               variant="h6" 
               color="blue-100" 
-              className="mt-1 font-light"
+              className="mt-1 font-light flex items-center justify-center gap-2"
               style={{ fontFamily: 'Montserrat, sans-serif' }} 
               {...({} as any)}
             >
                <span className="font-semibold text-blue-200">Presented by OSPE</span>
+               <img 
+                  src="/logos/ospe-logo.webp" 
+                  alt="OSPE Logo" 
+                  className="h-5 w-auto bg-white/80 p-0.5 rounded"
+                />
             </Typography>
           </div>
           
@@ -996,10 +1001,10 @@ function Hero() {
               </span> 
               with 
               <span className="text-blue-200 font-semibold flex items-center gap-2">
-                  OSPE
+                  ESSCO
                   <img 
-                    src="/logos/ospe-logo.png" 
-                    alt="OSPE Logo" 
+                    src="/logos/essco-logo.png" 
+                    alt="ESSCO Logo" 
                     className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
                   />
               </span>
