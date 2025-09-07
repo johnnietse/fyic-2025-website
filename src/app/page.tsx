@@ -8,6 +8,7 @@ import { HotelInfoSection } from "@/app/hotel-info-section";
 import { TimelineSection } from "@/app/timeline-section";
 import { AttendeesSection } from "@/app/attendees-section";
 
+import { CoChairsSection } from "@/components/co-chairs-section";
 
 
 
@@ -42,37 +43,43 @@ export default function Portfolio() {
         <Hero />
       </AnimatedSection>
 
-      {/* <SponsoredBy /> */}
 
       <AnimatedSection delay={0.6}>
+        <CoChairsSection />
+      </AnimatedSection>
+
+
+      {/* <SponsoredBy /> */}
+
+      <AnimatedSection delay={0.9}>
         <AboutEvent />
       </AnimatedSection>
 
-      <AnimatedSection delay={0.9}>
+      <AnimatedSection delay={1.2}>
       <AttendeesSection />
       </AnimatedSection>
 
 
-      <AnimatedSection delay={1.2}>
+      <AnimatedSection delay={1.5}>
         <TimelineSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={1.5}>
+      <AnimatedSection delay={1.8}>
         <HotelInfoSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={1.8}>
+      <AnimatedSection delay={2.1}>
         <TransportationSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={2.1}>
+      <AnimatedSection delay={2.4}>
         <OurStats />
       </AnimatedSection>
 
       {/* <EventContent /> */}
 
 
-      <AnimatedSection delay={2.4}>
+      <AnimatedSection delay={2.7}>
         <Faq />
       </AnimatedSection>
 
@@ -83,12 +90,12 @@ export default function Portfolio() {
       {/* </Animation> */}
 
       
-      <AnimatedSection delay={2.7}>
+      <AnimatedSection delay={3.0}>
         <EmergencyContact />
       </AnimatedSection>
 
 
-      <AnimatedSection delay={3.0}>
+      <AnimatedSection delay={3.3}>
         <Footer />
       </AnimatedSection>
     </>
