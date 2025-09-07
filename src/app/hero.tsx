@@ -1096,7 +1096,6 @@
 
 
 
-
 "use client";
 
 import { IconButton, Typography } from "@material-tailwind/react";
@@ -1142,7 +1141,7 @@ function Hero() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden" style={{ minHeight: "100vh" }}>
       {/* Video Background with Fallback */}
       <video
         ref={videoRef}
@@ -1190,19 +1189,15 @@ function Hero() {
       {/* Content Overlay */}
       <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900/70 z-10" />
       
-      {/* Main Content - Perfectly Centered */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-4 sm:px-8">
-        <div className="text-center w-full max-w-5xl px-4">
-          <br />
-          <br />
-          <br />
-          <br />
+      {/* Main Content - Using flex for better responsiveness */}
+      <div className="relative z-20 flex flex-col items-center justify-center w-full py-8 px-4 min-h-[100vh] box-border">
+        <div className="text-center w-full max-w-5xl px-4 py-8">
           {/* Conference details - top section with accent color */}
-          <div className="mb-6 sm:mb-8 bg-blue-800/30 backdrop-blur-sm rounded-lg py-3 px-6 inline-block">
+          <div className="mb-4 sm:mb-6 bg-blue-800/30 backdrop-blur-sm rounded-lg py-3 px-4 sm:px-6 inline-block">
             <Typography 
               variant="h5" 
               color="white" 
-              className="mb-1 font-medium tracking-wider"
+              className="mb-1 font-medium tracking-wider text-sm sm:text-base"
               style={{ fontFamily: 'Montserrat, sans-serif' }} 
               {...({} as any)}
             >
@@ -1210,23 +1205,23 @@ function Hero() {
             </Typography>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-              <div className="h-px w-12 bg-blue-400 opacity-60 hidden sm:block"></div>
+              <div className="h-px w-8 sm:w-12 bg-blue-400 opacity-60 hidden sm:block"></div>
               <Typography 
                 variant="h4" 
                 color="white" 
-                className="font-bold text-blue-100"
+                className="font-bold text-blue-100 text-xl sm:text-2xl"
                 style={{ fontFamily: 'Montserrat, sans-serif' }} 
                 {...({} as any)}
               >
                 FYIC 2025
               </Typography>
-              <div className="h-px w-12 bg-blue-400 opacity-60 hidden sm:block"></div>
+              <div className="h-px w-8 sm:w-12 bg-blue-400 opacity-60 hidden sm:block"></div>
             </div>
             
             <Typography 
               variant="h6" 
               color="blue-100" 
-              className="mt-1 font-light flex items-center justify-center gap-2"
+              className="mt-1 font-light flex items-center justify-center gap-2 text-xs sm:text-sm"
               style={{ fontFamily: 'Montserrat, sans-serif' }} 
               {...({} as any)}
             >
@@ -1234,16 +1229,16 @@ function Hero() {
                <img 
                   src="/logos/ospe-logo.png" 
                   alt="OSPE Logo" 
-                  className="h-5 w-auto bg-white/80 p-0.5 rounded"
+                  className="h-4 sm:h-5 w-auto bg-white/80 p-0.5 rounded"
                 />
             </Typography>
           </div>
           
           {/* Main title with gradient text */}
-          <div className="relative mb-5 sm:mb-7">
+          <div className="relative mb-4 sm:mb-6">
             <Typography 
               variant="h1" 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight font-bold bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent" 
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight font-bold bg-gradient-to-r from-blue-200 via-white to-blue-200 bg-clip-text text-transparent" 
               style={{ fontFamily: 'Montserrat, sans-serif' }} 
               {...({} as any)}
             >
@@ -1251,45 +1246,45 @@ function Hero() {
             </Typography>
             
             {/* Decorative elements */}
-            <div className="absolute -bottom-4 left-1/4 w-12 h-1 bg-blue-400 rounded-full opacity-80"></div>
-            <div className="absolute -bottom-4 right-1/4 w-8 h-1 bg-blue-400 rounded-full opacity-60"></div>
+            <div className="absolute -bottom-3 left-1/4 w-8 sm:w-12 h-1 bg-blue-400 rounded-full opacity-80"></div>
+            <div className="absolute -bottom-3 right-1/4 w-6 sm:w-8 h-1 bg-blue-400 rounded-full opacity-60"></div>
           </div>
           
           {/* Host information with subtle background */}
-          <div className="mb-6 sm:mb-10 inline-block bg-gray-800/40 backdrop-blur-sm rounded-lg py-4 px-6">
+          <div className="mb-4 sm:mb-6 inline-block bg-gray-800/40 backdrop-blur-sm rounded-lg py-3 px-4 sm:py-4 sm:px-6">
             <Typography
               variant="h5"
               color="white"
-              className="mb-3 font-medium flex flex-col sm:flex-row items-center justify-center gap-2"
+              className="mb-2 font-medium flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
               {...({} as any)}
             >
               Hosted by 
-              <span className="text-blue-200 font-semibold flex items-center gap-2">
+              <span className="text-blue-200 font-semibold flex items-center gap-1 sm:gap-2">
                   Queen's University      
                   <img 
                     src="/logos/queens-logo.svg" 
                     alt="Queen's University Logo" 
-                    className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
+                    className="h-5 sm:h-6 md:h-8 w-auto bg-white/80 p-0.5 sm:p-1 rounded"
                   />
               </span> 
               with 
-              <span className="text-blue-200 font-semibold flex items-center gap-2">
+              <span className="text-blue-200 font-semibold flex items-center gap-1 sm:gap-2">
                   ESSCO
                   <img 
                     src="/logos/essco-logo.webp" 
                     alt="ESSCO Logo" 
-                    className="h-6 sm:h-8 w-auto bg-white/80 p-1 rounded"
+                    className="h-5 sm:h-6 md:h-8 w-auto bg-white/80 p-0.5 sm:p-1 rounded"
                   />
               </span>
             </Typography>
             
             {/* Tagline with emphasis */}
-            <div className="inline-block border-l-4 border-blue-400 pl-4 py-1">
+            <div className="inline-block border-l-4 border-blue-400 pl-2 sm:pl-4 py-1">
               <Typography
                 variant="h6"
                 color="blue-100"
-                className="italic font-semibold text-xl text-blue-50"
+                className="italic font-semibold text-lg sm:text-xl text-blue-50"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -1302,7 +1297,7 @@ function Hero() {
           <Typography
             variant="lead"
             color="white"
-            className="text-lg sm:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto font-light"
+            className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto font-light"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
             {...({} as any)}
           >
@@ -1313,11 +1308,11 @@ function Hero() {
           <CountdownTimer />
 
           {/* Call to action section */}
-          <div className="mt-10 sm:mt-14">
+          <div className="mt-6 sm:mt-10 md:mt-12">
             <Typography
               variant="h6"
               color="white"
-              className="mb-4 font-medium uppercase tracking-wider"
+              className="mb-3 sm:mb-4 font-medium uppercase tracking-wider text-sm sm:text-base"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
               {...({} as any)}
             >
@@ -1328,25 +1323,25 @@ function Hero() {
             <div className="flex justify-center">
               <div className="relative">
                 <IconButton
-                  className="rounded-full bg-blue-600 hover:bg-blue-500 p-6 sm:p-8 z-10 hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/30"
+                  className="rounded-full bg-blue-600 hover:bg-blue-500 p-4 sm:p-6 md:p-8 z-10 hover:scale-110 transition-all duration-300 shadow-lg shadow-blue-500/30"
                   onClick={triggerEffect}
                   {...({} as any)}
                 >
-                  <PlayIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <PlayIcon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                 </IconButton>
 
                 {ripple && (
-                  <span className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/30 animate-ripple pointer-events-none z-0" />
+                  <span className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/30 animate-ripple pointer-events-none z-0" />
                 )}
               </div>
             </div>
             
             {/* Land Acknowledgement */}
-            <div className="mt-12 max-w-2xl mx-auto bg-black/30 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+            <div className="mt-6 sm:mt-8 md:mt-10 max-w-2xl mx-auto bg-black/30 backdrop-blur-sm p-3 sm:p-4 rounded-lg border border-white/20">
               <Typography
                 variant="small"
                 color="white"
-                className="text-center italic"
+                className="text-center italic text-xs sm:text-sm"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
@@ -1357,11 +1352,6 @@ function Hero() {
                 how we can actively contribute to reconciliation in meaningful ways.
               </Typography>
             </div>
-            
-            <br />
-            <br />
-            <br />
-            <br />
           </div>
         </div>
       </div>
