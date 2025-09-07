@@ -1188,7 +1188,12 @@ function Hero() {
 
       {/* Content Overlay */}
       <div className="absolute inset-0 h-full w-full bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900/70 z-10" />
-      
+
+      <br>
+      </br>
+      <br>
+      </br>
+          
       {/* Main Content - Using flex for better responsiveness */}
       <div className="relative z-20 flex flex-col items-center justify-center w-full py-8 px-4 min-h-[100vh] box-border">
         <div className="text-center w-full max-w-5xl px-4 py-8">
