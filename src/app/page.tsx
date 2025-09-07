@@ -13,7 +13,7 @@ import { CoChairsSection } from "@/app/co-chairs-section";
 
 
 
-import AnimatedSection from "@/app/AnimatedSection";
+import AnimatedSection from "@/components/AnimatedSection";
 
 
 
