@@ -6,6 +6,8 @@ import { EmergencyContact } from "@/app/emergency-contact";
 import { TransportationSection } from "@/app/transportation-section";
 import { HotelInfoSection } from "@/app/hotel-info-section";
 import { TimelineSection } from "@/app/timeline-section";
+import { AttendeesSection } from "@/app/attendees-section";
+
 
 
 
@@ -47,25 +49,30 @@ export default function Portfolio() {
       </AnimatedSection>
 
       <AnimatedSection delay={0.9}>
+      <AttendeesSection />
+      </AnimatedSection>
+
+
+      <AnimatedSection delay={1.2}>
         <TimelineSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={1.2}>
+      <AnimatedSection delay={1.5}>
         <HotelInfoSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={1.5}>
+      <AnimatedSection delay={1.8}>
         <TransportationSection />
       </AnimatedSection>
 
-      <AnimatedSection delay={1.8}>
+      <AnimatedSection delay={2.1}>
         <OurStats />
       </AnimatedSection>
 
       {/* <EventContent /> */}
 
 
-      <AnimatedSection delay={2.1}>
+      <AnimatedSection delay={2.4}>
         <Faq />
       </AnimatedSection>
 
@@ -76,12 +83,12 @@ export default function Portfolio() {
       {/* </Animation> */}
 
       
-      <AnimatedSection delay={2.4}>
+      <AnimatedSection delay={2.7}>
         <EmergencyContact />
       </AnimatedSection>
 
 
-      <AnimatedSection delay={2.4}>
+      <AnimatedSection delay={3.0}>
         <Footer />
       </AnimatedSection>
     </>
