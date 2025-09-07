@@ -4,7 +4,7 @@ import { Typography } from "@material-tailwind/react";
 
 export function TransportationSection() {
   return (
-    <div className="relative w-full bg-[url('/public/image/transportation-bg.png')] bg-cover bg-no-repeat bg-fixed">
+    <div className="relative w-full bg-[url('//image/transportation-bg.png')] bg-cover bg-no-repeat bg-fixed">
       <div className="absolute inset-0 h-full w-full bg-gray-900/70" />
       <section className="relative z-10 container mx-auto flex flex-col items-center px-4 py-16">
         {/* Section Header */}
@@ -166,7 +166,7 @@ export function TransportationSection() {
                   {...({} as any)}
                 >
                   <img 
-                    src="/public/image/map.png" 
+                    src="/image/map.png" 
                     alt="Conference Location Map" 
                     className="w-full h-64 object-cover rounded-lg"
                   />
