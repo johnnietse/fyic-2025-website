@@ -84,7 +84,7 @@ export function CoChairsSection() {
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 {...({} as any)}
               >
-                Jaden Belliveau (he/him) & Flaminia Testa (she/her)
+                Flaminia Testa (she/her) & Jaden Belliveau (he/him)
               </Typography>
             </div>
           </div>
