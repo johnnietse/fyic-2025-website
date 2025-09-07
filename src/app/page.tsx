@@ -8,7 +8,7 @@ import { HotelInfoSection } from "@/app/hotel-info-section";
 import { TimelineSection } from "@/app/timeline-section";
 import { AttendeesSection } from "@/app/attendees-section";
 
-import { CoChairsSection } from "@/components/co-chairs-section";
+import { CoChairsSection } from "@/app/co-chairs-section";
 
 
 
