@@ -5,6 +5,8 @@ import { Navbar, Footer } from "@/components";
 import { EmergencyContact } from "@/app/emergency-contact";
 import { TransportationSection } from "@/app/transportation-section";
 import { HotelInfoSection } from "@/app/hotel-info-section";
+import { TimelineSection } from "@/app/timeline-section";
+
 
 
 
@@ -44,23 +46,26 @@ export default function Portfolio() {
         <AboutEvent />
       </AnimatedSection>
 
-
       <AnimatedSection delay={0.9}>
-        <HotelInfoSection />
+        <TimelineSection />
       </AnimatedSection>
 
       <AnimatedSection delay={1.2}>
-        <TransportationSection />
+        <HotelInfoSection />
       </AnimatedSection>
 
       <AnimatedSection delay={1.5}>
+        <TransportationSection />
+      </AnimatedSection>
+
+      <AnimatedSection delay={1.8}>
         <OurStats />
       </AnimatedSection>
 
       {/* <EventContent /> */}
 
 
-      <AnimatedSection delay={1.8}>
+      <AnimatedSection delay={2.1}>
         <Faq />
       </AnimatedSection>
 
@@ -71,7 +76,7 @@ export default function Portfolio() {
       {/* </Animation> */}
 
       
-      <AnimatedSection delay={2.1}>
+      <AnimatedSection delay={2.4}>
         <EmergencyContact />
       </AnimatedSection>
 
