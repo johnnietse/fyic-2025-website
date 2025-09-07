@@ -100,7 +100,7 @@ export function Navbar() {
   }, []);
 
   const handleEditPosterClick = () => {
-    window.location.href = "https://www.canva.com/design/DAGx3UuONwY/yhy2P3xO8mH8WX0L0mirLQ/edit?utm_content=DAGx3UuONwY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton";
+    window.location.href = "https://www.canva.com/design/DAGx3UuONwY/LehcEmNT2kfjp_8-qwHBPA/view?utm_content=DAGx3UuONwY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb01af3c8ea";
   };
 
   return (
