@@ -533,7 +533,12 @@ export function TransportationSection() {
     <div className="relative w-full bg-[url('/image/transportation-bg.png')] bg-cover bg-center bg-no-repeat">
       {/* More translucent overlay */}
       <div className="absolute inset-0 h-full w-full bg-black/40" />
-      
+
+      <br>
+      </br>          
+      <br>
+      </br>
+                
       <section className="relative z-10 container mx-auto flex flex-col items-center px-4 py-12">
         {/* Section Header */}
         <Typography 
@@ -742,6 +747,12 @@ export function TransportationSection() {
             </div>
           </div>
         </div>
+
+        <br>
+        </br>          
+        <br>
+        </br>
+                  
       </section>
     </div>
   );
