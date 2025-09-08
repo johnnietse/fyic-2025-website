@@ -80,61 +80,53 @@ export function AboutEvent() {
 
 
 
+      
+
       {/* Second Section */}
+
       <div className="relative w-full bg-[url('/image/ourvision.png')] bg-cover bg-no-repeat">
         <div className="absolute inset-0 h-full w-full bg-gray-900/60" />
         <section className="relative z-10 container mx-auto flex flex-col items-center px-4 py-16">
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
+          <br />
+          <br />
+          <br />
+          <br />
 
           <Typography variant="h1" className="text-center lg:max-w-3xl" color="white"  {...({} as any)}>
-            Our Vision
+            About Queen's University
           </Typography>
 
-          <br>
-          </br>
-          <br>
-          </br>
+          <br />
+          <br />
 
-          
           <Typography
             variant="lead"
             className="mt-2 lg:max-w-10xl mb-8 w-full text-left font-Montserrat text-white"
-            {...({} as any)}>
+            {...({} as any)}
+          >
             <p className="mb-4">
-              At FYIC, we envision a thriving community of future engineers equipped with the tools, confidence, and network to succeed in both their academic and professional pursuits.
+              FYIC 2025 is proudly hosted by Smith Engineering at Queen's University, where we are reimagining engineering education. Located in historic Kingston, Queen's is one of Canada's most distinguished institutions, recognized globally for academic excellence, impactful research, and community engagement.
             </p>
 
-            <br>
-            </br>
-            <br>
-            </br>
-            
+            <br />
+            <br />
+
+            <p className="mb-4">
+              Smith Engineering is cultivating a new generation of engineers—leaders with deep technical expertise and a strong sense of societal, environmental, and ethical responsibility. Through interdisciplinary collaboration, hands-on learning, and a vibrant research culture, we are preparing problem-solvers for the challenges of tomorrow.
+            </p>
+
+            <br />
+            <br />
 
             <p>
-
-              <span className="font-bold">Mission Statement</span>
-              <br>
-              </br>
-              Our mission is to integrate first-year engineering students into the broader engineering community by fostering leadership, breaking down barriers, and providing meaningful opportunities for growth and career exploration.
+              Ranked among the top 10 universities worldwide in the 2022 Times Higher Education Impact Rankings, Queen's is committed to sustainability, equity, and global collaboration. As delegates, you'll experience the energy and excellence that define Queen's and Smith Engineering—a place where tradition meets innovation and the future of engineering is being built today.
             </p>
           </Typography>
           
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
-          <br>
-          </br>
-
+          <br />
+          <br />
+          <br />
+          <br />
         </section>
       </div>
 
