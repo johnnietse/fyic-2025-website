@@ -10,6 +10,9 @@ import OurStats from "../our-stats";
 import EventContent from "../event-content";
 import Contact from "@/components/contact";
 import Faq from "../faq";
+import { ConferenceStreams } from "@/app/conference-streams";
+
+
 
 
 
@@ -23,6 +26,7 @@ export default function Page() {
       {/* <SponsoredBy />  */}
       {/* <AboutEvent /> */}
       {/* <OurStats /> */}
+      <ConferenceStreams />
       <EventContent />
       {/* <Faq /> */}
       {/* <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16 bg-white">
