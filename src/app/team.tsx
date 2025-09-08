@@ -28,13 +28,13 @@ const teamMembers = [
                 imageUrl: '/image/pfp.png',
                 linkedInUrl: '#',
             },
-            {
-                name: 'Greyson Martyn',
-                role: 'Logistics Coordinator',
-                imageUrl: '/image/pfp.png',
-                linkedInUrl: '#',
+            // {
+            //     name: 'Greyson Martyn',
+            //     role: 'Logistics Coordinator',
+            //     imageUrl: '/image/pfp.png',
+            //     linkedInUrl: '#',
 
-            },
+            // },
             {
                 name: 'Sachin Khandelwal',
                 role: 'Logistics Coordinator',
