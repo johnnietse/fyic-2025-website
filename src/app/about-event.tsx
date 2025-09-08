@@ -59,7 +59,7 @@ export function AboutEvent() {
             Hosted with the Engineering Student Societies' Council of Ontario (ESSCO), FYIC 2025 will take place at Queen's University, a world-renowned institution and a leader in engineering research and innovation.
             <br />
             <br />
-            The First Year Integration Conference (FYIC) is a unique, province-wide initiative that brings together first-year engineering students from over 15 universities across Ontario. Our goal is to ease the transition into university life by providing a welcoming and inspiring space where students can build connections, develop leadership skills, and gain valuable insight into the world of engineering.
+            The First Year Integration Conference (FYIC) is a unique, province-wide initiative that brings together first-year engineering students from 18 universities across Ontario. Our goal is to ease the transition into university life by providing a welcoming and inspiring space where students can build connections, develop leadership skills, and gain valuable insight into the world of engineering.
             <br />
             <br />
             Through a dynamic lineup of interactive workshops, seminars, and dedicated industry networking events, FYIC empowers students to explore their academic and professional potential. By connecting with peers and industry professionals alike, participants begin their engineering journey with confidence, curiosity, and community.
