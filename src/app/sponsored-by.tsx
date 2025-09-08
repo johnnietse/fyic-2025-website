@@ -25,10 +25,10 @@ export function SponsoredBy() {
         <br>
         </br>
         <Typography variant="lead" color="gray" className="mb-8 max-w-4xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)}>
-          FYIC 2025 is proudly presented by Kinectrics. Thank you to our sponsors –
-          DDQIC, Suncor, Tatham Engineering, Circle5, Toromont CAT, Smith Engineering
+          FYIC 2025 is proudly presented by OSPE. Thank you to our sponsors – TBD!
+{/*           DDQIC, Suncor, Tatham Engineering, Circle5, Toromont CAT, Smith Engineering
           Faculty of Chemical Engineering, Stroud, CIBC Capital Markets, Queen’s
-          University Faculty of Education, Isaac, INVISTA, Bounce, and Teck Resources Limited.
+          University Faculty of Education, Isaac, INVISTA, Bounce, and Teck Resources Limited. */}
         </Typography>
 
         <br>
@@ -39,7 +39,7 @@ export function SponsoredBy() {
         <Typography variant="h4" color="blue-gray" className="mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}   {...({} as any)} >
           SPONSORED BY
         </Typography>
-        <div className="flex flex-wrap items-center justify-center gap-6">
+{/*         <div className="flex flex-wrap items-center justify-center gap-6">
           {SPONSORS.map((logo, key) => (
             <Image
               width={256}
@@ -50,7 +50,7 @@ export function SponsoredBy() {
               className="w-40"
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       <br>
