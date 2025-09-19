@@ -3,6 +3,8 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 const EMERGENCY_CONTACTS = [
   {
     title: "Campus Security Emergency Response",

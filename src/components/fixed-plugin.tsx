@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { Button } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function FixedPlugin() {
   return (
     <a href="https://www.material-tailwind.com" target="_blank">

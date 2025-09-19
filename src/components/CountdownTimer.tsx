@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 
+export const runtime = "edge";
+
 const CountdownTimer = () => {
   const eventDate = new Date("2025-11-07T00:00:00");
 

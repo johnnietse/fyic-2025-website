@@ -1,4 +1,9 @@
 import Image from "next/image";
+
+
+export const runtime = "edge";
+
+
 import {
   Typography,
   Card,

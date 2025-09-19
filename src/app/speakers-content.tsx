@@ -11,6 +11,7 @@ import { Typography, Button } from "@material-tailwind/react";
 
 import EventContentCard from "@/components/event-content-card";
 
+export const runtime = "edge";
 
 const SPEAKERS_CONTENT = [
   {

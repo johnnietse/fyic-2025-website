@@ -1104,6 +1104,8 @@ import CountdownTimer from "../components/CountdownTimer";
 import "../app/globals.css";
 import { useState, useRef } from "react";
 
+export const runtime = "edge";
+
 function Hero() {
   // Animation states
   const [ripple, setRipple] = useState(false);

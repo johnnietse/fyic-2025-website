@@ -7,6 +7,7 @@ import "./globals.css";
 import { TypographyProps } from "@material-tailwind/react";
 
 
+export const runtime = "edge";
 
 // const EVENT_INFO = [
 //   {

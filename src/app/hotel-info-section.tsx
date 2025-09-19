@@ -2,6 +2,8 @@
 
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function HotelInfoSection() {
   return (
     <div className="relative w-full bg-[url('/image/accommodation-bg-blur.png')] bg-cover bg-center bg-no-repeat">

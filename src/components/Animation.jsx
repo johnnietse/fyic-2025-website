@@ -141,6 +141,8 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+export const runtime = "edge";
+
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function Animation({ children, animateOnScroll = true, delay = 0 }) {

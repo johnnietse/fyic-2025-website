@@ -24,8 +24,11 @@ import Hero from "./hero";
 import AboutEvent from "./about-event";
 import OurStats from "./our-stats";
 // import EventContent from "./event-content";
-import Contact from "@/components/contact";
+// import Contact from "@/components/contact";
 import Faq from "./faq";
+
+
+export const runtime = "edge";
 
 export default function Portfolio() {
   
@@ -83,9 +86,9 @@ export default function Portfolio() {
         <Faq />
       </AnimatedSection>
 
-      <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16 bg-white">
+      {/* <main className="w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16 bg-white">
         <Contact /> 
-      </main>
+      </main> */}
 
       {/* </Animation> */}
 

@@ -5,6 +5,7 @@ import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import "../globals.css";
 
 
+export const runtime = "edge";
 
 export function AboutTeam() {
   return (

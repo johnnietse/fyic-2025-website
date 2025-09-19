@@ -1,9 +1,13 @@
 
 import { Typography, Card } from "@material-tailwind/react";
+
+export const runtime = "edge";
+
 interface StatsCardProps {
   count: string;
   title: string;
 }
+
 
 export function StatsCard({ count, title }: StatsCardProps) {
   return (

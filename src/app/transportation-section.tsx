@@ -528,6 +528,8 @@
 
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function TransportationSection() {
   return (
     <div className="relative w-full bg-[url('/image/transportation-bg.png')] bg-cover bg-center bg-no-repeat">

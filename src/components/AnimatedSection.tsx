@@ -5,6 +5,8 @@
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useEffect } from "react";
 
+export const runtime = "edge";
+
 // Define animation variants for smoother control
 const variants: Variants = {
   initial: { opacity: 0, scale: 0.95 },

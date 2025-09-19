@@ -1,6 +1,8 @@
 // pages/team.tsx
 import TeamMemberCard from '@/components/TeamMemberCard';
 
+export const runtime = "edge";
+
 const teamMembers = [
     {
         teamName: 'Co-Chairs',

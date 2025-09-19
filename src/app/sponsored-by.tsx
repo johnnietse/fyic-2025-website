@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
+
 const SPONSORS = [
   "coinbase",
   "spotify",

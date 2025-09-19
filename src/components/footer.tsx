@@ -2,6 +2,7 @@ import { Typography, Button, IconButton } from "@material-tailwind/react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Link from 'next/link';
 
+export const runtime = "edge";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const INTERNAL_LINKS = [{ name: "Home", path: "/"},

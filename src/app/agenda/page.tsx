@@ -8,11 +8,11 @@ import AboutSponsors from "../sponsors/hero-sponsors";
 import AboutAgenda from "../agenda/hero-agenda";
 import OurStats from "../our-stats";
 import EventContent from "../event-content";
-import Contact from "@/components/contact";
+// import Contact from "@/components/contact";
 import Faq from "../faq";
 import { ConferenceStreams } from "@/app/conference-streams";
 
-
+export const runtime = "edge";
 
 
 

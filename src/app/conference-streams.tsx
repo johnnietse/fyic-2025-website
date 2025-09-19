@@ -2,6 +2,8 @@
 
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function ConferenceStreams() {
   return (
     <div className="relative w-full bg-white py-16">

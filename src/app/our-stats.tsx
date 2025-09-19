@@ -5,6 +5,8 @@ import StatsCard from "@/components/stats-card";
 
 import dynamic from 'next/dynamic';
 
+export const runtime = "edge";
+
 const Typography = dynamic(
   () => import('@material-tailwind/react').then((mod) => mod.Typography),
   { ssr: false }

@@ -140,6 +140,8 @@
 
 import { Typography } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function TimelineSection() {
   const timelineEvents = [
     {

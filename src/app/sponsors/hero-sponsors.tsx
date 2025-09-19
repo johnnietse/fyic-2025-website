@@ -4,7 +4,7 @@ import { Typography, Button } from "@material-tailwind/react";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import "../globals.css";
 
-
+export const runtime = "edge";
 
 export function AboutSponsors() {
   return (

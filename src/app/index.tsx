@@ -8,4 +8,4 @@ export * from "./faq";
 export * from "./sponsored-by";
 export * from "./event-content";
 
-
+export const runtime = "edge";

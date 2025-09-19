@@ -2,6 +2,8 @@
 import { FC } from 'react';
 import { Linkedin } from 'lucide-react';
 
+export const runtime = "edge";
+
 interface TeamMemberProps {
   name: string;
   pronouns?: string;

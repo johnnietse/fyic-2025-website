@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { Layout, FixedPlugin } from "@/components";
 
+export const runtime = "edge";
 
 const roboto = Montserrat({
   subsets: ["latin"],

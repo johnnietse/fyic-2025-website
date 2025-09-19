@@ -6,6 +6,9 @@ import {
 } from "@material-tailwind/react";
 
 
+export const runtime = "edge";
+
+
 
 interface AboutCardProp {
   title: string;

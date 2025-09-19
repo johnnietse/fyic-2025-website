@@ -581,6 +581,9 @@
 
 import { useState } from "react";
 
+
+export const runtime = "edge";
+
 const SCHEDULE_DATA = {
   "Friday": [
     {

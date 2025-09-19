@@ -5,6 +5,10 @@ import React from "react";
 // import AboutEvent from "@/components/about-event";
 import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 
+
+export const runtime = "edge";
+
+
 const FAQS = [
   {
     title: "1. What types of sessions will be held at the conference?",

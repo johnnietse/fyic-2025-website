@@ -273,6 +273,9 @@
 import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
 
+
+export const runtime = "edge";
+
 export function AttendeesSection() {
   const [activeImage, setActiveImage] = useState(0);
   

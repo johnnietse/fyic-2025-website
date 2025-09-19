@@ -3,6 +3,8 @@
 import React from "react";
 import { ThemeProvider } from "@material-tailwind/react";
 
+export const runtime = "edge";
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return <ThemeProvider>{children}</ThemeProvider>;
 }

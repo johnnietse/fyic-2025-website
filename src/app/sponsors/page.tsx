@@ -7,9 +7,10 @@ import SponsoredBy from "../sponsored-by";
 import AboutSponsors from "../sponsors/hero-sponsors";
 import OurStats from "../our-stats";
 // import EventContent from "./event-content";
-import Contact from "@/components/contact";
+// import Contact from "@/components/contact";
 import Faq from "../faq";
 
+export const runtime = "edge";
 
 export default function Page() {
   return (
